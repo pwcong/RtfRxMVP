@@ -4,11 +4,11 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.widget.ToggleButton;
+import android.view.Menu;
 
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
-import me.pwcong.rtfrxmvp.ui.fragment.TestFragment;
+import me.pwcong.rtfrxmvp.ui.fragment.NewsFragment;
 
 /**
  * Created by pwcong on 2016/8/19.
@@ -38,13 +38,25 @@ public class MainActivity extends BaseActivity{
         toggle.syncState();
 
 
-
     }
+
+    private void Say(Void v){
+        ShowSnackBar(toolbar,"OK");
+    }
+
 
     @Override
     protected void doAction() {
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.content,new TestFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content,new NewsFragment()).commit();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 }

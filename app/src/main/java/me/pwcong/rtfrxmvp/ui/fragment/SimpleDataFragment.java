@@ -2,36 +2,27 @@ package me.pwcong.rtfrxmvp.ui.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
-import me.pwcong.rtfrxmvp.adapter.SimpleAdapter;
+import me.pwcong.rtfrxmvp.adapter.SimpleDataAdapter;
 
 /**
- * Created by pwcong on 2016/8/19.
+ * Created by pwcong on 2016/8/20.
  */
-public class TestFragment extends BaseFragment {
+public class SimpleDataFragment extends BaseFragment {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
-
     @Override
     protected void initVariable() {
 
-        List<String> stringList=new ArrayList<>();
-        for(int i=0;i<50;i++){
-            stringList.add("HelloWorld "+i);
-        }
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(new SimpleAdapter(stringList));
-
-
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(new SimpleDataAdapter(SimpleDataAdapter.getSimpleData()));
 
     }
 
@@ -42,6 +33,6 @@ public class TestFragment extends BaseFragment {
 
     @Override
     protected int getViewId() {
-        return R.layout.fragment_test;
+        return R.layout.fragment_simpledata;
     }
 }
