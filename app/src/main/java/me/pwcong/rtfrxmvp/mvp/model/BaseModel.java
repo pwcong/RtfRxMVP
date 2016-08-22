@@ -1,17 +1,20 @@
 package me.pwcong.rtfrxmvp.mvp.model;
 
-import java.util.List;
-
-import me.pwcong.rtfrxmvp.mvp.bean.FragmentWithTitle;
+import me.pwcong.rtfrxmvp.mvp.presenter.NewsFragmentPresenter;
+import me.pwcong.rtfrxmvp.mvp.presenter.NewsTabFragmentPresenter;
 
 /**
  * Created by pwcong on 2016/8/20.
  */
 public interface BaseModel<T> {
 
-    void setData(T dataBridge);
+    void setData(T presenter);
 
-    public interface NewsFragmentTabModel extends BaseModel<BaseDataBridge<FragmentWithTitle>>{
+    interface NewsFragmentTabModel extends BaseModel<NewsTabFragmentPresenter>{
+    }
+
+    interface NewsFragmentModel extends BaseModel<NewsFragmentPresenter>{
+        void setData(NewsFragmentPresenter presenter,String type);
     }
 
 
