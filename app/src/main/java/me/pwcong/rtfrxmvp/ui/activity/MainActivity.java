@@ -7,6 +7,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
+import com.jakewharton.rxbinding.widget.RxToolbar;
+
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
@@ -60,11 +62,13 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
     @Override
     public void switchNews() {
+        toolbar.setTitle(R.string.navigation_item_newspaper);
         getSupportFragmentManager().beginTransaction().replace(R.id.content,new NewsTabFragment()).commit();
     }
 
     @Override
     public void switchWeather() {
+        toolbar.setTitle(R.string.navigation_item_weather);
         getSupportFragmentManager().beginTransaction().replace(R.id.content,new WeatherTabFragment()).commit();
     }
 }

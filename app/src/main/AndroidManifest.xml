@@ -11,8 +11,7 @@
         android:name=".App"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <activity android:name=".ui.activity.MainActivity"
-            android:label="测试">
+        <activity android:name=".ui.activity.MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

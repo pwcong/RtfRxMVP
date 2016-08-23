@@ -6,11 +6,15 @@ import me.pwcong.rtfrxmvp.R;
 /**
  * Created by pwcong on 2016/8/22.
  */
-public abstract class StringUtils {
+public abstract class ResourceUtils {
 
     public static String fromStringResId(int id){
-
         return App.getInstance().getResources().getString(id);
+    }
+
+    public static float fromDimenResId(int id){
+
+        return App.getInstance().getResources().getDimension(id);
 
     }
 

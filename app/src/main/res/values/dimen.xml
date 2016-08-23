@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="height_item_news_layout">80dp</dimen>
+    <dimen name="size_item_news_img">64dp</dimen>
+    <dimen name="margin_item_news">4dp</dimen>
+
+
+</resources>

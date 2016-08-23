@@ -2,6 +2,7 @@ package me.pwcong.rtfrxmvp.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,10 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void doAction();
 
-
     protected abstract int getViewId();
+
+    public void ShowSnackBar(View view,String message){
+        Snackbar.make(view,message,Snackbar.LENGTH_SHORT).show();
+    }
 
 }
