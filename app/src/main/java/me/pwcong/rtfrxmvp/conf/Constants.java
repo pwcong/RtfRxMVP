@@ -5,7 +5,10 @@ package me.pwcong.rtfrxmvp.conf;
  */
 public abstract class Constants {
 
-    public static final String TOUTIAO_TYPE="type";
+    public static final String TYPE ="type";
+    public static final String TITLE="title";
+    public static final String URL_CONTENT="url_content";
+    public static final String URL_IMG="url_img";
 
 
 }

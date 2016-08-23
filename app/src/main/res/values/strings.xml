@@ -13,6 +13,8 @@
     <string name="navigation_item_newspaper">新闻头条</string>
     <string name="navigation_item_weather">天气预报</string>
 
+    <string name="share_to">分享到</string>
+
     <string name="top">头条</string>
     <string name="shehui">社会</string>
     <string name="guonei">国内</string>

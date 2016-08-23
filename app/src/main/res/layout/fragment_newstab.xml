@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:tabMode="scrollable"
-            app:tabSelectedTextColor="@android:color/holo_green_light" />
+            app:tabSelectedTextColor="@color/colorAccent" />
 
     </android.support.design.widget.AppBarLayout>
 

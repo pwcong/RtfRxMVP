@@ -33,6 +33,7 @@ public class NewsTabFragment extends BaseFragment implements BaseView.NewsTabFra
         tabLayout.setupWithViewPager(viewPager);
 
         presenter=new NewsTabFragmentPresenter(this);
+        Log.i(TAG, "initVariable: ok");
 
     }
 
@@ -40,6 +41,7 @@ public class NewsTabFragment extends BaseFragment implements BaseView.NewsTabFra
     protected void doAction() {
 
         presenter.initNewsFragmentTab();
+        Log.i(TAG, "doAction: ok");
 
     }
 
@@ -58,7 +60,7 @@ public class NewsTabFragment extends BaseFragment implements BaseView.NewsTabFra
     public void setData(List<NewsTab> data) {
 
         viewPager.setAdapter(new NewTabFragmentAdapter(getChildFragmentManager(),data));
-        Log.d(TAG, "setData: 设置数据");
+        Log.i(TAG, "setData: ok");
 
     }
 }

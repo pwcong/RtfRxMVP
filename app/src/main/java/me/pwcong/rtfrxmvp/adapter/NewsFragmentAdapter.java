@@ -15,6 +15,7 @@ import java.util.List;
 
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.mvp.bean.News;
+import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.utils.ResourceUtils;
 import rx.functions.Action1;
 
@@ -25,12 +26,12 @@ public class NewsFragmentAdapter extends RecyclerView.Adapter<NewsFragmentAdapte
 
     Context context;
     List<News> newsList;
-    NewsItemListener newsItemListener;
+    BaseView.NewsFragmentView newsFragmentView;
 
-    public NewsFragmentAdapter(Context context, List<News> newsList, NewsItemListener newsItemListener) {
+    public NewsFragmentAdapter(Context context, List<News> newsList, BaseView.NewsFragmentView newsFragmentView) {
         this.context = context;
         this.newsList = newsList;
-        this.newsItemListener = newsItemListener;
+        this.newsFragmentView = newsFragmentView;
     }
 
     @Override
@@ -55,11 +56,11 @@ public class NewsFragmentAdapter extends RecyclerView.Adapter<NewsFragmentAdapte
                 .override((int)ResourceUtils.fromDimenResId(R.dimen.size_item_news_img),(int)ResourceUtils.fromDimenResId(R.dimen.size_item_news_img))
                 .into(holder.iv_img);
 
-        if(newsItemListener!=null){
+        if(newsFragmentView!=null){
             RxView.clicks(holder.view).subscribe(new Action1<Void>() {
                 @Override
                 public void call(Void aVoid) {
-                    newsItemListener.onNewsItemInteraction(holder.news);
+                    newsFragmentView.toDetailActivity(holder.news);
                 }
             });
         }
@@ -91,10 +92,6 @@ public class NewsFragmentAdapter extends RecyclerView.Adapter<NewsFragmentAdapte
             iv_img= (ImageView) itemView.findViewById(R.id.iv_img);
 
         }
-    }
-
-    public interface NewsItemListener{
-        void onNewsItemInteraction(News news);
     }
 
 }

@@ -1,4 +1,4 @@
-package me.pwcong.rtfrxmvp.view;
+package me.pwcong.rtfrxmvp.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

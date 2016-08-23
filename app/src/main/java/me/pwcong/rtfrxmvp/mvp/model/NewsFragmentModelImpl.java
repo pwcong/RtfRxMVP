@@ -41,8 +41,4 @@ public class NewsFragmentModelImpl implements BaseModel.NewsFragmentModel{
 
     }
 
-    @Override
-    public void setData(NewsFragmentPresenter presenter) {
-
-    }
 }

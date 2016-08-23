@@ -13,9 +13,10 @@ public interface BaseModel<T> {
     interface NewsFragmentTabModel extends BaseModel<NewsTabFragmentPresenter>{
     }
 
-    interface NewsFragmentModel extends BaseModel<NewsFragmentPresenter>{
+    interface NewsFragmentModel {
         void setData(NewsFragmentPresenter presenter,String type);
     }
+
 
 
 }

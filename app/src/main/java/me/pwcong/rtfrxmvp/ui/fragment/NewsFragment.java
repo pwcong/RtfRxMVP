@@ -1,5 +1,6 @@
 package me.pwcong.rtfrxmvp.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,13 +18,14 @@ import me.pwcong.rtfrxmvp.conf.Constants;
 import me.pwcong.rtfrxmvp.mvp.bean.News;
 import me.pwcong.rtfrxmvp.mvp.presenter.NewsFragmentPresenter;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
-import me.pwcong.rtfrxmvp.view.RecyclerViewDivider;
+import me.pwcong.rtfrxmvp.ui.activity.NewsDetailActivity;
+import me.pwcong.rtfrxmvp.widget.RecyclerViewDivider;
 import rx.functions.Action1;
 
 /**
  * Created by pwcong on 2016/8/20.
  */
-public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentView,NewsFragmentAdapter.NewsItemListener {
+public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentView {
 
     private final String TAG=getClass().getSimpleName();
 
@@ -39,7 +41,7 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
     public static NewsFragment newInstant(String type){
 
         Bundle bundle=new Bundle();
-        bundle.putString(Constants.TOUTIAO_TYPE,type);
+        bundle.putString(Constants.TYPE,type);
 
         NewsFragment newsFragment=new NewsFragment();
         newsFragment.setArguments(bundle);
@@ -47,12 +49,10 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
         return newsFragment;
     }
 
-
-
     @Override
     protected void initVariable() {
 
-        type=getArguments().getString(Constants.TOUTIAO_TYPE);
+        type=getArguments().getString(Constants.TYPE);
         presenter=new NewsFragmentPresenter(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -63,15 +63,18 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
             public void call(Void aVoid) {
                 presenter.initNewsFragmentData(type);
                 refreshLayout.setRefreshing(false);
-                Log.d(TAG, "call: 刷新数据");
+                Log.i(TAG, "call: ok");
             }
         });
+
+        Log.i(TAG, "initVariable: ok");
 
     }
 
     @Override
     protected void doAction() {
         presenter.initNewsFragmentData(type);
+        Log.i(TAG, "doAction: ok");
     }
 
     @Override
@@ -79,6 +82,20 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
         return R.layout.fragment_news;
     }
 
+
+    @Override
+    public void toDetailActivity(News news) {
+
+        Bundle bundle=new Bundle();
+        bundle.putString(Constants.TITLE,news.getTitle());
+        bundle.putString(Constants.URL_IMG,news.getThumbnail_pic_s());
+        bundle.putString(Constants.URL_CONTENT,news.getUrl());
+
+        Intent intent=new Intent(getActivity(),NewsDetailActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+    }
 
     @Override
     public void showError() {
@@ -89,11 +106,7 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
     public void setData(List<News> data) {
 
         recyclerView.setAdapter(new NewsFragmentAdapter(getContext(),data,this));
-        Log.d(TAG, "setData: 设置数据");
+        Log.i(TAG, "setData: ok");
     }
 
-    @Override
-    public void onNewsItemInteraction(News news) {
-        Log.d(TAG, "onNewsItemInteraction: "+news.getTitle());
-    }
 }

@@ -1,13 +1,10 @@
 package me.pwcong.rtfrxmvp.ui.activity;
 
-import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-
-import com.jakewharton.rxbinding.widget.RxToolbar;
 
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
@@ -49,7 +46,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     @Override
     protected void doAction() {
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.content,new NewsTabFragment()).commit();
+        switchNews();
 
     }
 

@@ -6,6 +6,8 @@ import com.google.gson.Gson;
 
 import org.junit.Test;
 
+import java.util.Vector;
+
 import me.pwcong.rtfrxmvp.mvp.bean.NewsBean;
 import me.pwcong.rtfrxmvp.network.Api;
 import me.pwcong.rtfrxmvp.network.TouTiaoService;
@@ -100,8 +102,22 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void testValue(){
+    public void testVector(){
 
+        String t="Haha";
+
+        Vector<String> strings=new Vector<>();
+
+        strings.add(t);
+        for(int i=0;i<10;i++){
+            strings.add("Hello "+i);
+        }
+
+        System.out.println(strings);
+
+        strings.remove(t);
+
+        System.out.println(strings);
 
     }
 

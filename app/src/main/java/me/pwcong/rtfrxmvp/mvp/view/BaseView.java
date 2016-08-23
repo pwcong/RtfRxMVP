@@ -18,13 +18,23 @@ public interface BaseView<T> {
         void switchWeather();
     }
 
+    interface NewsDetailActivityView {
+        void loadData();
+        void shareData();
+        void showError();
+        void showProgress();
+        void hideProgress();
+    }
+
     interface NewsTabFragmentView extends BaseView<NewsTab>{
         void showError();
     }
 
     interface NewsFragmentView extends BaseView<News>{
+        void toDetailActivity(News news);
         void showError();
     }
+
 
 
 
