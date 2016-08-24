@@ -16,7 +16,7 @@ import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.adapter.NewsFragmentAdapter;
 import me.pwcong.rtfrxmvp.conf.Constants;
 import me.pwcong.rtfrxmvp.mvp.bean.News;
-import me.pwcong.rtfrxmvp.mvp.presenter.NewsFragmentPresenter;
+import me.pwcong.rtfrxmvp.mvp.presenter.NewsFragmentPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.ui.activity.NewsDetailActivity;
 import me.pwcong.rtfrxmvp.widget.RecyclerViewDivider;
@@ -36,7 +36,7 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
     RecyclerView recyclerView;
 
     String type;
-    NewsFragmentPresenter presenter;
+    NewsFragmentPresenterImpl presenter;
 
     public static NewsFragment newInstant(String type){
 
@@ -52,29 +52,42 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
     @Override
     protected void initVariable() {
 
-        type=getArguments().getString(Constants.TYPE);
-        presenter=new NewsFragmentPresenter(this);
+        presenter=new NewsFragmentPresenterImpl(this);
 
+        type=getArguments().getString(Constants.TYPE);
+
+        initRecyclerView();
+        initRefreshLayout();
+
+        Log.i(TAG, "initVariable: OK");
+
+    }
+
+    private void initRecyclerView(){
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new RecyclerViewDivider(getContext(),RecyclerViewDivider.VERTICAL_LIST));
+
+    }
+
+
+    private void initRefreshLayout(){
+
+        refreshLayout.setColorSchemeResources(R.color.colorPrimaryDark);
 
         RxSwipeRefreshLayout.refreshes(refreshLayout).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
                 presenter.initNewsFragmentData(type);
                 refreshLayout.setRefreshing(false);
-                Log.i(TAG, "call: ok");
+                Log.i(TAG, "call: OK");
             }
         });
-
-        Log.i(TAG, "initVariable: ok");
-
     }
 
     @Override
     protected void doAction() {
         presenter.initNewsFragmentData(type);
-        Log.i(TAG, "doAction: ok");
+        Log.i(TAG, "doAction: OK");
     }
 
     @Override
@@ -106,7 +119,7 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
     public void setData(List<News> data) {
 
         recyclerView.setAdapter(new NewsFragmentAdapter(getContext(),data,this));
-        Log.i(TAG, "setData: ok");
+        Log.i(TAG, "setData: OK");
     }
 
 }

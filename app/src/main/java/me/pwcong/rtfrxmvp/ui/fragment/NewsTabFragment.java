@@ -10,7 +10,7 @@ import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.adapter.NewTabFragmentAdapter;
 import me.pwcong.rtfrxmvp.mvp.bean.NewsTab;
-import me.pwcong.rtfrxmvp.mvp.presenter.NewsTabFragmentPresenter;
+import me.pwcong.rtfrxmvp.mvp.presenter.NewsTabFragmentPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 
 /**
@@ -25,15 +25,15 @@ public class NewsTabFragment extends BaseFragment implements BaseView.NewsTabFra
     @BindView(R.id.viewPager)
     ViewPager viewPager;
 
-    NewsTabFragmentPresenter presenter;
+    NewsTabFragmentPresenterImpl presenter;
 
     @Override
     protected void initVariable() {
 
         tabLayout.setupWithViewPager(viewPager);
 
-        presenter=new NewsTabFragmentPresenter(this);
-        Log.i(TAG, "initVariable: ok");
+        presenter=new NewsTabFragmentPresenterImpl(this);
+        Log.i(TAG, "initVariable: OK");
 
     }
 
@@ -41,7 +41,7 @@ public class NewsTabFragment extends BaseFragment implements BaseView.NewsTabFra
     protected void doAction() {
 
         presenter.initNewsFragmentTab();
-        Log.i(TAG, "doAction: ok");
+        Log.i(TAG, "doAction: OK");
 
     }
 
@@ -60,7 +60,7 @@ public class NewsTabFragment extends BaseFragment implements BaseView.NewsTabFra
     public void setData(List<NewsTab> data) {
 
         viewPager.setAdapter(new NewTabFragmentAdapter(getChildFragmentManager(),data));
-        Log.i(TAG, "setData: ok");
+        Log.i(TAG, "setData: OK");
 
     }
 }

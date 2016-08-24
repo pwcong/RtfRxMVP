@@ -1,20 +1,23 @@
 package me.pwcong.rtfrxmvp.mvp.model;
 
-import me.pwcong.rtfrxmvp.mvp.presenter.NewsFragmentPresenter;
-import me.pwcong.rtfrxmvp.mvp.presenter.NewsTabFragmentPresenter;
+import java.util.List;
+
+import me.pwcong.rtfrxmvp.mvp.bean.NewsBean;
+import me.pwcong.rtfrxmvp.mvp.bean.NewsTab;
+import rx.Subscriber;
 
 /**
  * Created by pwcong on 2016/8/20.
  */
 public interface BaseModel<T> {
 
-    void setData(T presenter);
+    List<T> getData();
 
-    interface NewsFragmentTabModel extends BaseModel<NewsTabFragmentPresenter>{
+    interface NewsFragmentTabModel extends BaseModel<NewsTab>{
     }
 
     interface NewsFragmentModel {
-        void setData(NewsFragmentPresenter presenter,String type);
+        void getData(String type, Subscriber<NewsBean> subscriber);
     }
 
 

@@ -1,6 +1,7 @@
 package me.pwcong.rtfrxmvp.manager;
 
 import android.app.Activity;
+import android.util.Log;
 
 import java.util.Vector;
 
@@ -8,6 +9,8 @@ import java.util.Vector;
  * Created by pwcong on 2016/8/23.
  */
 public class ActivityManager {
+
+    private final String TAG=getClass().getSimpleName();
 
     private static ActivityManager manager;
 
@@ -26,18 +29,24 @@ public class ActivityManager {
     public void register(Activity activity){
         activities.add(activity);
         currentActivity=activity;
+        Log.i(TAG, "register: "+activity);
+        Log.i(TAG, "register: ALL "+activities.toString());
+
     }
 
     public void unregister(Activity activity){
         if(activities.contains(activity)){
             activities.remove(activity);
         }
+        Log.i(TAG, "unregister: "+activity);
+        Log.i(TAG, "unregister: ALL"+activities.toString());
     }
 
     public void removeAll(){
         activities.clear();
         currentActivity=null;
-
+        Log.i(TAG, "removeAll: OK");
+        Log.i(TAG, "removeAll: ALL"+activities.toString());
     }
 
     public Activity getCurrentActivity(){

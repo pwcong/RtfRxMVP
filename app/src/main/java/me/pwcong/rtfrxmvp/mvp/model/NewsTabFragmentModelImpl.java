@@ -5,7 +5,6 @@ import java.util.List;
 
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.mvp.bean.NewsTab;
-import me.pwcong.rtfrxmvp.mvp.presenter.NewsTabFragmentPresenter;
 import me.pwcong.rtfrxmvp.utils.ResourceUtils;
 
 /**
@@ -14,7 +13,7 @@ import me.pwcong.rtfrxmvp.utils.ResourceUtils;
 public class NewsTabFragmentModelImpl implements BaseModel.NewsFragmentTabModel {
 
     @Override
-    public void setData(NewsTabFragmentPresenter presenter) {
+    public List<NewsTab> getData() {
 
         List<NewsTab> newsTabList=new ArrayList<>();
         newsTabList.add(new NewsTab("top", ResourceUtils.fromStringResId(R.string.top)));
@@ -27,8 +26,8 @@ public class NewsTabFragmentModelImpl implements BaseModel.NewsFragmentTabModel 
         newsTabList.add(new NewsTab("keji", ResourceUtils.fromStringResId(R.string.keji)));
         newsTabList.add(new NewsTab("caijing", ResourceUtils.fromStringResId(R.string.caijing)));
         newsTabList.add(new NewsTab("shishang", ResourceUtils.fromStringResId(R.string.shishang)));
-        presenter.setData(newsTabList);
 
 
+        return newsTabList;
     }
 }

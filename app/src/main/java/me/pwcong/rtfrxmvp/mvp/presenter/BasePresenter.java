@@ -1,11 +1,9 @@
 package me.pwcong.rtfrxmvp.mvp.presenter;
 
-import java.util.List;
-
 /**
  * Created by pwcong on 2016/8/20.
  */
-public abstract class BasePresenter<T,R> {
+public abstract class BasePresenter<T> {
 
     public final T view;
 
@@ -13,5 +11,24 @@ public abstract class BasePresenter<T,R> {
         this.view = view;
     }
 
-    public abstract void setData(List<R> data);
+
+    interface NewsTabFragmentPresenter{
+        void initNewsFragmentTab();
+    }
+
+    interface NewsFragmentPresenter{
+        void initNewsFragmentData(String type);
+    }
+
+    interface NewsDetailActivityPresenter{
+        void loadData();
+        void onMenuItemInteraction(int id);
+    }
+
+    interface MainActivityPresenter{
+        void initContent();
+        void onNavigationItemInteraction(int id);
+
+    }
+
 }

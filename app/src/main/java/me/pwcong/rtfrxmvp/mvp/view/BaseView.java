@@ -3,7 +3,6 @@ package me.pwcong.rtfrxmvp.mvp.view;
 import java.util.List;
 
 import me.pwcong.rtfrxmvp.mvp.bean.News;
-import me.pwcong.rtfrxmvp.mvp.bean.NewsBean;
 import me.pwcong.rtfrxmvp.mvp.bean.NewsTab;
 
 /**

@@ -18,7 +18,7 @@ import com.jakewharton.rxbinding.support.v7.widget.RxToolbar;
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.conf.Constants;
-import me.pwcong.rtfrxmvp.mvp.presenter.NewsDetailActivityPresenter;
+import me.pwcong.rtfrxmvp.mvp.presenter.NewsDetailActivityPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.utils.ActivityUtils;
 import rx.functions.Action1;
@@ -43,7 +43,7 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
     String url_content;
     String url_img;
 
-    NewsDetailActivityPresenter presenter;
+    NewsDetailActivityPresenterImpl presenter;
 
     @Override
     protected int getContentView() {
@@ -53,18 +53,21 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
     @Override
     protected void initVariable() {
 
-        presenter=new NewsDetailActivityPresenter(this);
+        presenter=new NewsDetailActivityPresenterImpl(this);
 
         initBundleValue();
         initToolbar();
         initWebView();
+        initRefreshLayout();
 
-        RxToolbar.navigationClicks(toolbar).subscribe(new Action1<Void>() {
-            @Override
-            public void call(Void aVoid) {
-                finish();
-            }
-        });
+        Log.i(TAG, "initVariable: OK");
+
+    }
+
+
+    private void initRefreshLayout(){
+
+        refreshLayout.setColorSchemeResources(R.color.colorPrimaryDark);
 
         RxSwipeRefreshLayout.refreshes(refreshLayout).subscribe(new Action1<Void>() {
             @Override
@@ -72,16 +75,28 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
                 presenter.loadData();
             }
         });
-
-        Log.i(TAG, "initVariable: ok");
-
     }
+
 
     private void initToolbar(){
 
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
+
         toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_24dp);
+        RxToolbar.navigationClicks(toolbar).subscribe(new Action1<Void>() {
+            @Override
+            public void call(Void aVoid) {
+                finish();
+            }
+        });
+
+        RxToolbar.itemClicks(toolbar).subscribe(new Action1<MenuItem>() {
+            @Override
+            public void call(MenuItem menuItem) {
+                presenter.onMenuItemInteraction(menuItem.getItemId());
+            }
+        });
 
     }
 
@@ -106,24 +121,18 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
     @Override
     protected void doAction() {
         presenter.loadData();
-        Log.i(TAG, "doAction: ok");
+        Log.i(TAG, "doAction: OK");
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         
         getMenuInflater().inflate(R.menu.menu_share,menu);
-        Log.i(TAG, "onCreateOptionsMenu: ok");
+        Log.i(TAG, "onCreateOptionsMenu: OK");
         
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        presenter.onMenuItemInteraction(item.getItemId());
-        Log.i(TAG, "onOptionsItemSelected: ok");
-        return true;
-    }
 
     @Override
     public void loadData() {
@@ -134,7 +143,7 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
                 .into(iv_img);
 
         webView.loadUrl(url_content);
-        Log.i(TAG, "loadData: ok");
+        Log.i(TAG, "loadData: OK");
     }
 
     @Override
@@ -151,12 +160,12 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
     @Override
     public void showProgress() {
         refreshLayout.setRefreshing(true);
-        Log.i(TAG, "showProgress: ok");
+        Log.i(TAG, "showProgress: OK");
     }
 
     @Override
     public void hideProgress() {
         refreshLayout.setRefreshing(false);
-        Log.i(TAG, "hideProgress: ok");
+        Log.i(TAG, "hideProgress: OK");
     }
 }
