@@ -24,7 +24,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'com.android.support:design:24.1.1'
-    //Github
+    //libs
+    compile files('libs/AMap_Location_V2.8.0_20160811.jar')
+    //github
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
     compile 'com.jakewharton:butterknife:8.2.1'
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
@@ -39,4 +41,5 @@ dependencies {
     compile 'com.jakewharton.rxbinding:rxbinding-support-v4:0.4.0'
     compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0'
     compile 'com.jakewharton.rxbinding:rxbinding-design:0.4.0'
+
 }
