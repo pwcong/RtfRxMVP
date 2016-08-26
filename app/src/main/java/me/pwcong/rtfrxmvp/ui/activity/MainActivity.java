@@ -21,8 +21,6 @@ import me.pwcong.rtfrxmvp.manager.SharedPrefrerncesManager;
 import me.pwcong.rtfrxmvp.mvp.presenter.MainActivityPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.ui.fragment.NewsTabFragment;
-import me.pwcong.rtfrxmvp.ui.fragment.WeatherTabFragment;
-import me.pwcong.rtfrxmvp.utils.StringUtils;
 import rx.functions.Action1;
 
 /**
@@ -53,15 +51,29 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
         presenter=new MainActivityPresenterImpl(this);
 
-        setSupportActionBar(toolbar);
+        initToolbar();
 
         initDrawerLayout();
 
         initNavigationView();
 
+        Log.i(TAG, "initVariable: OK");
+
     }
 
+    private void initToolbar(){
+        setSupportActionBar(toolbar);
+        RxToolbar.itemClicks(toolbar).subscribe(new Action1<MenuItem>() {
+            @Override
+            public void call(MenuItem menuItem) {
+
+            }
+        });
+    }
+
+
     private void initDrawerLayout(){
+
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_open, R.string.navigation_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -75,6 +87,9 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
                 presenter.onNavigationItemInteraction(menuItem.getItemId());
             }
         });
+
+        
+        
     }
 
 
@@ -82,6 +97,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     protected void doAction() {
 
         presenter.initContent();
+        Log.i(TAG, "doAction: OK");
 
     }
 
@@ -89,28 +105,36 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_main,menu);
+        Log.i(TAG, "onCreateOptionsMenu: OK");
+
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    public void switchNews() {
-        toolbar.setTitle(R.string.navigation_item_newspaper);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content,new NewsTabFragment()).commit();
-        drawerLayout.closeDrawer(GravityCompat.START);
+    public void startCityPickerActivityForResult() {
+        startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),REQUEST_CODE);
+        Log.i(TAG, "startCityPickerActivityForResult: OK");
     }
 
     @Override
-    public void switchWeather() {
+    public void switchNews() {
+
+        toolbar.setTitle(R.string.navigation_item_newspaper);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content,new NewsTabFragment()).commit();
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        Log.i(TAG, "switchNews: OK");
+    }
+
+    @Override
+    public void switchWeather(String cityname) {
+
+
         toolbar.setTitle(R.string.navigation_item_weather);
         drawerLayout.closeDrawer(GravityCompat.START);
 
-        String city = SharedPrefrerncesManager.getInstance().getString(Constants.CITY, null);
 
-        if(StringUtils.isNullOrEmpty(city)){
-            startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),REQUEST_CODE);
-        }else {
-            Log.e(TAG, "switchWeather: " + city );
-        }
+        Log.i(TAG, "switchWeather: OK");
 
     }
 
@@ -120,10 +144,12 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
         if(resultCode==RESULT_OK&&requestCode==REQUEST_CODE){
 
-            String city = data.getExtras().getString(Constants.CITY);
-            SharedPrefrerncesManager.getInstance().edit().putString(Constants.CITY,city).commit();
+            String cityname = data.getExtras().getString(Constants.CITY_NAME);
+            SharedPrefrerncesManager.getInstance().edit().putString(Constants.CITY_NAME,cityname).commit();
 
-            Log.e(TAG, "onActivityResult: " + city );
+            Log.e(TAG, "onActivityResult: " + cityname );
+
+
         }
 
 

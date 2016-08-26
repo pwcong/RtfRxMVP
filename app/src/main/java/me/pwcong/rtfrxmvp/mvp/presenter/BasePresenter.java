@@ -28,6 +28,7 @@ public abstract class BasePresenter<T> {
     interface MainActivityPresenter{
         void initContent();
         void onNavigationItemInteraction(int id);
+        void onMenuItemIntrraction(int id);
 
     }
 

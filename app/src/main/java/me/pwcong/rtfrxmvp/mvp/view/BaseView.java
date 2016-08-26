@@ -4,6 +4,8 @@ import java.util.List;
 
 import me.pwcong.rtfrxmvp.mvp.bean.News;
 import me.pwcong.rtfrxmvp.mvp.bean.NewsTab;
+import me.pwcong.rtfrxmvp.mvp.bean.Weather;
+import me.pwcong.rtfrxmvp.mvp.bean.WeatherBean;
 
 /**
  * Created by pwcong on 2016/8/20.
@@ -13,8 +15,9 @@ public interface BaseView<T> {
     void setData(List<T> data);
 
     interface MainActivityView{
+        void startCityPickerActivityForResult();
         void switchNews();
-        void switchWeather();
+        void switchWeather(String cityname);
     }
 
     interface NewsDetailActivityView {
@@ -32,6 +35,10 @@ public interface BaseView<T> {
     interface NewsFragmentView extends BaseView<News>{
         void toDetailActivity(News news);
         void showError();
+    }
+
+    interface WeatherFragmentView {
+        void setData(WeatherBean.Data data);
     }
 
 

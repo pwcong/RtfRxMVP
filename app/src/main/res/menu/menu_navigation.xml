@@ -3,12 +3,12 @@
 
     <group android:checkableBehavior="single">
 
-        <item android:icon="@drawable/ic_newspaper_grey600_24dp"
+        <item android:icon="@drawable/newspaper"
             android:id="@+id/item_newspaper"
             android:title="@string/navigation_item_newspaper"/>
         <item android:id="@+id/item_weather"
             android:title="@string/navigation_item_weather"
-            android:icon="@drawable/ic_cloud_outline_grey600_24dp"/>
+            android:icon="@drawable/cloud_outline"/>
 
     </group>
 

@@ -43,8 +43,14 @@ public class ActivityManager {
     }
 
     public void removeAll(){
-        activities.clear();
+
         currentActivity=null;
+
+        for (Activity t:activities){
+            t.finish();
+        }
+        activities.clear();
+
         Log.i(TAG, "removeAll: OK");
         Log.i(TAG, "removeAll: ALL"+activities.toString());
     }

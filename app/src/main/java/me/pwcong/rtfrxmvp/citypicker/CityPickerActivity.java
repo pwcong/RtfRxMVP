@@ -177,7 +177,7 @@ public class CityPickerActivity extends AppCompatActivity implements View.OnClic
     private void back(String city){
 
         Intent data = new Intent();
-        data.putExtra(Constants.CITY, city);
+        data.putExtra(Constants.CITY_NAME, city);
         setResult(RESULT_OK, data);
         finish();
 

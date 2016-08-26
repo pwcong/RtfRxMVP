@@ -5,7 +5,7 @@ import me.pwcong.rtfrxmvp.R;
 /**
  * Created by pwcong on 2016/8/21.
  */
-public class WeatherTabFragment extends BaseFragment {
+public class WeatherFragment extends BaseFragment {
 
     @Override
     protected void initVariable() {

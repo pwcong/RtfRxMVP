@@ -1,5 +1,6 @@
 package me.pwcong.rtfrxmvp;
 
+import android.util.Log;
 import android.util.TypedValue;
 
 import com.google.gson.Gson;
@@ -9,8 +10,10 @@ import org.junit.Test;
 import java.util.Vector;
 
 import me.pwcong.rtfrxmvp.mvp.bean.NewsBean;
+import me.pwcong.rtfrxmvp.mvp.bean.WeatherBean;
 import me.pwcong.rtfrxmvp.network.Api;
 import me.pwcong.rtfrxmvp.network.TouTiaoService;
+import me.pwcong.rtfrxmvp.network.WeatherService;
 import rx.Subscriber;
 
 import static org.junit.Assert.*;
@@ -19,6 +22,9 @@ import static org.junit.Assert.*;
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
  */
 public class ExampleUnitTest {
+
+    private final String TAG=getClass().getSimpleName();
+
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
@@ -118,6 +124,29 @@ public class ExampleUnitTest {
         strings.remove(t);
 
         System.out.println(strings);
+
+    }
+
+    @Test
+    public void testWeather(){
+
+        WeatherService service=new WeatherService();
+        service.getWeather("深圳", Api.KEY_WEATHER, new Subscriber<WeatherBean>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onNext(WeatherBean weatherBean) {
+                System.out.print(weatherBean.toString());
+            }
+        });
 
     }
 

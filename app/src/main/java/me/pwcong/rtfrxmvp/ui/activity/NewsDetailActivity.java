@@ -83,7 +83,7 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_left_white_24dp);
+        toolbar.setNavigationIcon(R.drawable.arrow_left);
         RxToolbar.navigationClicks(toolbar).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
