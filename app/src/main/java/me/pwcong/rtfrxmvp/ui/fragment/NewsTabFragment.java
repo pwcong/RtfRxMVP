@@ -8,7 +8,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
-import me.pwcong.rtfrxmvp.adapter.NewTabFragmentAdapter;
+import me.pwcong.rtfrxmvp.adapter.NewTabFragmentPagerAdapter;
 import me.pwcong.rtfrxmvp.mvp.bean.NewsTab;
 import me.pwcong.rtfrxmvp.mvp.presenter.NewsTabFragmentPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
@@ -59,7 +59,7 @@ public class NewsTabFragment extends BaseFragment implements BaseView.NewsTabFra
     @Override
     public void setData(List<NewsTab> data) {
 
-        viewPager.setAdapter(new NewTabFragmentAdapter(getChildFragmentManager(),data));
+        viewPager.setAdapter(new NewTabFragmentPagerAdapter(getChildFragmentManager(),data));
         Log.i(TAG, "setData: OK");
 
     }

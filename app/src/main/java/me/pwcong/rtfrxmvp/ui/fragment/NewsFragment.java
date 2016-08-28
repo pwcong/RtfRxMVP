@@ -13,7 +13,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
-import me.pwcong.rtfrxmvp.adapter.NewsFragmentAdapter;
+import me.pwcong.rtfrxmvp.adapter.NewsFragmentRecyclerAdapter;
 import me.pwcong.rtfrxmvp.conf.Constants;
 import me.pwcong.rtfrxmvp.mvp.bean.News;
 import me.pwcong.rtfrxmvp.mvp.presenter.NewsFragmentPresenterImpl;
@@ -118,7 +118,7 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
     @Override
     public void setData(List<News> data) {
 
-        recyclerView.setAdapter(new NewsFragmentAdapter(getContext(),data,this));
+        recyclerView.setAdapter(new NewsFragmentRecyclerAdapter(getContext(),data,this));
         Log.i(TAG, "setData: OK");
     }
 

@@ -11,8 +11,8 @@ public class PinyinUtils {
 
     /**
      * 获取拼音的首字母（大写）
-     * @param pinyin
-     * @return
+     * @param pinyin String
+     * @return String
      */
     public static String getFirstLetter(final String pinyin){
         if (TextUtils.isEmpty(pinyin)) return "定位";

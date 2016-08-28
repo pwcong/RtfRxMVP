@@ -13,6 +13,7 @@ import com.jakewharton.rxbinding.support.v4.widget.RxSwipeRefreshLayout;
 
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
+import me.pwcong.rtfrxmvp.adapter.WeatherFragmentRecyclerAdapter;
 import me.pwcong.rtfrxmvp.conf.Constants;
 import me.pwcong.rtfrxmvp.mvp.bean.WeatherBean;
 import me.pwcong.rtfrxmvp.mvp.presenter.WeatherFragmentPresenterImpl;
@@ -116,10 +117,20 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
     @Override
     public void setData(WeatherBean.Data data) {
 
-        Glide.with(getContext())
-                .load(Constants.WEATHERICONS[Integer.valueOf(data.getRealtime().getWeather().getImg())])
-                .override((int) ResourceUtils.fromDimenResId(R.dimen.size_weather_img),(int)ResourceUtils.fromDimenResId(R.dimen.size_weather_img))
-                .into(iv_weather);
+        int weatherIconId=Integer.valueOf(data.getRealtime().getWeather().getImg());
+
+        if( weatherIconId > -1 && weatherIconId < 32 ){
+            Glide.with(getContext())
+                    .load(Constants.WEATHERICONS[weatherIconId])
+                    .override((int) ResourceUtils.fromDimenResId(R.dimen.size_weather_img),(int)ResourceUtils.fromDimenResId(R.dimen.size_weather_img))
+                    .into(iv_weather);
+        }
+        else {
+            Glide.with(getContext())
+                    .load(Constants.WEATHERICONS[32])
+                    .override((int) ResourceUtils.fromDimenResId(R.dimen.size_weather_img),(int)ResourceUtils.fromDimenResId(R.dimen.size_weather_img))
+                    .into(iv_weather);
+        }
 
         tv_temperature.setText(data.getRealtime().getWeather().getTemperature());
         tv_city_name.setText(data.getRealtime().getCity_name());
@@ -128,6 +139,9 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
         tv_wind_power.setText(data.getRealtime().getWind().getPower());
         tv_humidity.setText(data.getRealtime().getWeather().getHumidity());
         tv_pm25.setText(data.getPm25().getPm25().getPm25());
+
+        recyclerView.setAdapter(new WeatherFragmentRecyclerAdapter(getContext(),data.getWeather()));
+        recyclerView.refreshDrawableState();
 
         Log.i(TAG, "setData: OK");
 

@@ -49,6 +49,8 @@
             android:id="@+id/tv_city_name"/>
 
         <TextView
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
@@ -107,7 +109,7 @@
 
         <FrameLayout
             android:background="@color/divider"
-            android:layout_weight="0.01"
+            android:layout_weight="0.02"
             android:layout_width="0dp"
             android:layout_height="56dp"/>
 
@@ -152,7 +154,7 @@
 
         <FrameLayout
             android:background="@color/divider"
-            android:layout_weight="0.01"
+            android:layout_weight="0.02"
             android:layout_width="0dp"
             android:layout_height="56dp"/>
 

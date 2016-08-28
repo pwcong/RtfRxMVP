@@ -38,6 +38,8 @@
     <string name="pm25">PM25</string>
     <string name="divider"> | </string>
     <string name="percent"> % </string>
+    <string name="pwcong">www.pwcong.me</string>
+    <string name="powered_by_pwcong">POWERED BY Pwcong</string>
 
 
 </resources>

@@ -11,9 +11,9 @@ import me.pwcong.rtfrxmvp.ui.fragment.NewsFragment;
 /**
  * Created by pwcong on 2016/8/20.
  */
-public class NewTabFragmentAdapter extends BasePagerAdapter<NewsTab> {
+public class NewTabFragmentPagerAdapter extends BasePagerAdapter<NewsTab> {
 
-    public NewTabFragmentAdapter(FragmentManager fm, List<NewsTab> list) {
+    public NewTabFragmentPagerAdapter(FragmentManager fm, List<NewsTab> list) {
         super(fm, list);
     }
 

@@ -78,7 +78,7 @@ public class DBManager {
 
     /**
      * 读取所有城市
-     * @return
+     * @return List<City>
      */
     public List<City> getAllCities(){
         SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(DB_PATH + DB_NAME, null);
@@ -99,8 +99,8 @@ public class DBManager {
 
     /**
      * 通过名字或者拼音搜索
-     * @param keyword
-     * @return
+     * @param keyword String
+     * @return List<City>
      */
     public List<City> searchCity(final String keyword){
         SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(DB_PATH + DB_NAME, null);
