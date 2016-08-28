@@ -65,6 +65,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
     private void initToolbar(){
 
+        toolbar.setTitle(R.string.navigation_item_newspaper);
         setSupportActionBar(toolbar);
         RxToolbar.itemClicks(toolbar).subscribe(new Action1<MenuItem>() {
             @Override
@@ -84,6 +85,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
     private void initNavigationView(){
 
+        navigationView.setCheckedItem(R.id.item_newspaper);
         RxNavigationView.itemSelections(navigationView).subscribe(new Action1<MenuItem>() {
             @Override
             public void call(MenuItem menuItem) {

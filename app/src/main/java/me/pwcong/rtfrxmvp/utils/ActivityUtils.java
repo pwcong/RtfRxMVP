@@ -1,5 +1,7 @@
 package me.pwcong.rtfrxmvp.utils;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 
 import me.pwcong.rtfrxmvp.R;
@@ -19,6 +21,7 @@ public abstract class ActivityUtils {
         ActivityManager.getInstance().getCurrentActivity().startActivity(Intent.createChooser(intent, ResourceUtils.fromStringResId(R.string.share_to)));
 
     }
+
 
 
 }

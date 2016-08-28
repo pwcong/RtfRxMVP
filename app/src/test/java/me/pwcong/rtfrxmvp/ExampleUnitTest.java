@@ -10,13 +10,16 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.TimeUnit;
 
 import me.pwcong.rtfrxmvp.mvp.bean.NewsBean;
 import me.pwcong.rtfrxmvp.mvp.bean.WeatherBean;
 import me.pwcong.rtfrxmvp.network.Api;
 import me.pwcong.rtfrxmvp.network.TouTiaoService;
 import me.pwcong.rtfrxmvp.network.WeatherService;
+import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Action1;
 
 import static org.junit.Assert.*;
 
@@ -167,6 +170,7 @@ public class ExampleUnitTest {
         System.out.print(list.get(integer));
 
     }
+
 
 
 }
