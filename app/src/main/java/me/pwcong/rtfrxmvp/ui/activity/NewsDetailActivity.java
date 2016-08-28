@@ -100,8 +100,6 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
 
     }
 
-
-    @SuppressLint("SetJavaScriptEnabled")
     private void initWebView(){
         webView.setWebViewClient(new WebViewClient(){
             @Override

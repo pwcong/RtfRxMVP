@@ -33,6 +33,11 @@
     <string name="nothing_found">没有搜索结果~</string>
     <string name="locating">正在定位…</string>
     <string name="located_failed">定位失败</string>
+    <string name="du">°</string>
+    <string name="humidity">湿度</string>
+    <string name="pm25">PM25</string>
+    <string name="divider"> | </string>
+    <string name="percent"> % </string>
 
 
 </resources>

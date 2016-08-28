@@ -4,6 +4,7 @@ import java.util.List;
 
 import me.pwcong.rtfrxmvp.mvp.bean.NewsBean;
 import me.pwcong.rtfrxmvp.mvp.bean.NewsTab;
+import me.pwcong.rtfrxmvp.mvp.bean.WeatherBean;
 import rx.Subscriber;
 
 /**
@@ -18,6 +19,10 @@ public interface BaseModel<T> {
 
     interface NewsFragmentModel {
         void getData(String type, Subscriber<NewsBean> subscriber);
+    }
+
+    interface WeatherFragmentModel{
+        void getData(String cityname, Subscriber<WeatherBean> subscriber);
     }
 
 

@@ -6,6 +6,7 @@
 
 
     <color name="black">#ff000000</color>
+    <color name="white">#fff</color>
 
     <color name="divider">#E5E5E5</color>
     <color name="shadow">#AAEBEBEB</color>

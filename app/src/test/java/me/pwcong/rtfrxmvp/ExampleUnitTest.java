@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import me.pwcong.rtfrxmvp.mvp.bean.NewsBean;
@@ -147,6 +149,22 @@ public class ExampleUnitTest {
                 System.out.print(weatherBean.toString());
             }
         });
+
+    }
+
+    @Test
+    public void testStringToInt(){
+
+        List<String> list=new ArrayList<>();
+        list.add("Hello World 1");
+        list.add("Hello World 2");
+        list.add("Hello World 3");
+        list.add("Hello World 4");
+        list.add("Hello World 5");
+
+
+        Integer integer = Integer.valueOf("1");
+        System.out.print(list.get(integer));
 
     }
 

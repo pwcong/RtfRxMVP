@@ -21,6 +21,7 @@ import me.pwcong.rtfrxmvp.manager.SharedPrefrerncesManager;
 import me.pwcong.rtfrxmvp.mvp.presenter.MainActivityPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.ui.fragment.NewsTabFragment;
+import me.pwcong.rtfrxmvp.ui.fragment.WeatherFragment;
 import rx.functions.Action1;
 
 /**
@@ -40,6 +41,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     DrawerLayout drawerLayout;
 
     MainActivityPresenterImpl presenter;
+    int currentNavigationItemSelectedId;
 
     @Override
     protected int getContentView() {
@@ -62,11 +64,12 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     }
 
     private void initToolbar(){
+
         setSupportActionBar(toolbar);
         RxToolbar.itemClicks(toolbar).subscribe(new Action1<MenuItem>() {
             @Override
             public void call(MenuItem menuItem) {
-
+                presenter.onMenuItemIntrraction(menuItem.getItemId());
             }
         });
     }
@@ -84,6 +87,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
         RxNavigationView.itemSelections(navigationView).subscribe(new Action1<MenuItem>() {
             @Override
             public void call(MenuItem menuItem) {
+                currentNavigationItemSelectedId=menuItem.getItemId();
                 presenter.onNavigationItemInteraction(menuItem.getItemId());
             }
         });
@@ -133,6 +137,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
         toolbar.setTitle(R.string.navigation_item_weather);
         drawerLayout.closeDrawer(GravityCompat.START);
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.content, WeatherFragment.getInstance(cityname)).commit();
 
         Log.i(TAG, "switchWeather: OK");
 
@@ -140,18 +145,23 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode==RESULT_OK&&requestCode==REQUEST_CODE){
 
             String cityname = data.getExtras().getString(Constants.CITY_NAME);
+
             SharedPrefrerncesManager.getInstance().edit().putString(Constants.CITY_NAME,cityname).commit();
 
-            Log.e(TAG, "onActivityResult: " + cityname );
+            if(currentNavigationItemSelectedId==R.id.item_weather){
+                switchWeather(cityname);
+            }
 
 
         }
 
+        Log.i(TAG, "onActivityResult: OK");
 
     }
 }

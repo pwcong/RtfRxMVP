@@ -39,6 +39,7 @@ public interface BaseView<T> {
 
     interface WeatherFragmentView {
         void setData(WeatherBean.Data data);
+        void showError();
     }
 
 

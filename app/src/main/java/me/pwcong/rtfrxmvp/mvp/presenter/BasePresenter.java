@@ -32,4 +32,9 @@ public abstract class BasePresenter<T> {
 
     }
 
+    interface WeatherGragmentPresenter{
+        void initWeatherFragmentData(String cityname);
+
+    }
+
 }
