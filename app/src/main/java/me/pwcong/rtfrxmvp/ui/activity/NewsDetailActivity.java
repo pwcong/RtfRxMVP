@@ -1,6 +1,5 @@
 package me.pwcong.rtfrxmvp.ui.activity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;

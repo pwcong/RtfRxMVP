@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
-import me.pwcong.rtfrxmvp.utils.ActivityUtils;
 import rx.Observable;
 import rx.functions.Action1;
 
