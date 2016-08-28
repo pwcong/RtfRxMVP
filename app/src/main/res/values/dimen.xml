@@ -2,13 +2,13 @@
 <resources>
 
     <dimen name="height_appbar">256dp</dimen>
-    <dimen name="height_header">256dp</dimen>
+    <dimen name="height_header">208dp</dimen>
 
     <dimen name="height_item_news_layout">80dp</dimen>
     <dimen name="size_item_news_img">64dp</dimen>
     <dimen name="margin_item_news">4dp</dimen>
 
-    <dimen name="size_text_headline">90sp</dimen>
+    <dimen name="size_text_headline">82sp</dimen>
     <dimen name="size_text_headline2">20sp</dimen>
     <dimen name="size_weather_img">90dp</dimen>
 
