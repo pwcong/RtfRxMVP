@@ -11,10 +11,15 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.jakewharton.rxbinding.support.v4.widget.RxSwipeRefreshLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
-import me.pwcong.rtfrxmvp.adapter.WeatherFragmentRecyclerAdapter;
+import me.pwcong.rtfrxmvp.adapter.LifeRecyclerAdapter;
+import me.pwcong.rtfrxmvp.adapter.WeatherRecyclerAdapter;
 import me.pwcong.rtfrxmvp.conf.Constants;
+import me.pwcong.rtfrxmvp.mvp.bean.Life;
 import me.pwcong.rtfrxmvp.mvp.bean.WeatherBean;
 import me.pwcong.rtfrxmvp.mvp.presenter.WeatherFragmentPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
@@ -31,8 +36,10 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
 
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
+    @BindView(R.id.rv_weather)
+    RecyclerView rv_weather;
+    @BindView(R.id.rv_life)
+    RecyclerView rv_life;
     @BindView(R.id.tv_temperature)
     TextView tv_temperature;
     @BindView(R.id.tv_city_name)
@@ -82,9 +89,15 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
 
     private void initRecyclerView(){
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.addItemDecoration(new RecyclerViewDivider(getContext(),RecyclerViewDivider.VERTICAL_LIST));
+        LinearLayoutManager verticalLayoutManager=new LinearLayoutManager(getContext());
+        verticalLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rv_weather.setLayoutManager(verticalLayoutManager);
+        rv_weather.addItemDecoration(new RecyclerViewDivider(getContext(),RecyclerViewDivider.VERTICAL_LIST));
 
+        LinearLayoutManager horizontalLayoutManager=new LinearLayoutManager(getContext());
+        horizontalLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        rv_life.setLayoutManager(horizontalLayoutManager);
+        rv_life.addItemDecoration(new RecyclerViewDivider(getContext(),RecyclerViewDivider.HORIZONTAL_LIST));
 
     }
 
@@ -121,13 +134,13 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
 
         if( weatherIconId > -1 && weatherIconId < 32 ){
             Glide.with(getContext())
-                    .load(Constants.WEATHERICONS[weatherIconId])
+                    .load(Constants.WEATHER_ICONS[weatherIconId])
                     .override((int) ResourceUtils.fromDimenResId(R.dimen.size_weather_img),(int)ResourceUtils.fromDimenResId(R.dimen.size_weather_img))
                     .into(iv_weather);
         }
         else {
             Glide.with(getContext())
-                    .load(Constants.WEATHERICONS[32])
+                    .load(Constants.WEATHER_ICONS[32])
                     .override((int) ResourceUtils.fromDimenResId(R.dimen.size_weather_img),(int)ResourceUtils.fromDimenResId(R.dimen.size_weather_img))
                     .into(iv_weather);
         }
@@ -140,12 +153,31 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
         tv_humidity.setText(data.getRealtime().getWeather().getHumidity());
         tv_pm25.setText(data.getPm25().getPm25().getPm25());
 
-        recyclerView.setAdapter(new WeatherFragmentRecyclerAdapter(getContext(),data.getWeather()));
-        recyclerView.refreshDrawableState();
+        rv_weather.setAdapter(new WeatherRecyclerAdapter(getContext(),data.getWeather()));
+        rv_weather.refreshDrawableState();
+
+        rv_life.setAdapter(new LifeRecyclerAdapter(getContext(),getLifeInfoList(data.getLife().getInfo())));
+        rv_life.refreshDrawableState();
+
 
         Log.i(TAG, "setData: OK");
 
     }
+
+
+    private List<String[]> getLifeInfoList(Life.LifeInfo lifeInfo){
+
+        List<String[]> list=new ArrayList<String[]>();
+        list.add(lifeInfo.getChuanyi());
+        list.add(lifeInfo.getGanmao());
+        list.add(lifeInfo.getKongtiao());
+        list.add(lifeInfo.getWuran());
+        list.add(lifeInfo.getXiche());
+        list.add(lifeInfo.getZiwaixian());
+
+        return list;
+    }
+
 
     @Override
     public void showError() {

@@ -10,6 +10,34 @@ public class Life {
     String date;
     LifeInfo info;
 
+    public Life(String date, LifeInfo info) {
+        this.date = date;
+        this.info = info;
+    }
+
+    @Override
+    public String toString() {
+        return "Life{" +
+                "date='" + date + '\'' +
+                ", info=" + info +
+                '}';
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public LifeInfo getInfo() {
+        return info;
+    }
+
+    public void setInfo(LifeInfo info) {
+        this.info = info;
+    }
 
     public class LifeInfo{
 

@@ -36,7 +36,14 @@ public class NewsFragmentPresenterImpl extends BasePresenter<BaseView.NewsFragme
 
             @Override
             public void onNext(NewsBean newsBean) {
-                view.setData(newsBean.getResult().getData());
+
+
+                if(newsBean.getError_code()==0){
+                    view.setData(newsBean.getResult().getData());
+                }else {
+                    view.showError();
+                }
+
             }
         });
 

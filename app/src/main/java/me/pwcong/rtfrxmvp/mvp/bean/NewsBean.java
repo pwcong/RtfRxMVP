@@ -9,11 +9,13 @@ public class NewsBean {
 
     String reason;
     Result result;
+    int error_code;
 
 
-    public NewsBean(String reason, Result result) {
+    public NewsBean(String reason, Result result, int error_code) {
         this.reason = reason;
         this.result = result;
+        this.error_code = error_code;
     }
 
     @Override
@@ -21,6 +23,7 @@ public class NewsBean {
         return "NewsBean{" +
                 "reason='" + reason + '\'' +
                 ", result=" + result +
+                ", error_code=" + error_code +
                 '}';
     }
 
@@ -38,6 +41,14 @@ public class NewsBean {
 
     public void setResult(Result result) {
         this.result = result;
+    }
+
+    public int getError_code() {
+        return error_code;
+    }
+
+    public void setError_code(int error_code) {
+        this.error_code = error_code;
     }
 
     public class Result{

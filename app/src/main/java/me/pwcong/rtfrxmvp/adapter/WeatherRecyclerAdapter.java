@@ -19,25 +19,25 @@ import me.pwcong.rtfrxmvp.mvp.bean.Weather;
 /**
  * Created by pwcong on 2016/8/28.
  */
-public class WeatherFragmentRecyclerAdapter extends RecyclerView.Adapter<WeatherFragmentRecyclerAdapter.ViewHodler> {
+public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecyclerAdapter.ViewHolder> {
 
     Context context;
     List<Weather> weatherList;
 
-    public WeatherFragmentRecyclerAdapter(Context context, List<Weather> weatherList) {
+    public WeatherRecyclerAdapter(Context context, List<Weather> weatherList) {
         this.context = context;
         this.weatherList = weatherList;
     }
 
     @Override
-    public ViewHodler onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_weather, parent, false);
-        return new ViewHodler(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHodler holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
 
         holder.weather=weatherList.get(position);
 
@@ -45,12 +45,12 @@ public class WeatherFragmentRecyclerAdapter extends RecyclerView.Adapter<Weather
 
         if( weatherIconId > -1 && weatherIconId < 32 ){
             Glide.with(context)
-                    .load(Constants.WEATHERICONS[weatherIconId])
+                    .load(Constants.WEATHER_ICONS[weatherIconId])
             .into(holder.iv_weather);
         }
         else {
             Glide.with(context)
-                    .load(Constants.WEATHERICONS[32])
+                    .load(Constants.WEATHER_ICONS[32])
                     .into(holder.iv_weather);
         }
 
@@ -70,7 +70,7 @@ public class WeatherFragmentRecyclerAdapter extends RecyclerView.Adapter<Weather
         return weatherList.size();
     }
 
-    public class ViewHodler extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         public Weather weather;
 
@@ -85,7 +85,7 @@ public class WeatherFragmentRecyclerAdapter extends RecyclerView.Adapter<Weather
         public final TextView tv_temperature;
 
 
-        public ViewHodler(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
 
             view=itemView;

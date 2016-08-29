@@ -3,13 +3,23 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="80dp">
 
-    <ImageView
-        android:contentDescription="@string/content_description"
-        android:id="@+id/iv_weather"
+
+    <LinearLayout
         android:layout_weight="2"
         android:layout_width="0dp"
-        android:scaleType="centerInside"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:contentDescription="@string/content_description"
+            android:layout_margin="6dp"
+            android:id="@+id/iv_weather"
+            android:layout_width="match_parent"
+            android:scaleType="centerInside"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_marginStart="4dp"
@@ -33,16 +43,18 @@
 
                 <TextView
                     android:gravity="center_vertical"
-                    android:text=""
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:text="asd"
+                    android:textSize="18sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
                     android:id="@+id/tv_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
                     android:text=""
+                    android:textSize="16sp"
                     android:id="@+id/tv_week"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -53,7 +65,7 @@
             <TextView
                 android:gravity="center_vertical"
                 android:text=""
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:id="@+id/tv_nongli"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
