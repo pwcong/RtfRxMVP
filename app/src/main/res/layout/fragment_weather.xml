@@ -1,51 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/refresh_layout"
     android:layout_width="match_parent"
-    android:layout_marginBottom="48dp"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/refresh_layout"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_height="wrap_content"/>
 
+</android.support.v4.widget.SwipeRefreshLayout>
 
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent">
-
-                <include layout="@layout/view_weather_header"/>
-
-                <TextView
-                    android:gravity="center"
-                    android:text="@string/future_5_days"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                    android:layout_width="match_parent"
-                    android:layout_height="32dp" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_weather"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_life"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-        </ScrollView>
-
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-
-</android.support.design.widget.CoordinatorLayout>
 
 
 

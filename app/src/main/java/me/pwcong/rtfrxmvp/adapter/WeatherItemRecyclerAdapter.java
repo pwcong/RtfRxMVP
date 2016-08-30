@@ -17,14 +17,15 @@ import me.pwcong.rtfrxmvp.conf.Constants;
 import me.pwcong.rtfrxmvp.mvp.bean.Weather;
 
 /**
- * Created by pwcong on 2016/8/28.
+ * Created by pwcong on 2016/8/30.
  */
-public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecyclerAdapter.ViewHolder> {
+public class WeatherItemRecyclerAdapter extends RecyclerView.Adapter<WeatherItemRecyclerAdapter.ViewHolder>{
+
 
     Context context;
     List<Weather> weatherList;
 
-    public WeatherRecyclerAdapter(Context context, List<Weather> weatherList) {
+    public WeatherItemRecyclerAdapter(Context context, List<Weather> weatherList) {
         this.context = context;
         this.weatherList = weatherList;
     }
@@ -46,7 +47,7 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
         if( weatherIconId > -1 && weatherIconId < 32 ){
             Glide.with(context)
                     .load(Constants.WEATHER_ICONS[weatherIconId])
-            .into(holder.iv_weather);
+                    .into(holder.iv_weather);
         }
         else {
             Glide.with(context)
@@ -69,6 +70,7 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
     public int getItemCount() {
         return weatherList.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -97,7 +99,6 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
             tv_wind_direct= (TextView) itemView.findViewById(R.id.tv_wind_direct);
             tv_wind_power= (TextView) itemView.findViewById(R.id.tv_wind_power);
             tv_temperature= (TextView) itemView.findViewById(R.id.tv_temperature);
-
 
         }
     }

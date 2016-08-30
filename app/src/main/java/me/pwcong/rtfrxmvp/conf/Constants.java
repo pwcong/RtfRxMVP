@@ -26,10 +26,19 @@ public abstract class Constants {
             R.drawable.weather_snow_large,R.drawable.weather_cloudy,R.drawable.weather_cloudy,R.drawable.weather_cloudy_more,R.drawable.weather_cloudy};  //33
 
 
+    public static final int TAG_HEADER=0;
+    public static final int TAG_DIVIDER_1=1;
+    public static final int TAG_DIVIDER_2=2;
+    public static final int TAG_RECYCLER_VERTICAL=3;
+    public static final int TAG_RECYCLER_HORIZONTAL=4;
+
     public static final int[] LIFEINFO_TYPE ={R.string.chuanyi,R.string.ganmao,R.string.kongtiao,R.string.wuran,R.string.xiche,R.string.yundong,R.string.ziwaixian};
 
     public static final int[] LIFEINFO_ICONS ={R.drawable.ic_tshirt_crew_grey600_48dp,R.drawable.ic_pill_grey600_48dp,R.drawable.ic_air_conditioner_grey600_48dp,R.drawable.ic_delete_variant_grey600_48dp,R.drawable.ic_car_wash_grey600_48dp,
             R.drawable.ic_run_grey600_48dp,R.drawable.ic_sunglasses_grey600_48dp};
+
+
+
 
 
 }

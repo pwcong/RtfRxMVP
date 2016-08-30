@@ -18,12 +18,12 @@ import me.pwcong.rtfrxmvp.conf.Constants;
 /**
  * Created by pwcong on 2016/8/29.
  */
-public class LifeRecyclerAdapter extends RecyclerView.Adapter<LifeRecyclerAdapter.ViewHolder>{
+public class LifeItemRecyclerAdapter extends RecyclerView.Adapter<LifeItemRecyclerAdapter.ViewHolder>{
 
     Context context;
     List<String[]> stringsList;
 
-    public LifeRecyclerAdapter(Context context, List<String[]> stringsList) {
+    public LifeItemRecyclerAdapter(Context context, List<String[]> stringsList) {
         this.context = context;
         this.stringsList = stringsList;
     }
