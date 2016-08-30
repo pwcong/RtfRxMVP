@@ -11,6 +11,7 @@ import java.util.List;
  */
 public abstract class BasePagerAdapter<T> extends FragmentPagerAdapter {
 
+
     List<T> list;
 
     public BasePagerAdapter(FragmentManager fm, List<T> list) {
