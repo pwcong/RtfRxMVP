@@ -50,6 +50,8 @@
     <string name="wuran">污染</string>
     <string name="yundong">运动</string>
     <string name="ziwaixian">紫外线</string>
+    <string name="loading">加载中…</string>
+    <string name="joke">开心一刻</string>
 
-    
+
 </resources>

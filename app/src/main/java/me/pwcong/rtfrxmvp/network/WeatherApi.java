@@ -11,6 +11,6 @@ import rx.Observable;
 public interface WeatherApi {
 
     @GET("/onebox/weather/query")
-    Observable<WeatherBean> getNews(@Query("cityname") String cityname, @Query("key") String key,@Query("dtype") String dtype);
+    Observable<WeatherBean> getWeather(@Query("cityname") String cityname, @Query("key") String key, @Query("dtype") String dtype);
 
 }

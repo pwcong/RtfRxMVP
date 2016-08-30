@@ -1,6 +1,7 @@
 package me.pwcong.rtfrxmvp.mvp.presenter;
 
 import me.pwcong.rtfrxmvp.mvp.bean.WeatherBean;
+import me.pwcong.rtfrxmvp.mvp.model.BaseModel;
 import me.pwcong.rtfrxmvp.mvp.model.WeatherFragmentModelImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import rx.Subscriber;
@@ -8,10 +9,10 @@ import rx.Subscriber;
 /**
  * Created by pwcong on 2016/8/28.
  */
-public class WeatherFragmentPresenterImpl extends BasePresenter<BaseView.WeatherFragmentView> implements BasePresenter.WeatherGragmentPresenter {
+public class WeatherFragmentPresenterImpl extends BasePresenter<BaseView.WeatherFragmentView> implements BasePresenter.WeatherFragmentPresenter {
 
 
-    WeatherFragmentModelImpl model;
+    BaseModel.WeatherFragmentModel model;
 
     public WeatherFragmentPresenterImpl(BaseView.WeatherFragmentView view) {
         super(view);
@@ -20,7 +21,7 @@ public class WeatherFragmentPresenterImpl extends BasePresenter<BaseView.Weather
 
 
     @Override
-    public void initWeatherFragmentData(String cityname) {
+    public void initData(String cityname) {
 
         model.getData(cityname, new Subscriber<WeatherBean>() {
             @Override

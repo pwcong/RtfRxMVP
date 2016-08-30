@@ -13,9 +13,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
-import me.pwcong.rtfrxmvp.adapter.NewsRecyclerAdapter;
+import me.pwcong.rtfrxmvp.adapter.NewsItemRecyclerAdapter;
 import me.pwcong.rtfrxmvp.conf.Constants;
 import me.pwcong.rtfrxmvp.mvp.bean.News;
+import me.pwcong.rtfrxmvp.mvp.presenter.BasePresenter;
 import me.pwcong.rtfrxmvp.mvp.presenter.NewsFragmentPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.ui.activity.NewsDetailActivity;
@@ -36,7 +37,7 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
     RecyclerView recyclerView;
 
     String type;
-    NewsFragmentPresenterImpl presenter;
+    BasePresenter.NewsFragmentPresenter presenter;
 
     public static NewsFragment newInstant(String type){
 
@@ -118,7 +119,7 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
     @Override
     public void setData(List<News> data) {
 
-        recyclerView.setAdapter(new NewsRecyclerAdapter(getContext(),data,this));
+        recyclerView.setAdapter(new NewsItemRecyclerAdapter(getContext(),data,this));
         Log.i(TAG, "setData: OK");
     }
 

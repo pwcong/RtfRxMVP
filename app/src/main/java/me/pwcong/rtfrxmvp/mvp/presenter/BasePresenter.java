@@ -12,28 +12,34 @@ public abstract class BasePresenter<T> {
     }
 
 
-    interface NewsTabFragmentPresenter{
+    public interface NewsTabFragmentPresenter{
         void initNewsFragmentTab();
     }
 
-    interface NewsFragmentPresenter{
+    public interface NewsFragmentPresenter{
         void initNewsFragmentData(String type);
     }
 
-    interface NewsDetailActivityPresenter{
+    public interface NewsDetailActivityPresenter{
         void loadData();
         void onMenuItemInteraction(int id);
     }
 
-    interface MainActivityPresenter{
+    public interface MainActivityPresenter{
         void initContent();
         void onNavigationItemInteraction(int id);
         void onMenuItemIntrraction(int id);
 
     }
 
-    interface WeatherGragmentPresenter{
-        void initWeatherFragmentData(String cityname);
+    public interface WeatherFragmentPresenter {
+        void initData(String cityname);
+    }
+
+    public interface JokeFragmentPresenter{
+
+        void initData(int page);
+        void loadMore(int page);
 
     }
 

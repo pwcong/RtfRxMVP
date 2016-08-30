@@ -17,6 +17,7 @@ import com.jakewharton.rxbinding.support.v7.widget.RxToolbar;
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.conf.Constants;
+import me.pwcong.rtfrxmvp.mvp.presenter.BasePresenter;
 import me.pwcong.rtfrxmvp.mvp.presenter.NewsDetailActivityPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.utils.ActivityUtils;
@@ -42,7 +43,7 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
     String url_content;
     String url_img;
 
-    NewsDetailActivityPresenterImpl presenter;
+    BasePresenter.NewsDetailActivityPresenter presenter;
 
     @Override
     protected int getContentView() {

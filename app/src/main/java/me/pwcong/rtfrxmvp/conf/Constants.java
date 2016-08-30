@@ -38,6 +38,12 @@ public abstract class Constants {
             R.drawable.ic_run_grey600_48dp,R.drawable.ic_sunglasses_grey600_48dp};
 
 
+    public static final String ASC="asc";
+    public static final String DESC="desc";
+
+    public static final int PAGESIZE=10;
+
+
 
 
 

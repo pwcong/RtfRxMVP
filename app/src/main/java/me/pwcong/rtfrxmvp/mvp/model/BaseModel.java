@@ -2,6 +2,7 @@ package me.pwcong.rtfrxmvp.mvp.model;
 
 import java.util.List;
 
+import me.pwcong.rtfrxmvp.mvp.bean.JokeBean;
 import me.pwcong.rtfrxmvp.mvp.bean.NewsBean;
 import me.pwcong.rtfrxmvp.mvp.bean.NewsTab;
 import me.pwcong.rtfrxmvp.mvp.bean.WeatherBean;
@@ -25,6 +26,9 @@ public interface BaseModel<T> {
         void getData(String cityname, Subscriber<WeatherBean> subscriber);
     }
 
+    interface JokeFragmentModel{
+        void getData(int page, Subscriber<JokeBean> subscriber);
+    }
 
 
 }

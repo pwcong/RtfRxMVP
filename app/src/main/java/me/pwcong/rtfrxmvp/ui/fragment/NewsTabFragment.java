@@ -10,6 +10,7 @@ import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.adapter.NewTabFragmentPagerAdapter;
 import me.pwcong.rtfrxmvp.mvp.bean.NewsTab;
+import me.pwcong.rtfrxmvp.mvp.presenter.BasePresenter;
 import me.pwcong.rtfrxmvp.mvp.presenter.NewsTabFragmentPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 
@@ -25,7 +26,7 @@ public class NewsTabFragment extends BaseFragment implements BaseView.NewsTabFra
     @BindView(R.id.viewPager)
     ViewPager viewPager;
 
-    NewsTabFragmentPresenterImpl presenter;
+    BasePresenter.NewsTabFragmentPresenter presenter;
 
     @Override
     protected void initVariable() {

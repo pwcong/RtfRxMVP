@@ -2,9 +2,9 @@ package me.pwcong.rtfrxmvp.mvp.view;
 
 import java.util.List;
 
+import me.pwcong.rtfrxmvp.mvp.bean.Joke;
 import me.pwcong.rtfrxmvp.mvp.bean.News;
 import me.pwcong.rtfrxmvp.mvp.bean.NewsTab;
-import me.pwcong.rtfrxmvp.mvp.bean.Weather;
 import me.pwcong.rtfrxmvp.mvp.bean.WeatherBean;
 
 /**
@@ -18,6 +18,7 @@ public interface BaseView<T> {
         void startCityPickerActivityForResult();
         void switchNews();
         void switchWeather(String cityname);
+        void switchJoke();
     }
 
     interface NewsDetailActivityView {
@@ -39,6 +40,13 @@ public interface BaseView<T> {
 
     interface WeatherFragmentView {
         void setData(WeatherBean.Data data);
+        void showError();
+    }
+
+    interface JokeFragmentView extends BaseView<Joke>{
+        void showHeadProgress();
+        void hideHeadProgress();
+        void loadMore(List<Joke> more);
         void showError();
     }
 

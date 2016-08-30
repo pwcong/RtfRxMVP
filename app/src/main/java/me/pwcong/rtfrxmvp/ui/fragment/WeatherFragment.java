@@ -8,15 +8,12 @@ import android.util.Log;
 
 import com.jakewharton.rxbinding.support.v4.widget.RxSwipeRefreshLayout;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.adapter.WeatherFragmentRecyclerAdapter;
 import me.pwcong.rtfrxmvp.conf.Constants;
-import me.pwcong.rtfrxmvp.mvp.bean.Life;
 import me.pwcong.rtfrxmvp.mvp.bean.WeatherBean;
+import me.pwcong.rtfrxmvp.mvp.presenter.BasePresenter;
 import me.pwcong.rtfrxmvp.mvp.presenter.WeatherFragmentPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.widget.RecyclerViewDivider;
@@ -34,7 +31,7 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
-    WeatherFragmentPresenterImpl presenter;
+    BasePresenter.WeatherFragmentPresenter presenter;
     String cityname;
 
     public static WeatherFragment getInstance(String cityname){
@@ -81,7 +78,7 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
         RxSwipeRefreshLayout.refreshes(refreshLayout).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                presenter.initWeatherFragmentData(cityname);
+                presenter.initData(cityname);
                 refreshLayout.setRefreshing(false);
             }
         });
@@ -91,7 +88,7 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
 
     @Override
     protected void doAction() {
-        presenter.initWeatherFragmentData(cityname);
+        presenter.initData(cityname);
         Log.i(TAG, "doAction: OK");
     }
 

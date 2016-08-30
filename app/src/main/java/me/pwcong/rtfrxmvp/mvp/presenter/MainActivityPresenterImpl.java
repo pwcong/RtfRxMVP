@@ -31,12 +31,15 @@ public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivi
 
                 String cityname = SharedPrefrerncesManager.getInstance().getString(Constants.CITY_NAME, null);
 
-                if(StringUtils.isNullOrEmpty(cityname)){
+                if(StringUtils.isEmpty(cityname)){
                     view.startCityPickerActivityForResult();
                 }else {
                     view.switchWeather(cityname);
                 }
 
+                break;
+            case R.id.item_joke:
+                view.switchJoke();
                 break;
             default:break;
 

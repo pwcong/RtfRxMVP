@@ -18,8 +18,10 @@ import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.citypicker.CityPickerActivity;
 import me.pwcong.rtfrxmvp.conf.Constants;
 import me.pwcong.rtfrxmvp.manager.SharedPrefrerncesManager;
+import me.pwcong.rtfrxmvp.mvp.presenter.BasePresenter;
 import me.pwcong.rtfrxmvp.mvp.presenter.MainActivityPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
+import me.pwcong.rtfrxmvp.ui.fragment.JokeFragment;
 import me.pwcong.rtfrxmvp.ui.fragment.NewsTabFragment;
 import me.pwcong.rtfrxmvp.ui.fragment.WeatherFragment;
 import rx.functions.Action1;
@@ -40,7 +42,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
-    MainActivityPresenterImpl presenter;
+    BasePresenter.MainActivityPresenter presenter;
     int currentNavigationItemSelectedId;
 
     @Override
@@ -142,6 +144,16 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
         getSupportFragmentManager().beginTransaction().replace(R.id.content, WeatherFragment.getInstance(cityname)).commit();
 
         Log.i(TAG, "switchWeather: OK");
+
+    }
+
+    @Override
+    public void switchJoke() {
+
+        toolbar.setTitle(R.string.joke);
+        drawerLayout.closeDrawer(GravityCompat.START);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content,new JokeFragment()).commit();
+        Log.i(TAG, "switchJoke: OK");
 
     }
 

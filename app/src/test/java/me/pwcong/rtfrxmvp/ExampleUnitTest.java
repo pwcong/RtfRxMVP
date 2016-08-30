@@ -8,15 +8,22 @@ import com.google.gson.Gson;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
+import me.pwcong.rtfrxmvp.conf.Constants;
+import me.pwcong.rtfrxmvp.mvp.bean.JokeBean;
 import me.pwcong.rtfrxmvp.mvp.bean.NewsBean;
 import me.pwcong.rtfrxmvp.mvp.bean.WeatherBean;
 import me.pwcong.rtfrxmvp.network.Api;
+import me.pwcong.rtfrxmvp.network.JokeService;
 import me.pwcong.rtfrxmvp.network.TouTiaoService;
 import me.pwcong.rtfrxmvp.network.WeatherService;
+import me.pwcong.rtfrxmvp.utils.StringUtils;
+import me.pwcong.rtfrxmvp.utils.TimeUtils;
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Action1;
@@ -170,6 +177,54 @@ public class ExampleUnitTest {
         System.out.print(list.get(integer));
 
     }
+
+    @Test
+    public void testTime(){
+
+        System.out.print(TimeUtils.getCurTimeString());
+
+
+
+    }
+
+    @Test
+    public void testJoke(){
+
+        JokeService service=new JokeService();
+
+        long curTimeMills = TimeUtils.getCurTimeMills();
+        String time=curTimeMills+"";
+        time=time.substring(0,10);
+
+        service.getJoke(Constants.DESC, 1, Constants.PAGESIZE, time, Api.KEY_JOKE, new Subscriber<JokeBean>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onNext(JokeBean jokeBean) {
+                System.out.print(jokeBean.toString());
+            }
+        });
+
+    }
+
+    @Test
+    public void testString(){
+
+        String s="陪女友第一次去她家…… 到她家后热情的招待了我，  她爸问:“小伙子做什么工作？” 我:“叔叔，我和兰兰是同事。”   女友:“爸，他是我们公司副总！”   她爸:“今天你们怎么过来的？” 我:“打车过来的。”   女友:“爸，他车在4S店保养，今天没开过来。”   她爸对我很满意，回去后我对女友说:“我就一普通职员，哪有什么车，你怎么能那样欺骗他们？…”   女友:“我爸势利，不那样说我爸早轰走你了，你快搞大我肚子吧！以后的问题我来解决。";
+        String res = s.replaceAll("   ", "\n").replaceAll("  ", "\n").replaceAll(" ", "\n");
+
+        System.out.print(res);
+
+    }
+
 
 
 

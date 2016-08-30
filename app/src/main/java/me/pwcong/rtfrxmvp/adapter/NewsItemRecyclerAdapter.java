@@ -22,13 +22,13 @@ import rx.functions.Action1;
 /**
  * Created by pwcong on 2016/8/22.
  */
-public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsRecyclerAdapter.ViewHolder>{
+public class NewsItemRecyclerAdapter extends RecyclerView.Adapter<NewsItemRecyclerAdapter.ViewHolder>{
 
     Context context;
     List<News> newsList;
     BaseView.NewsFragmentView newsFragmentView;
 
-    public NewsRecyclerAdapter(Context context, List<News> newsList, BaseView.NewsFragmentView newsFragmentView) {
+    public NewsItemRecyclerAdapter(Context context, List<News> newsList, BaseView.NewsFragmentView newsFragmentView) {
         this.context = context;
         this.newsList = newsList;
         this.newsFragmentView = newsFragmentView;
