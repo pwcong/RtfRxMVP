@@ -59,5 +59,7 @@ public class ActivityManager {
         return currentActivity;
     }
 
-
+    public static void setCurrentActivity(Activity currentActivity) {
+        ActivityManager.currentActivity = currentActivity;
+    }
 }

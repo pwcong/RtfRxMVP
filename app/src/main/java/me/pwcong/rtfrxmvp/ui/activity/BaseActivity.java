@@ -8,6 +8,7 @@ import android.view.View;
 
 import butterknife.ButterKnife;
 import me.pwcong.rtfrxmvp.manager.ActivityManager;
+import me.pwcong.rtfrxmvp.utils.ActivityUtils;
 
 /**
  * Created by pwcong on 2016/8/19.
@@ -28,6 +29,15 @@ public abstract class BaseActivity extends AppCompatActivity{
         initVariable();
 
         doAction();
+
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+
+        ActivityManager.setCurrentActivity(this);
 
     }
 

@@ -1,15 +1,19 @@
 package me.pwcong.rtfrxmvp.ui.fragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemLongClickListener;
 import com.jakewharton.rxbinding.support.v4.widget.RxSwipeRefreshLayout;
 
 import java.util.List;
@@ -22,12 +26,16 @@ import me.pwcong.rtfrxmvp.mvp.bean.Joke;
 import me.pwcong.rtfrxmvp.mvp.presenter.BasePresenter;
 import me.pwcong.rtfrxmvp.mvp.presenter.JokeFragmentPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
+import me.pwcong.rtfrxmvp.utils.ActivityUtils;
 import rx.functions.Action1;
 
 /**
  * Created by pwcong on 2016/8/30.
  */
 public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentView{
+
+    private final String TAG=getClass().getSimpleName();
+
 
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
@@ -59,6 +67,8 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
 
         initRycyclerView();
         initRefreshLayout();
+
+        Log.i(TAG, "initVariable: OK");
     }
 
     private void initRycyclerView(){
@@ -87,6 +97,7 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
     @Override
     protected void doAction() {
         presenter.initData(page);
+        Log.i(TAG, "doAction: OK");
     }
 
     @Override
@@ -109,9 +120,20 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
             }
         });
 
+        recyclerView.addOnItemTouchListener(new OnItemLongClickListener() {
+            @Override
+            public void SimpleOnItemLongClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
+
+                ActivityUtils.share(((Joke)(baseQuickAdapter.getData().get(i))).getContent());
+
+            }
+        });
+
         recyclerView.setAdapter(adapter);
         recyclerView.refreshDrawableState();
 
+        Log.i(TAG, "setData: OK");
+        
     }
 
     @Override
@@ -129,6 +151,7 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
     public void loadMore(List<Joke> more) {
 
         adapter.addData(more);
+        Log.i(TAG, "loadMore: OK");
 
     }
 
