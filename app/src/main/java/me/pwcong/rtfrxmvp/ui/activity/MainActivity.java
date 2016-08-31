@@ -10,9 +10,14 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.jakewharton.rxbinding.support.design.widget.RxNavigationView;
 import com.jakewharton.rxbinding.support.v7.widget.RxToolbar;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
@@ -26,6 +31,7 @@ import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.ui.fragment.JokeFragment;
 import me.pwcong.rtfrxmvp.ui.fragment.NewsTabFragment;
 import me.pwcong.rtfrxmvp.ui.fragment.WeatherFragment;
+import me.pwcong.rtfrxmvp.utils.TimeUtils;
 import rx.functions.Action1;
 
 /**
@@ -91,6 +97,18 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
     private void initNavigationView(){
 
+        View headerView = navigationView.getHeaderView(0);
+        ImageView iv_nav_header= (ImageView) headerView.findViewById(R.id.iv_nav_header);
+
+        int hours = Calendar.getInstance().get(Calendar.HOUR);
+        Log.e(TAG, "initNavigationView: " +hours );
+
+        if(hours>6&&hours<18){
+            Glide.with(this).load(R.drawable.header_day).into(iv_nav_header);
+        }else {
+            Glide.with(this).load(R.drawable.header_night).into(iv_nav_header);
+        }
+
         navigationView.setCheckedItem(R.id.item_newspaper);
         RxNavigationView.itemSelections(navigationView).subscribe(new Action1<MenuItem>() {
             @Override
@@ -100,8 +118,6 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
             }
         });
 
-        
-        
     }
 
 
