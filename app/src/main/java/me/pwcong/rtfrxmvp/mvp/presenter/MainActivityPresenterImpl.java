@@ -2,7 +2,7 @@ package me.pwcong.rtfrxmvp.mvp.presenter;
 
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.conf.Constants;
-import me.pwcong.rtfrxmvp.manager.SharedPrefrerncesManager;
+import me.pwcong.rtfrxmvp.manager.SharedPreferencesManager;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.utils.StringUtils;
 
@@ -29,7 +29,7 @@ public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivi
                 break;
             case R.id.item_weather:
 
-                String cityname = SharedPrefrerncesManager.getInstance().getString(Constants.CITY_NAME, null);
+                String cityname = SharedPreferencesManager.getInstance().getString(Constants.CITY_NAME, null);
 
                 if(StringUtils.isEmpty(cityname)){
                     view.startCityPickerActivityForResult();

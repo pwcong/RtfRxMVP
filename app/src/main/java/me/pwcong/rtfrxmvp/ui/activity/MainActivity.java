@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -17,7 +18,8 @@ import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.citypicker.CityPickerActivity;
 import me.pwcong.rtfrxmvp.conf.Constants;
-import me.pwcong.rtfrxmvp.manager.SharedPrefrerncesManager;
+import me.pwcong.rtfrxmvp.manager.ActivityManager;
+import me.pwcong.rtfrxmvp.manager.SharedPreferencesManager;
 import me.pwcong.rtfrxmvp.mvp.presenter.BasePresenter;
 import me.pwcong.rtfrxmvp.mvp.presenter.MainActivityPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
@@ -43,7 +45,9 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     DrawerLayout drawerLayout;
 
     BasePresenter.MainActivityPresenter presenter;
+
     int currentNavigationItemSelectedId;
+    long mExitTime;
 
     @Override
     protected int getContentView() {
@@ -166,7 +170,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
             String cityname = data.getExtras().getString(Constants.CITY_NAME);
 
-            SharedPrefrerncesManager.getInstance().edit().putString(Constants.CITY_NAME,cityname).commit();
+            SharedPreferencesManager.getInstance().edit().putString(Constants.CITY_NAME,cityname).commit();
 
             if(currentNavigationItemSelectedId==R.id.item_weather){
                 switchWeather(cityname);
@@ -178,4 +182,24 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
         Log.i(TAG, "onActivityResult: OK");
 
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+
+                showSnackBar(toolbar,"再按一次退出程序");
+
+                mExitTime = System.currentTimeMillis();
+
+            } else {
+                ActivityManager.getInstance().removeAll();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+
+    }
+
 }

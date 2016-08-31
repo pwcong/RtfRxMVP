@@ -9,7 +9,7 @@ import me.pwcong.rtfrxmvp.conf.Constants;
 /**
  * Created by pwcong on 2016/8/25.
  */
-public class SharedPrefrerncesManager {
+public class SharedPreferencesManager {
 
     private static SharedPreferences instance;
 

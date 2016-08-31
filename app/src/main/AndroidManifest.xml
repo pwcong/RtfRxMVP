@@ -41,6 +41,8 @@
 
         <activity android:name=".citypicker.CityPickerActivity"/>
 
+        <activity android:name=".ui.activity.AboutActivity" android:label="@string/app_name"/>
+
         <meta-data android:name="com.amap.api.v2.apikey" android:value="350f81c4a01aadb025e2b2180e7fc466"/>
 
     </application>

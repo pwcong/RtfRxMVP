@@ -52,6 +52,9 @@
     <string name="ziwaixian">紫外线</string>
     <string name="loading">加载中…</string>
     <string name="joke">开心一刻</string>
+    <string name="other">其他</string>
+    <string name="about">关于</string>
+    <string name="setting">设置</string>
 
 
 </resources>
