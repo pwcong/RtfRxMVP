@@ -4,9 +4,9 @@
     android:layout_height="@dimen/height_header">
 
     <ImageView
+        android:id="@+id/iv_header"
         android:contentDescription="@string/content_description"
         android:scaleType="centerCrop"
-        android:src="@drawable/weather_header"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

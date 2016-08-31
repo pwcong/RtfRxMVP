@@ -16,14 +16,14 @@ public abstract class Constants {
 
     public static final String PRE_NAME="rtfrxmvp";
 
-    public static final int[] WEATHER_ICONS ={R.drawable.weather_sunny,R.drawable.weather_cloud_sun,
-            R.drawable.weather_cloudy_more,R.drawable.weather_rain_sun,R.drawable.weather_pouring_lighting,
-            R.drawable.weather_hail,R.drawable.weather_snow_rain,R.drawable.weather_rain,R.drawable.weather_pouring,
-            R.drawable.weather_pouring,R.drawable.weather_pouring,R.drawable.weather_pouring,R.drawable.weather_pouring,   //13
-            R.drawable.weather_snow_sun,R.drawable.weather_snow,R.drawable.weather_snow_large,R.drawable.weather_snow_large,R.drawable.weather_snow_large,  //18
-            R.drawable.weather_cloudy,R.drawable.weather_pouring_more,R.drawable.weather_cloudy,R.drawable.weather_rain_sun,R.drawable.weather_rain,   //23
-            R.drawable.weather_pouring,R.drawable.weather_pouring,R.drawable.weather_pouring,R.drawable.weather_snow_sun,R.drawable.weather_snow,    //28
-            R.drawable.weather_snow_large,R.drawable.weather_cloudy,R.drawable.weather_cloudy,R.drawable.weather_cloudy_more,R.drawable.weather_cloudy};  //33
+    public static final int[] WEATHER_ICONS ={R.drawable.type_one_sunny,R.drawable.type_one_cloudytosunny,     //ok
+            R.drawable.type_one_cloudy,R.drawable.type_one_small_rain,R.drawable.type_one_thunder_rain,     //ok
+            R.drawable.type_one_thunder_rain_snow,R.drawable.type_one_light_rain_snow,R.drawable.type_one_small_rain,R.drawable.type_one_mid_rain,   //9
+            R.drawable.type_one_heavy_rain,R.drawable.type_one_heavy_rain,R.drawable.type_one_heavy_rain,R.drawable.type_one_heavy_rain,   //13
+            R.drawable.type_one_small_snow,R.drawable.type_one_mid_snow,R.drawable.type_one_snow,R.drawable.type_one_snow,R.drawable.type_one_snow,  //18
+            R.drawable.type_one_fog,R.drawable.type_one_ice_rain,R.drawable.type_one_cloudy,R.drawable.type_one_small_rain,R.drawable.type_one_mid_rain,   //23
+            R.drawable.type_one_heavy_rain,R.drawable.type_one_heavy_rain,R.drawable.type_one_heavy_rain,R.drawable.type_one_small_snow,R.drawable.type_one_mid_snow,    //28
+            R.drawable.type_one_snow,R.drawable.type_one_fog,R.drawable.type_one_fog,R.drawable.type_one_cloudy,R.drawable.type_one_fog};  //33
 
 
     public static final int TAG_HEADER=0;

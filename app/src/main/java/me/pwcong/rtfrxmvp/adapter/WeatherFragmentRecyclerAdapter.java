@@ -124,6 +124,7 @@ public class WeatherFragmentRecyclerAdapter extends RecyclerView.Adapter<Recycle
     public class WeatherHeaderItemViewHolder extends RecyclerView.ViewHolder{
 
         public final View view;
+        public final ImageView iv_header;
         public final TextView tv_temperature;
         public final TextView tv_city_name;
         public final TextView tv_weather_info;
@@ -137,6 +138,7 @@ public class WeatherFragmentRecyclerAdapter extends RecyclerView.Adapter<Recycle
             super(itemView);
 
             view=itemView;
+            iv_header= (ImageView) itemView.findViewById(R.id.iv_header);
             tv_temperature= (TextView) itemView.findViewById(R.id.tv_temperature);
             tv_city_name= (TextView) itemView.findViewById(R.id.tv_city_name);
             tv_weather_info= (TextView) itemView.findViewById(R.id.tv_weather_info);
@@ -150,6 +152,24 @@ public class WeatherFragmentRecyclerAdapter extends RecyclerView.Adapter<Recycle
         public void bindData(Context context,WeatherBean.Data data){
 
             int weatherIconId=Integer.valueOf(data.getRealtime().getWeather().getImg());
+
+            if(data.getRealtime().getWeather().getInfo().contains("晴")){
+                Glide.with(context)
+                        .load(R.drawable.dialog_bg_sunny)
+                        .centerCrop()
+                        .into(iv_header);
+            }
+            else if(data.getRealtime().getWeather().getInfo().contains("雨")){
+                Glide.with(context)
+                        .load(R.drawable.dialog_bg_rainy)
+                        .centerCrop()
+                        .into(iv_header);
+            }else {
+                Glide.with(context)
+                        .load(R.drawable.dialog_bg_cloudy)
+                        .centerCrop()
+                        .into(iv_header);
+            }
 
             if( weatherIconId > -1 && weatherIconId < 32 ){
                 Glide.with(context)

@@ -218,10 +218,10 @@ public class ExampleUnitTest {
     @Test
     public void testString(){
 
-        String s="文革某年，一个外国医药代表团到上海访问，有个双突干部去接待。　　代表团团长说：贵国李时珍在医药上的贡献真是了不起…… 　　";
-        String res = StringUtils.toDBC(s);
+        String s="多云 　　";
 
-        System.out.print(res);
+        if(s.contains("云"))
+            System.out.print(s);
 
     }
 
