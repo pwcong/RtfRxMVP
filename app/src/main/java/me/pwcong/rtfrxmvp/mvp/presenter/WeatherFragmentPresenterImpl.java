@@ -23,20 +23,29 @@ public class WeatherFragmentPresenterImpl extends BasePresenter<BaseView.Weather
     @Override
     public void initData(String cityname) {
 
+        view.showProgress();
+
         model.getData(cityname, new Subscriber<WeatherBean>() {
             @Override
             public void onCompleted() {
-
+                view.hideProgress();
             }
 
             @Override
             public void onError(Throwable e) {
-                view.showError();
+                view.hideProgress();
+                view.showError("获取失败！");
             }
 
             @Override
             public void onNext(WeatherBean weatherBean) {
-                view.setData(weatherBean.getResult().getData());
+                if(weatherBean.getError_code()==0){
+                    view.setData(weatherBean.getResult().getData());
+                }
+                else {
+                    view.showError("获取失败！");
+                }
+
             }
         });
 

@@ -23,25 +23,27 @@ public class NewsFragmentPresenterImpl extends BasePresenter<BaseView.NewsFragme
     @Override
     public void initNewsFragmentData(String type) {
 
+        view.showProgress();
+
         model.getData(type, new Subscriber<NewsBean>() {
             @Override
             public void onCompleted() {
-
+                view.hideProgress();
             }
 
             @Override
             public void onError(Throwable e) {
-                view.showError();
+                view.showError("获取失败！");
+                view.hideProgress();
             }
 
             @Override
             public void onNext(NewsBean newsBean) {
 
-
                 if(newsBean.getError_code()==0){
                     view.setData(newsBean.getResult().getData());
                 }else {
-                    view.showError();
+                    view.showError("获取失败！");
                 }
 
             }

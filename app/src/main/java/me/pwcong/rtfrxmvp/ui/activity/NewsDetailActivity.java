@@ -6,6 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -106,6 +108,13 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
             public void onPageFinished(WebView view, String url) {
                 hideProgress();
             }
+
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                super.onReceivedError(view, errorCode, description, failingUrl);
+                hideProgress();
+                showError();
+            }
         });
     }
 
@@ -152,18 +161,16 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
 
     @Override
     public void showError() {
-
+        showSnackBar(refreshLayout,"获取失败！");
     }
 
     @Override
     public void showProgress() {
         refreshLayout.setRefreshing(true);
-        Log.i(TAG, "showProgress: OK");
     }
 
     @Override
     public void hideProgress() {
         refreshLayout.setRefreshing(false);
-        Log.i(TAG, "hideProgress: OK");
     }
 }

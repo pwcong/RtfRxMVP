@@ -37,7 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity{
 
     protected abstract void doAction();
 
-    public void ShowSnackBar(View view,String message){
+    public void showSnackBar(View view,String message){
         Snackbar.make(view,message,Snackbar.LENGTH_SHORT).show();
     }
 

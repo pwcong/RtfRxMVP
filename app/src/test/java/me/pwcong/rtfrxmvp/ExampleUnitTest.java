@@ -218,8 +218,8 @@ public class ExampleUnitTest {
     @Test
     public void testString(){
 
-        String s="陪女友第一次去她家…… 到她家后热情的招待了我，  她爸问:“小伙子做什么工作？” 我:“叔叔，我和兰兰是同事。”   女友:“爸，他是我们公司副总！”   她爸:“今天你们怎么过来的？” 我:“打车过来的。”   女友:“爸，他车在4S店保养，今天没开过来。”   她爸对我很满意，回去后我对女友说:“我就一普通职员，哪有什么车，你怎么能那样欺骗他们？…”   女友:“我爸势利，不那样说我爸早轰走你了，你快搞大我肚子吧！以后的问题我来解决。";
-        String res = s.replaceAll("   ", "\n").replaceAll("  ", "\n").replaceAll(" ", "\n");
+        String s="文革某年，一个外国医药代表团到上海访问，有个双突干部去接待。　　代表团团长说：贵国李时珍在医药上的贡献真是了不起…… 　　";
+        String res = StringUtils.toDBC(s);
 
         System.out.print(res);
 

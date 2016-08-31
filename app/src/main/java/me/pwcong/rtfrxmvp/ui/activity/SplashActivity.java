@@ -23,11 +23,6 @@ public class SplashActivity extends BaseActivity {
     ImageView iv_bg;
     @BindView(R.id.iv_appname)
     ImageView iv_appname;
-    @BindView(R.id.iv_logo)
-    ImageView iv_logo;
-    @BindView(R.id.tv_powered_by)
-    TextView tv_powered_by;
-
 
     @Override
     protected int getContentView() {
@@ -39,8 +34,6 @@ public class SplashActivity extends BaseActivity {
 
         iv_bg.setAnimation(getScaleAnimation());
         iv_appname.setAnimation(getAlphaAnimation());
-        iv_logo.setAnimation(getAlphaAnimation());
-        tv_powered_by.setAnimation(getAlphaAnimation());
 
         Observable.timer(2000,TimeUnit.MILLISECONDS).subscribe(new Action1<Long>() {
             @Override

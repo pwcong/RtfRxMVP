@@ -45,7 +45,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract int getViewId();
 
-    public void ShowSnackBar(View view,String message){
+    public void showSnackBar(View view,String message){
         Snackbar.make(view,message,Snackbar.LENGTH_SHORT).show();
     }
 

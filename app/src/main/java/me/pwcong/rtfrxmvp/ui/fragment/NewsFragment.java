@@ -79,8 +79,6 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
             @Override
             public void call(Void aVoid) {
                 presenter.initNewsFragmentData(type);
-                refreshLayout.setRefreshing(false);
-                Log.i(TAG, "call: OK");
             }
         });
     }
@@ -112,8 +110,19 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
     }
 
     @Override
-    public void showError() {
+    public void showError(String errors) {
+        showSnackBar(view,errors);
+    }
 
+    @Override
+    public void showProgress() {
+        refreshLayout.setRefreshing(true);
+    }
+
+
+    @Override
+    public void hideProgress() {
+        refreshLayout.setRefreshing(false);
     }
 
     @Override

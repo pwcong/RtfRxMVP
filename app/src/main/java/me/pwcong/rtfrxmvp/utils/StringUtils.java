@@ -119,4 +119,28 @@ public abstract class StringUtils {
     }
 
 
+    public static String space2Return(String s){
+
+        if(isEmpty(s)){
+            return null;
+        }
+
+        StringBuilder stringBuilder=new StringBuilder();
+        char[] chars = s.toCharArray();
+        for(int i=0;i<chars.length;i++){
+
+            if(chars[i]==' '){
+                stringBuilder.append("\n");
+            }
+            else {
+                stringBuilder.append(chars[i]);
+            }
+
+        }
+
+        return stringBuilder.toString();
+
+
+    }
+
 }

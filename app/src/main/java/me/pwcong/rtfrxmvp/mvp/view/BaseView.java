@@ -35,12 +35,16 @@ public interface BaseView<T> {
 
     interface NewsFragmentView extends BaseView<News>{
         void toDetailActivity(News news);
-        void showError();
+        void showError(String errors);
+        void showProgress();
+        void hideProgress();
     }
 
     interface WeatherFragmentView {
+        void showProgress();
+        void hideProgress();
         void setData(WeatherBean.Data data);
-        void showError();
+        void showError(String error);
     }
 
     interface JokeFragmentView extends BaseView<Joke>{

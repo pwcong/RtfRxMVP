@@ -7,6 +7,7 @@ import java.util.List;
 
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.mvp.bean.Joke;
+import me.pwcong.rtfrxmvp.utils.StringUtils;
 
 /**
  * Created by pwcong on 2016/8/30.
@@ -21,7 +22,7 @@ public class JokeItemAdapter  extends BaseQuickAdapter<Joke>{
     @Override
     protected void convert(BaseViewHolder baseViewHolder, Joke joke) {
 
-        baseViewHolder.setText(R.id.tv_content,joke.getContent().replaceAll("    ", "\n").replaceAll("   ", "\n").replaceAll("  ", "\n").replaceAll(" ", "\n"))
+        baseViewHolder.setText(R.id.tv_content, "        "+StringUtils.toDBC(joke.getContent()).replaceAll("  ","\n        ").replaceAll("&nbsp;",""))
                 .setText(R.id.tv_updatetime,joke.getUpdatetime());
 
     }

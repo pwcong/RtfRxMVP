@@ -79,7 +79,6 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
             @Override
             public void call(Void aVoid) {
                 presenter.initData(cityname);
-                refreshLayout.setRefreshing(false);
             }
         });
 
@@ -98,6 +97,16 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
     }
 
     @Override
+    public void showProgress() {
+        refreshLayout.setRefreshing(true);
+    }
+
+    @Override
+    public void hideProgress() {
+        refreshLayout.setRefreshing(false);
+    }
+
+    @Override
     public void setData(WeatherBean.Data data) {
 
 
@@ -108,12 +117,8 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
 
     }
 
-
-
-
-
     @Override
-    public void showError() {
-
+    public void showError(String error) {
+        showSnackBar(view,error);
     }
 }
