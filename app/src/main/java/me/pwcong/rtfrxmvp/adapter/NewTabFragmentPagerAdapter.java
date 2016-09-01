@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import java.util.List;
 
 import me.pwcong.rtfrxmvp.mvp.bean.NewsTab;
-import me.pwcong.rtfrxmvp.ui.fragment.NewsFragment;
+import me.pwcong.rtfrxmvp.component.fragment.NewsFragment;
 
 /**
  * Created by pwcong on 2016/8/20.

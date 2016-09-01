@@ -1,4 +1,4 @@
-package me.pwcong.rtfrxmvp.ui.activity;
+package me.pwcong.rtfrxmvp.component.activity;
 
 import android.support.v7.widget.Toolbar;
 import android.util.Log;

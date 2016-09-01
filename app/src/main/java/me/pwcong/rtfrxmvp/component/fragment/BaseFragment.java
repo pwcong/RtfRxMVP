@@ -1,4 +1,4 @@
-package me.pwcong.rtfrxmvp.ui.fragment;
+package me.pwcong.rtfrxmvp.component.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

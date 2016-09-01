@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/backstage">
+        <CheckBoxPreference
+            android:title="@string/push_msg"
+            android:key="push_msg_agree"
+            android:summary="@string/push_msg_content"
+            android:icon="@drawable/message_alert"/>
+
+        <Preference
+            android:icon="@drawable/timer"
+            android:title="@string/push_msg_timer"
+            android:key="push_msg_timer"/>
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/system">
+
+        <CheckBoxPreference
+            android:title="@string/enter_view"
+            android:defaultValue="true"
+            android:key="show_enter_agree"
+            android:summary="@string/enter_view_content"
+            android:icon="@drawable/glassdoor"/>
+
+    </PreferenceCategory>
+
+
+
+
+</PreferenceScreen>

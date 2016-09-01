@@ -12,9 +12,13 @@ public abstract class Constants {
     public static final String URL_CONTENT="url_content";
     public static final String URL_IMG="url_img";
 
+    public static final String PRE_NAME="rtfrxmvp";
     public static final String CITY_NAME ="city_name";
 
-    public static final String PRE_NAME="rtfrxmvp";
+    public static final String PUSH_MSG_AGREE="push_msg_agree";
+    public static final String PUSH_MSG_TIMER="push_msg_timer";
+    public static final String SHOW_ENTER_AGREE="show_enter_agree";
+
 
     public static final int[] WEATHER_ICONS ={R.drawable.type_one_sunny,R.drawable.type_one_cloudytosunny,     //ok
             R.drawable.type_one_cloudy,R.drawable.type_one_small_rain,R.drawable.type_one_thunder_rain,     //ok

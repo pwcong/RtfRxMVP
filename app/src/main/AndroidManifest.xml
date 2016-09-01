@@ -28,20 +28,24 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <activity android:name=".ui.activity.SplashActivity" android:label="@string/app_name">
+        <activity android:name=".component.activity.SplashActivity" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activity.MainActivity"/>
+        <activity android:name=".component.activity.MainActivity"/>
 
-        <activity android:name=".ui.activity.NewsDetailActivity"/>
+        <activity android:name=".component.activity.NewsDetailActivity"/>
 
         <activity android:name=".citypicker.CityPickerActivity"/>
 
-        <activity android:name=".ui.activity.AboutActivity" android:label="@string/app_name"/>
+        <activity android:name=".component.activity.AboutActivity"/>
+
+        <activity android:name=".component.activity.SettingActivity"/>
+
+
 
         <meta-data android:name="com.amap.api.v2.apikey" android:value="350f81c4a01aadb025e2b2180e7fc466"/>
 

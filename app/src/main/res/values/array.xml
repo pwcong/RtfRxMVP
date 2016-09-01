@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="push_msg_list_value">
+        <item>1</item>
+        <item>2</item>
+        <item>6</item>
+        <item>12</item>
+        <item>24</item>
+    </integer-array>
+
+    <string-array name="push_msg_list_name">
+        <item>一小时</item>
+        <item>两小时</item>
+        <item>六小时</item>
+        <item>半天</item>
+        <item>一天</item>
+    </string-array>
+</resources>

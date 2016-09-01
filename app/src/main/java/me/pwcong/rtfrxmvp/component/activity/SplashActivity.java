@@ -1,11 +1,10 @@
-package me.pwcong.rtfrxmvp.ui.activity;
+package me.pwcong.rtfrxmvp.component.activity;
 
 import android.content.Intent;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.concurrent.TimeUnit;
 

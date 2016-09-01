@@ -1,4 +1,4 @@
-package me.pwcong.rtfrxmvp.ui.activity;
+package me.pwcong.rtfrxmvp.component.activity;
 
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
@@ -17,20 +17,22 @@ import com.bumptech.glide.Glide;
 import com.jakewharton.rxbinding.support.design.widget.RxNavigationView;
 import com.jakewharton.rxbinding.support.v7.widget.RxToolbar;
 
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.citypicker.CityPickerActivity;
+import me.pwcong.rtfrxmvp.component.fragment.BaseFragment;
 import me.pwcong.rtfrxmvp.conf.Constants;
 import me.pwcong.rtfrxmvp.manager.ActivityManager;
 import me.pwcong.rtfrxmvp.manager.SharedPreferencesManager;
 import me.pwcong.rtfrxmvp.mvp.presenter.BasePresenter;
 import me.pwcong.rtfrxmvp.mvp.presenter.MainActivityPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
-import me.pwcong.rtfrxmvp.ui.fragment.JokeFragment;
-import me.pwcong.rtfrxmvp.ui.fragment.NewsTabFragment;
-import me.pwcong.rtfrxmvp.ui.fragment.WeatherFragment;
+import me.pwcong.rtfrxmvp.component.fragment.JokeFragment;
+import me.pwcong.rtfrxmvp.component.fragment.NewsTabFragment;
+import me.pwcong.rtfrxmvp.component.fragment.WeatherFragment;
 import me.pwcong.rtfrxmvp.utils.TimeUtils;
 import rx.functions.Action1;
 
@@ -101,7 +103,6 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
         ImageView iv_nav_header= (ImageView) headerView.findViewById(R.id.iv_nav_header);
 
         int hours = TimeUtils.getCurTimeDate().getHours();
-        Log.e(TAG, "initNavigationView: " +hours );
 
         if(hours>6&&hours<18){
             Glide.with(this).load(R.drawable.header_day).into(iv_nav_header);
@@ -185,6 +186,8 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     @Override
     public void switchSetting() {
 
+        startActivity(new Intent(this,SettingActivity.class));
+
     }
 
     @Override
@@ -201,8 +204,6 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
             if(currentNavigationItemSelectedId==R.id.item_weather){
                 switchWeather(cityname);
             }
-
-
         }
 
         Log.i(TAG, "onActivityResult: OK");

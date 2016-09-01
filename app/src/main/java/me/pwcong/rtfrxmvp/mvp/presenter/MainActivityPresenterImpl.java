@@ -46,6 +46,10 @@ public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivi
                 view.switchAbout();
                 break;
 
+            case R.id.item_setting:
+                view.switchSetting();
+                break;
+
             default:break;
 
         }

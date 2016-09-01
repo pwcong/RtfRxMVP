@@ -1,4 +1,4 @@
-package me.pwcong.rtfrxmvp.ui.activity;
+package me.pwcong.rtfrxmvp.component.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +8,6 @@ import android.view.View;
 
 import butterknife.ButterKnife;
 import me.pwcong.rtfrxmvp.manager.ActivityManager;
-import me.pwcong.rtfrxmvp.utils.ActivityUtils;
 
 /**
  * Created by pwcong on 2016/8/19.
