@@ -57,4 +57,29 @@
     <string name="setting">设置</string>
 
 
+
+    <string name="hello_you">Hello You</string>
+    <string name="hello_u_content">这是我的一个练习项目，第一次尝试运用 <b>MVP模式</b> 书写代码，有很多不足之处，望轻喷。\n (=・ω・=)</string>
+    <string name="source_code">Source Code</string>
+    <string name="source_code_content">如果你喜欢该项目，期待你给个 star 。当然我也希望你能够 fork 下来，我们一起完善它。\n(｡・`ω´･)</string>
+    <string name="source_code_zh">源码</string>
+    <string name="blog">博客</string>
+    <string name="thanks">Thanks</string>
+    <string name="thanks_content">感谢开源项目的代码支持和开放平台免费提供数据。 \no(*≧▽≦)ツ</string>
+    <string name="link_rxjava">ReactiveX/RxJava</string>
+    <string name="link_rxandroid">ReactiveX/RxAndroid</string>
+    <string name="link_retrofit">square/retrofit</string>
+    <string name="link_glide">bumptech/glide</string>
+    <string name="link_butterknife">JakeWharton/butterknife</string>
+    <string name="link_baserecyclerviewadapterhelper">CymChad/BaseRecyclerViewAdapterHelper</string>
+    <string name="link_citypicker">zaaach/CityPicker</string>
+    <string name="juhe">聚合数据</string>
+    <string name="here">Here</string>
+    <string name="here_content">当前版本：v1.0.0 \n作者：Pwcong</string>
+
+    <string name="url_source">https://github.com/pwcong/RtfRxMVP</string>
+    <string name="url_blog">http://www.pwcong.me</string>
+
+
+
 </resources>

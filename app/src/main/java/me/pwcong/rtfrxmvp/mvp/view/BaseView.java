@@ -19,6 +19,8 @@ public interface BaseView<T> {
         void switchNews();
         void switchWeather(String cityname);
         void switchJoke();
+        void switchAbout();
+        void switchSetting();
     }
 
     interface NewsDetailActivityView {

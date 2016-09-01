@@ -1,6 +1,7 @@
 package me.pwcong.rtfrxmvp.utils;
 
 import android.content.Intent;
+import android.net.Uri;
 
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.manager.ActivityManager;
@@ -17,6 +18,15 @@ public abstract class ActivityUtils {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         ActivityManager.getInstance().getCurrentActivity().startActivity(Intent.createChooser(intent, ResourceUtils.fromStringResId(R.string.share_to)));
+
+    }
+
+    public static void openUrl(String url){
+
+        Intent intent=new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+
+        ActivityManager.getInstance().getCurrentActivity().startActivity(intent);
 
     }
 

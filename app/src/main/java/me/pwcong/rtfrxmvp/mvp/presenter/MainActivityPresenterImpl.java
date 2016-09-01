@@ -41,6 +41,11 @@ public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivi
             case R.id.item_joke:
                 view.switchJoke();
                 break;
+
+            case R.id.item_about:
+                view.switchAbout();
+                break;
+
             default:break;
 
         }

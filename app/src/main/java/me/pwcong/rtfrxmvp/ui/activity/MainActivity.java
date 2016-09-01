@@ -31,7 +31,6 @@ import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.ui.fragment.JokeFragment;
 import me.pwcong.rtfrxmvp.ui.fragment.NewsTabFragment;
 import me.pwcong.rtfrxmvp.ui.fragment.WeatherFragment;
-import me.pwcong.rtfrxmvp.utils.TimeUtils;
 import rx.functions.Action1;
 
 /**
@@ -174,6 +173,16 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
         drawerLayout.closeDrawer(GravityCompat.START);
         getSupportFragmentManager().beginTransaction().replace(R.id.content,new JokeFragment()).commit();
         Log.i(TAG, "switchJoke: OK");
+
+    }
+
+    @Override
+    public void switchAbout() {
+        startActivity(new Intent(this,AboutActivity.class));
+    }
+
+    @Override
+    public void switchSetting() {
 
     }
 
