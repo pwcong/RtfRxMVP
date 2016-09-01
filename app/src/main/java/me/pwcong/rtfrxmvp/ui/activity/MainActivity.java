@@ -31,6 +31,7 @@ import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.ui.fragment.JokeFragment;
 import me.pwcong.rtfrxmvp.ui.fragment.NewsTabFragment;
 import me.pwcong.rtfrxmvp.ui.fragment.WeatherFragment;
+import me.pwcong.rtfrxmvp.utils.TimeUtils;
 import rx.functions.Action1;
 
 /**
@@ -99,7 +100,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
         View headerView = navigationView.getHeaderView(0);
         ImageView iv_nav_header= (ImageView) headerView.findViewById(R.id.iv_nav_header);
 
-        int hours = Calendar.getInstance().get(Calendar.HOUR);
+        int hours = TimeUtils.getCurTimeDate().getHours();
         Log.e(TAG, "initNavigationView: " +hours );
 
         if(hours>6&&hours<18){
