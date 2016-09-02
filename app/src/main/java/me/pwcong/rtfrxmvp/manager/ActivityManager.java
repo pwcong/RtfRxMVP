@@ -14,6 +14,9 @@ public class ActivityManager {
 
     private static ActivityManager manager;
 
+    private ActivityManager(){
+    }
+
     private static Activity currentActivity;
 
     private static Vector<Activity> activities=new Vector<>();

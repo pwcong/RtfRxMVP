@@ -16,6 +16,9 @@ import android.widget.TextView;
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.conf.Constants;
 import me.pwcong.rtfrxmvp.manager.SharedPreferencesManager;
+import me.pwcong.rtfrxmvp.rxbus.RxBus;
+import me.pwcong.rtfrxmvp.rxbus.event.BaseEvent;
+import me.pwcong.rtfrxmvp.rxbus.event.MainActivityEvent;
 
 /**
  * Created by pwcong on 2016/9/1.
@@ -77,6 +80,8 @@ public class SettingFragment extends PreferenceFragment {
                     mPushMsgTimerPre.setEnabled(false);
                     SharedPreferencesManager.getInstance().edit().putBoolean(Constants.PUSH_MSG_AGREE,(boolean)o).apply();
                 }
+
+                RxBus.getDefault().post(new MainActivityEvent(BaseEvent.TYPE_SET_SERVICE,o));
 
                 return true;
             }
@@ -148,6 +153,7 @@ public class SettingFragment extends PreferenceFragment {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 SharedPreferencesManager.getInstance().edit().putInt(Constants.PUSH_MSG_TIMER,seekbar.getProgress()+1).apply();
+                RxBus.getDefault().post(new MainActivityEvent(BaseEvent.TYPE_SET_SERVICE,true));
 
                 dialog.dismiss();
             }

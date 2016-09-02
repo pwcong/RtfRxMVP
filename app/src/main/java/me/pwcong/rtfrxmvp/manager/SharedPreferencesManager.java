@@ -11,6 +11,8 @@ import me.pwcong.rtfrxmvp.conf.Constants;
  */
 public class SharedPreferencesManager {
 
+    private SharedPreferencesManager(){}
+
     private static SharedPreferences instance;
 
     public static synchronized SharedPreferences getInstance(){

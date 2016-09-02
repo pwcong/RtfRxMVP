@@ -45,7 +45,7 @@
 
         <activity android:name=".component.activity.SettingActivity"/>
 
-
+        <service android:name=".component.service.PushMsgService"/>
 
         <meta-data android:name="com.amap.api.v2.apikey" android:value="350f81c4a01aadb025e2b2180e7fc466"/>
 

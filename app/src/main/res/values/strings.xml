@@ -80,7 +80,7 @@
     <string name="url_source">https://github.com/pwcong/RtfRxMVP</string>
     <string name="url_blog">http://www.pwcong.me</string>
     <string name="push_msg">消息推送</string>
-    <string name="push_msg_content">定时推送热点资讯以及天气预报</string>
+    <string name="push_msg_content">定时推送天气预报</string>
     <string name="push_msg_timer">推送周期</string>
     <string name="backstage">后台</string>
     <string name="system">系统</string>

@@ -17,26 +17,22 @@ import com.bumptech.glide.Glide;
 import com.jakewharton.rxbinding.support.design.widget.RxNavigationView;
 import com.jakewharton.rxbinding.support.v7.widget.RxToolbar;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.citypicker.CityPickerActivity;
-import me.pwcong.rtfrxmvp.component.fragment.BaseFragment;
+import me.pwcong.rtfrxmvp.component.fragment.JokeFragment;
+import me.pwcong.rtfrxmvp.component.fragment.NewsTabFragment;
+import me.pwcong.rtfrxmvp.component.fragment.WeatherFragment;
+import me.pwcong.rtfrxmvp.component.service.PushMsgService;
 import me.pwcong.rtfrxmvp.conf.Constants;
 import me.pwcong.rtfrxmvp.manager.ActivityManager;
 import me.pwcong.rtfrxmvp.manager.SharedPreferencesManager;
 import me.pwcong.rtfrxmvp.mvp.presenter.BasePresenter;
 import me.pwcong.rtfrxmvp.mvp.presenter.MainActivityPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
-import me.pwcong.rtfrxmvp.component.fragment.JokeFragment;
-import me.pwcong.rtfrxmvp.component.fragment.NewsTabFragment;
-import me.pwcong.rtfrxmvp.component.fragment.WeatherFragment;
 import me.pwcong.rtfrxmvp.rxbus.RxBus;
 import me.pwcong.rtfrxmvp.rxbus.event.MainActivityEvent;
 import me.pwcong.rtfrxmvp.utils.TimeUtils;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
 /**
@@ -57,8 +53,9 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
     BasePresenter.MainActivityPresenter presenter;
 
-    int currentNavigationItemSelectedId;
-    long mExitTime;
+    private int currentNavigationItemSelectedId;
+    private long mExitTime;
+    private Intent mPushMsgServiceIntent;
 
     @Override
     protected int getContentView() {
@@ -69,6 +66,8 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     protected void initVariable() {
 
         presenter=new MainActivityPresenterImpl(this);
+
+        mPushMsgServiceIntent=new Intent(this,PushMsgService.class);
 
         initRxBus();
 
@@ -205,6 +204,19 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     public void switchSetting() {
         startActivity(new Intent(this,SettingActivity.class));
 
+    }
+
+    @Override
+    public void startPushMsgService() {
+        stopService(mPushMsgServiceIntent);
+        startService(mPushMsgServiceIntent);
+        Log.i(TAG, "startPushMsgService: OK");
+    }
+
+    @Override
+    public void stopPushMsgService() {
+        stopService(mPushMsgServiceIntent);
+        Log.i(TAG, "stopPushMsgService: OK");
     }
 
     @Override

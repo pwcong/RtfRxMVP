@@ -1,7 +1,8 @@
 package me.pwcong.rtfrxmvp.utils;
 
-public abstract class ConstUtils {
+public class ConstUtils {
 
+    private ConstUtils(){}
 
     /******************** 存储相关常量 ********************/
     public enum MemoryUnit {

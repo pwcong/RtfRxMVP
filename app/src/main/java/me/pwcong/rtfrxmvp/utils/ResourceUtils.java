@@ -6,7 +6,9 @@ import me.pwcong.rtfrxmvp.R;
 /**
  * Created by pwcong on 2016/8/22.
  */
-public abstract class ResourceUtils {
+public class ResourceUtils {
+
+    private ResourceUtils(){}
 
     public static String fromStringResId(int id){
         return App.getInstance().getResources().getString(id);

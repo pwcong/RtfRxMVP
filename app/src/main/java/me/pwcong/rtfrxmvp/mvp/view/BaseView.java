@@ -22,6 +22,8 @@ public interface BaseView<T> {
         void switchJoke();
         void switchAbout();
         void switchSetting();
+        void startPushMsgService();
+        void stopPushMsgService();
     }
 
     interface NewsDetailActivityView {

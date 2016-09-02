@@ -5,7 +5,9 @@ import me.pwcong.rtfrxmvp.R;
 /**
  * Created by pwcong on 2016/8/19.
  */
-public abstract class Constants {
+public class Constants {
+
+    private Constants(){}
 
     public static final String TYPE ="type";
     public static final String TITLE="title";
@@ -47,6 +49,7 @@ public abstract class Constants {
 
     public static final int PAGESIZE=10;
 
+    public static final int NOTIFICATION_WEATHER_ID=123;
 
 
 

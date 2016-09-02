@@ -19,7 +19,14 @@ public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivi
 
     @Override
     public void initContent() {
+
         view.switchNews();
+
+        if(SharedPreferencesManager.getInstance().getBoolean(Constants.PUSH_MSG_AGREE,true)){
+            view.startPushMsgService();
+        }
+
+
     }
 
     @Override
@@ -29,11 +36,15 @@ public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivi
 
             case BaseEvent.TYPE_SET_SERVICE:
 
+                if((boolean)event.getMassage()){
+                    view.startPushMsgService();
+                }else {
+                    view.stopPushMsgService();
+                }
 
                 break;
 
             default:break;
-
 
         }
 

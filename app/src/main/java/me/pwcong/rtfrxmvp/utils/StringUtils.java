@@ -3,8 +3,9 @@ package me.pwcong.rtfrxmvp.utils;
 /**
  * Created by pwcong on 2016/8/25.
  */
-public abstract class StringUtils {
+public class StringUtils {
 
+    private StringUtils(){}
 
     /**
      * 判断字符串是否为null或长度为0
@@ -116,31 +117,6 @@ public abstract class StringUtils {
             }
         }
         return new String(chars);
-    }
-
-
-    public static String space2Return(String s){
-
-        if(isEmpty(s)){
-            return null;
-        }
-
-        StringBuilder stringBuilder=new StringBuilder();
-        char[] chars = s.toCharArray();
-        for(int i=0;i<chars.length;i++){
-
-            if(chars[i]==' '){
-                stringBuilder.append("\n");
-            }
-            else {
-                stringBuilder.append(chars[i]);
-            }
-
-        }
-
-        return stringBuilder.toString();
-
-
     }
 
 }

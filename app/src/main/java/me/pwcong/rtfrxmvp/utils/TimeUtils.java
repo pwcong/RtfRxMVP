@@ -17,7 +17,9 @@ import static me.pwcong.rtfrxmvp.utils.ConstUtils.*;
  *     desc  : 时间相关工具类
  * </pre>
  */
-public abstract class TimeUtils {
+public class TimeUtils {
+
+    private TimeUtils(){}
 
     /**
      * <p>在工具类中经常使用到工具类的格式化描述，这个主要是一个日期的操作类，所以日志格式主要使用 SimpleDateFormat的定义格式.</p>
