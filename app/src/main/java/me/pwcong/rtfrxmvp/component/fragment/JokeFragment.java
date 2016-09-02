@@ -155,6 +155,6 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
 
     @Override
     public void showError() {
-
+        showSnackBar(view,"获取失败！");
     }
 }

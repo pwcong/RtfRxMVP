@@ -6,6 +6,7 @@ import me.pwcong.rtfrxmvp.mvp.bean.Joke;
 import me.pwcong.rtfrxmvp.mvp.bean.News;
 import me.pwcong.rtfrxmvp.mvp.bean.NewsTab;
 import me.pwcong.rtfrxmvp.mvp.bean.WeatherBean;
+import me.pwcong.rtfrxmvp.rxbus.event.MainActivityEvent;
 
 /**
  * Created by pwcong on 2016/8/20.

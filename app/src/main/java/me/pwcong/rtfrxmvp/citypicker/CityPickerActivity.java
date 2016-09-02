@@ -31,6 +31,9 @@ import me.pwcong.rtfrxmvp.citypicker.model.LocateState;
 import me.pwcong.rtfrxmvp.citypicker.utils.StringUtils;
 import me.pwcong.rtfrxmvp.citypicker.view.SideLetterBar;
 import me.pwcong.rtfrxmvp.conf.Constants;
+import me.pwcong.rtfrxmvp.rxbus.RxBus;
+import me.pwcong.rtfrxmvp.rxbus.event.BaseEvent;
+import me.pwcong.rtfrxmvp.rxbus.event.MainActivityEvent;
 
 /**
  * author zaaach on 2016/1/26.

@@ -1,5 +1,7 @@
 package me.pwcong.rtfrxmvp.mvp.presenter;
 
+import me.pwcong.rtfrxmvp.rxbus.event.MainActivityEvent;
+
 /**
  * Created by pwcong on 2016/8/20.
  */
@@ -27,6 +29,7 @@ public abstract class BasePresenter<T> {
 
     public interface MainActivityPresenter{
         void initContent();
+        void onBusEventInteraction(MainActivityEvent event);
         void onNavigationItemInteraction(int id);
         void onMenuItemIntrraction(int id);
 

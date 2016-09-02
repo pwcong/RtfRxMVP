@@ -33,7 +33,10 @@ import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.component.fragment.JokeFragment;
 import me.pwcong.rtfrxmvp.component.fragment.NewsTabFragment;
 import me.pwcong.rtfrxmvp.component.fragment.WeatherFragment;
+import me.pwcong.rtfrxmvp.rxbus.RxBus;
+import me.pwcong.rtfrxmvp.rxbus.event.MainActivityEvent;
 import me.pwcong.rtfrxmvp.utils.TimeUtils;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
 /**
@@ -67,6 +70,8 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
         presenter=new MainActivityPresenterImpl(this);
 
+        initRxBus();
+
         initToolbar();
 
         initDrawerLayout();
@@ -76,6 +81,19 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
         Log.i(TAG, "initVariable: OK");
 
     }
+
+    private void initRxBus(){
+
+        RxBus.getDefault().toObserverable(MainActivityEvent.class).subscribe(new Action1<MainActivityEvent>() {
+            @Override
+            public void call(MainActivityEvent mainActivityEvent) {
+                presenter.onBusEventInteraction(mainActivityEvent);
+            }
+        });
+
+    }
+
+
 
     private void initToolbar(){
 
@@ -180,12 +198,13 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
     @Override
     public void switchAbout() {
+        drawerLayout.closeDrawer(GravityCompat.START);
         startActivity(new Intent(this,AboutActivity.class));
     }
 
     @Override
     public void switchSetting() {
-
+        drawerLayout.closeDrawer(GravityCompat.START);
         startActivity(new Intent(this,SettingActivity.class));
 
     }

@@ -10,6 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import me.pwcong.rtfrxmvp.R;
+import me.pwcong.rtfrxmvp.conf.Constants;
+import me.pwcong.rtfrxmvp.manager.SharedPreferencesManager;
 import rx.Observable;
 import rx.functions.Action1;
 
@@ -31,16 +33,26 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void initVariable() {
 
-        iv_bg.setAnimation(getScaleAnimation());
-        iv_appname.setAnimation(getAlphaAnimation());
 
-        Observable.timer(2000,TimeUnit.MILLISECONDS).subscribe(new Action1<Long>() {
-            @Override
-            public void call(Long aLong) {
-                redirectToMainActivity();
-            }
-        });
+        boolean mShowEnterAgree= SharedPreferencesManager.getInstance().getBoolean(Constants.SHOW_ENTER_AGREE,true);
 
+        if(mShowEnterAgree){
+
+            iv_bg.setAnimation(getScaleAnimation());
+            iv_appname.setAnimation(getAlphaAnimation());
+
+            Observable.timer(2000,TimeUnit.MILLISECONDS).subscribe(new Action1<Long>() {
+                @Override
+                public void call(Long aLong) {
+                    redirectToMainActivity();
+                }
+            });
+
+        }else {
+
+            redirectToMainActivity();
+
+        }
 
     }
 

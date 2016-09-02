@@ -4,6 +4,8 @@ import me.pwcong.rtfrxmvp.R;
 import me.pwcong.rtfrxmvp.conf.Constants;
 import me.pwcong.rtfrxmvp.manager.SharedPreferencesManager;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
+import me.pwcong.rtfrxmvp.rxbus.event.BaseEvent;
+import me.pwcong.rtfrxmvp.rxbus.event.MainActivityEvent;
 import me.pwcong.rtfrxmvp.utils.StringUtils;
 
 /**
@@ -18,6 +20,25 @@ public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivi
     @Override
     public void initContent() {
         view.switchNews();
+    }
+
+    @Override
+    public void onBusEventInteraction(MainActivityEvent event) {
+
+        switch (event.getType()){
+
+            case BaseEvent.TYPE_SET_SERVICE:
+
+
+                break;
+
+            default:break;
+
+
+        }
+
+
+
     }
 
     @Override

@@ -85,7 +85,8 @@
     <string name="backstage">后台</string>
     <string name="system">系统</string>
     <string name="enter_view">开始界面</string>
-    <string name="enter_view_content">应用启动时显示开始界面</string>
+    <string name="enter_view_content">应用启动时展示开始界面</string>
+    <string name="update_timer">推送周期</string>
 
 
 </resources>
