@@ -198,13 +198,11 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
     @Override
     public void switchAbout() {
-        drawerLayout.closeDrawer(GravityCompat.START);
         startActivity(new Intent(this,AboutActivity.class));
     }
 
     @Override
     public void switchSetting() {
-        drawerLayout.closeDrawer(GravityCompat.START);
         startActivity(new Intent(this,SettingActivity.class));
 
     }
@@ -233,14 +231,21 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if ((System.currentTimeMillis() - mExitTime) > 2000) {
 
-                showSnackBar(toolbar,"再按一次退出程序");
+            if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }else {
 
-                mExitTime = System.currentTimeMillis();
+                if ((System.currentTimeMillis() - mExitTime) > 2000) {
 
-            } else {
-                ActivityManager.getInstance().removeAll();
+                    showSnackBar(toolbar,"再按一次退出程序");
+
+                    mExitTime = System.currentTimeMillis();
+
+                } else {
+                    ActivityManager.getInstance().removeAll();
+                }
+
             }
             return true;
         }
