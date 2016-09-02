@@ -31,6 +31,7 @@ import me.pwcong.rtfrxmvp.mvp.presenter.BasePresenter;
 import me.pwcong.rtfrxmvp.mvp.presenter.MainActivityPresenterImpl;
 import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 import me.pwcong.rtfrxmvp.rxbus.RxBus;
+import me.pwcong.rtfrxmvp.rxbus.event.BaseEvent;
 import me.pwcong.rtfrxmvp.rxbus.event.MainActivityEvent;
 import me.pwcong.rtfrxmvp.utils.TimeUtils;
 import rx.functions.Action1;
@@ -229,6 +230,10 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
             String cityname = data.getExtras().getString(Constants.CITY_NAME);
 
             SharedPreferencesManager.getInstance().edit().putString(Constants.CITY_NAME,cityname).commit();
+
+            if(SharedPreferencesManager.getInstance().getBoolean(Constants.PUSH_MSG_AGREE,true)){
+                RxBus.getDefault().post(new MainActivityEvent(BaseEvent.TYPE_SET_SERVICE,true));
+            }
 
             if(currentNavigationItemSelectedId==R.id.item_weather){
                 switchWeather(cityname);
