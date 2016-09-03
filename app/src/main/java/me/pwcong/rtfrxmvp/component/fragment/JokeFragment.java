@@ -80,7 +80,7 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
 
     private void initRefreshLayout(){
 
-        refreshLayout.setColorSchemeResources(R.color.colorPrimaryDark);
+        refreshLayout.setColorSchemeResources(R.color.colorAccent);
 
         RxSwipeRefreshLayout.refreshes(refreshLayout).subscribe(new Action1<Void>() {
             @Override

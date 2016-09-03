@@ -73,7 +73,7 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
 
     private void initRefreshLayout(){
 
-        refreshLayout.setColorSchemeResources(R.color.colorPrimaryDark);
+        refreshLayout.setColorSchemeResources(R.color.colorAccent);
 
         RxSwipeRefreshLayout.refreshes(refreshLayout).subscribe(new Action1<Void>() {
             @Override

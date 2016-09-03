@@ -67,7 +67,7 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
 
     private void initRefreshLayout(){
 
-        refreshLayout.setColorSchemeResources(R.color.colorPrimaryDark);
+        refreshLayout.setColorSchemeResources(R.color.colorAccent);
 
         RxSwipeRefreshLayout.refreshes(refreshLayout).subscribe(new Action1<Void>() {
             @Override

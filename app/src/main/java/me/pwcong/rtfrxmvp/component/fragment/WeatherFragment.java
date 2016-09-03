@@ -73,7 +73,7 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
 
     private void initRefreshLayout(){
 
-        refreshLayout.setColorSchemeResources(R.color.colorPrimaryDark);
+        refreshLayout.setColorSchemeResources(R.color.colorAccent);
 
         RxSwipeRefreshLayout.refreshes(refreshLayout).subscribe(new Action1<Void>() {
             @Override
