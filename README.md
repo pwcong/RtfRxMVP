@@ -1,7 +1,7 @@
 # RtfRxMVP
 聚合资讯APP，提供热点资讯，天气预报以及笑话精选服务，使用 Retrofit + RxJava + MVP 构建代码。
 
-
+![示例](https://github.com/pwcong/RtfRxMVP/blob/master/demo.gif)
 
 *****************
 
