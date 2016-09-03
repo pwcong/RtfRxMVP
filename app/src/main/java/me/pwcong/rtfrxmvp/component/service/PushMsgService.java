@@ -61,6 +61,7 @@ public class PushMsgService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        flags=START_STICKY;
         return super.onStartCommand(intent, flags, startId);
     }
 
