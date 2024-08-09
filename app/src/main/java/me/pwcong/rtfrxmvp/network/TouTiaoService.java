@@ -15,9 +15,9 @@ public class TouTiaoService {
 
     private static Retrofit instance = null;
 
-    public static synchronized Retrofit getInstance(){
+    public static synchronized Retrofit getInstance() {
 
-        if(null==instance){
+        if (null == instance) {
             instance = new Retrofit.Builder()
                     .baseUrl(Api.URL_TOUTIAO)
                     .addConverterFactory(GsonConverterFactory.create())
@@ -28,16 +28,14 @@ public class TouTiaoService {
 
     }
 
-
-    public void getNews(String type, String key, Subscriber<NewsBean> subscriber){
+    public void getNews(String type, String key, Subscriber<NewsBean> subscriber) {
 
         getInstance().create(TouTiaoApi.class)
-                .getNews(type,key)
+                .getNews(type, key)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
 
     }
-
 
 }

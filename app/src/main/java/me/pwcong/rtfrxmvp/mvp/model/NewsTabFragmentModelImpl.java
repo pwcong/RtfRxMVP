@@ -15,7 +15,7 @@ public class NewsTabFragmentModelImpl implements BaseModel.NewsFragmentTabModel 
     @Override
     public List<NewsTab> getData() {
 
-        List<NewsTab> newsTabList=new ArrayList<>();
+        List<NewsTab> newsTabList = new ArrayList<>();
         newsTabList.add(new NewsTab("top", ResourceUtils.fromStringResId(R.string.top)));
         newsTabList.add(new NewsTab("shehui", ResourceUtils.fromStringResId(R.string.shehui)));
         newsTabList.add(new NewsTab("guonei", ResourceUtils.fromStringResId(R.string.guonei)));
@@ -26,7 +26,6 @@ public class NewsTabFragmentModelImpl implements BaseModel.NewsFragmentTabModel 
         newsTabList.add(new NewsTab("keji", ResourceUtils.fromStringResId(R.string.keji)));
         newsTabList.add(new NewsTab("caijing", ResourceUtils.fromStringResId(R.string.caijing)));
         newsTabList.add(new NewsTab("shishang", ResourceUtils.fromStringResId(R.string.shishang)));
-
 
         return newsTabList;
     }

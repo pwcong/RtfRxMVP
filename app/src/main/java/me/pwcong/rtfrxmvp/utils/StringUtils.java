@@ -5,13 +5,15 @@ package me.pwcong.rtfrxmvp.utils;
  */
 public class StringUtils {
 
-    private StringUtils(){}
+    private StringUtils() {
+    }
 
     /**
      * 判断字符串是否为null或长度为0
      *
      * @param string 待校验字符串
-     * @return {@code true}: 空<br> {@code false}: 不为空
+     * @return {@code true}: 空<br>
+     *         {@code false}: 不为空
      */
     public static boolean isEmpty(CharSequence string) {
         return string == null || string.length() == 0;
@@ -21,7 +23,8 @@ public class StringUtils {
      * 判断字符串是否为null或全为空格
      *
      * @param string 待校验字符串
-     * @return {@code true}: null或全空格<br> {@code false}: 不为null且不全空格
+     * @return {@code true}: null或全空格<br>
+     *         {@code false}: 不为null且不全空格
      */
     public static boolean isSpace(String string) {
         return (string == null || string.trim().length() == 0);

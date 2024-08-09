@@ -11,7 +11,7 @@ import rx.Observable;
 public interface JokeApi {
 
     @GET("/joke/content/list.from")
-    Observable<JokeBean> getJoke(@Query("sort") String sort,@Query("page") int page,
-                                        @Query("pagesize") int pagesize,@Query("time") String time,
-                                        @Query("key") String key);
+    Observable<JokeBean> getJoke(@Query("sort") String sort, @Query("page") int page,
+            @Query("pagesize") int pagesize, @Query("time") String time,
+            @Query("key") String key);
 }

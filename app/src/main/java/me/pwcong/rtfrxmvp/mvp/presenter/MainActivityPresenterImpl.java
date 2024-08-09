@@ -11,7 +11,8 @@ import me.pwcong.rtfrxmvp.utils.StringUtils;
 /**
  * Created by pwcong on 2016/8/24.
  */
-public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivityView> implements BasePresenter.MainActivityPresenter {
+public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivityView>
+        implements BasePresenter.MainActivityPresenter {
 
     public MainActivityPresenterImpl(BaseView.MainActivityView view) {
         super(view);
@@ -22,40 +23,38 @@ public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivi
 
         view.switchNews();
 
-        if(SharedPreferencesManager.getInstance().getBoolean(Constants.PUSH_MSG_AGREE,true)){
+        if (SharedPreferencesManager.getInstance().getBoolean(Constants.PUSH_MSG_AGREE, true)) {
             view.startPushMsgService();
         }
-
 
     }
 
     @Override
     public void onBusEventInteraction(MainActivityEvent event) {
 
-        switch (event.getType()){
+        switch (event.getType()) {
 
             case BaseEvent.TYPE_SET_SERVICE:
 
-                if((boolean)event.getMassage()){
+                if ((boolean) event.getMassage()) {
                     view.startPushMsgService();
-                }else {
+                } else {
                     view.stopPushMsgService();
                 }
 
                 break;
 
-            default:break;
+            default:
+                break;
 
         }
-
-
 
     }
 
     @Override
     public void onNavigationItemInteraction(int id) {
 
-        switch (id){
+        switch (id) {
             case R.id.item_newspaper:
                 view.switchNews();
                 break;
@@ -63,9 +62,9 @@ public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivi
 
                 String cityname = SharedPreferencesManager.getInstance().getString(Constants.CITY_NAME, null);
 
-                if(StringUtils.isEmpty(cityname)){
+                if (StringUtils.isEmpty(cityname)) {
                     view.startCityPickerActivityForResult();
-                }else {
+                } else {
                     view.switchWeather(cityname);
                 }
 
@@ -82,7 +81,8 @@ public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivi
                 view.switchSetting();
                 break;
 
-            default:break;
+            default:
+                break;
 
         }
 
@@ -90,14 +90,15 @@ public class MainActivityPresenterImpl extends BasePresenter<BaseView.MainActivi
 
     @Override
     public void onMenuItemIntrraction(int id) {
-        switch (id){
+        switch (id) {
 
             case R.id.item_location:
 
                 view.startCityPickerActivityForResult();
 
                 break;
-            default:break;
+            default:
+                break;
 
         }
     }

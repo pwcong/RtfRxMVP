@@ -14,8 +14,7 @@ import android.view.View;
  */
 public class RecyclerViewDivider extends RecyclerView.ItemDecoration {
 
-
-    private static final int[] ATTRS = new int[]{
+    private static final int[] ATTRS = new int[] {
             android.R.attr.listDivider
     };
 

@@ -12,16 +12,15 @@ import rx.Subscriber;
  */
 public class WeatherFragmentModelImpl implements BaseModel.WeatherFragmentModel {
 
-
     WeatherService service;
 
     public WeatherFragmentModelImpl() {
         super();
-        service=new WeatherService();
+        service = new WeatherService();
     }
 
     @Override
     public void getData(String cityname, Subscriber<WeatherBean> subscriber) {
-        service.getWeather(cityname,Api.KEY_WEATHER,subscriber);
+        service.getWeather(cityname, Api.KEY_WEATHER, subscriber);
     }
 }

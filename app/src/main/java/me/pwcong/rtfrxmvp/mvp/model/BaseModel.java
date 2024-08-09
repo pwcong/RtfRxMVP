@@ -15,20 +15,19 @@ public interface BaseModel<T> {
 
     List<T> getData();
 
-    interface NewsFragmentTabModel extends BaseModel<NewsTab>{
+    interface NewsFragmentTabModel extends BaseModel<NewsTab> {
     }
 
     interface NewsFragmentModel {
         void getData(String type, Subscriber<NewsBean> subscriber);
     }
 
-    interface WeatherFragmentModel{
+    interface WeatherFragmentModel {
         void getData(String cityname, Subscriber<WeatherBean> subscriber);
     }
 
-    interface JokeFragmentModel{
+    interface JokeFragmentModel {
         void getData(int page, Subscriber<JokeBean> subscriber);
     }
-
 
 }

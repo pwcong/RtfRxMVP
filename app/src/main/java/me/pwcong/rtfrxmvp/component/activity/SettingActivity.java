@@ -17,7 +17,6 @@ public class SettingActivity extends BaseActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-
     @Override
     protected int getContentView() {
         return R.layout.activity_setting;
@@ -28,7 +27,7 @@ public class SettingActivity extends BaseActivity {
         initToolbar();
     }
 
-    private void initToolbar(){
+    private void initToolbar() {
 
         mToolbar.setTitle(R.string.setting);
         setSupportActionBar(mToolbar);
@@ -45,7 +44,7 @@ public class SettingActivity extends BaseActivity {
     @Override
     protected void doAction() {
 
-        getFragmentManager().beginTransaction().replace(R.id.content,new SettingFragment()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.content, new SettingFragment()).commit();
 
     }
 }

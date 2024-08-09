@@ -1,13 +1,11 @@
 package me.pwcong.rtfrxmvp.utils;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 import static me.pwcong.rtfrxmvp.utils.ConstUtils.*;
-
 
 /**
  * <pre>
@@ -19,17 +17,22 @@ import static me.pwcong.rtfrxmvp.utils.ConstUtils.*;
  */
 public class TimeUtils {
 
-    private TimeUtils(){}
+    private TimeUtils() {
+    }
 
     /**
-     * <p>在工具类中经常使用到工具类的格式化描述，这个主要是一个日期的操作类，所以日志格式主要使用 SimpleDateFormat的定义格式.</p>
+     * <p>
+     * 在工具类中经常使用到工具类的格式化描述，这个主要是一个日期的操作类，所以日志格式主要使用 SimpleDateFormat的定义格式.
+     * </p>
      * 格式的意义如下： 日期和时间模式 <br>
-     * <p>日期和时间格式由日期和时间模式字符串指定。在日期和时间模式字符串中，未加引号的字母 'A' 到 'Z' 和 'a' 到 'z'
+     * <p>
+     * 日期和时间格式由日期和时间模式字符串指定。在日期和时间模式字符串中，未加引号的字母 'A' 到 'Z' 和 'a' 到 'z'
      * 被解释为模式字母，用来表示日期或时间字符串元素。文本可以使用单引号 (') 引起来，以免进行解释。"''"
      * 表示单引号。所有其他字符均不解释；只是在格式化时将它们简单复制到输出字符串，或者在分析时与输入字符串进行匹配。
      * </p>
      * 定义了以下模式字母（所有其他字符 'A' 到 'Z' 和 'a' 到 'z' 都被保留）： <br>
-     * <table border="1" cellspacing="1" cellpadding="1" summary="Chart shows pattern letters, date/time component,
+     * <table border="1" cellspacing="1" cellpadding="1" summary="Chart shows
+     * pattern letters, date/time component,
      * presentation, and examples.">
      * <tr>
      * <th align="left">字母</th>
@@ -44,114 +47,116 @@ public class TimeUtils {
      * <td><code>AD</code></td>
      * </tr>
      * <tr>
-     * <td><code>y</code> </td>
-     * <td>年 </td>
-     * <td>Year </td>
-     * <td><code>1996</code>; <code>96</code> </td>
+     * <td><code>y</code></td>
+     * <td>年</td>
+     * <td>Year</td>
+     * <td><code>1996</code>; <code>96</code></td>
      * </tr>
      * <tr>
-     * <td><code>M</code> </td>
-     * <td>年中的月份 </td>
-     * <td>Month </td>
-     * <td><code>July</code>; <code>Jul</code>; <code>07</code> </td>
+     * <td><code>M</code></td>
+     * <td>年中的月份</td>
+     * <td>Month</td>
+     * <td><code>July</code>; <code>Jul</code>; <code>07</code></td>
      * </tr>
      * <tr>
-     * <td><code>w</code> </td>
-     * <td>年中的周数 </td>
-     * <td>Number </td>
-     * <td><code>27</code> </td>
+     * <td><code>w</code></td>
+     * <td>年中的周数</td>
+     * <td>Number</td>
+     * <td><code>27</code></td>
      * </tr>
      * <tr>
-     * <td><code>W</code> </td>
-     * <td>月份中的周数 </td>
-     * <td>Number </td>
-     * <td><code>2</code> </td>
+     * <td><code>W</code></td>
+     * <td>月份中的周数</td>
+     * <td>Number</td>
+     * <td><code>2</code></td>
      * </tr>
      * <tr>
-     * <td><code>D</code> </td>
-     * <td>年中的天数 </td>
-     * <td>Number </td>
-     * <td><code>189</code> </td>
+     * <td><code>D</code></td>
+     * <td>年中的天数</td>
+     * <td>Number</td>
+     * <td><code>189</code></td>
      * </tr>
      * <tr>
-     * <td><code>d</code> </td>
-     * <td>月份中的天数 </td>
-     * <td>Number </td>
-     * <td><code>10</code> </td>
+     * <td><code>d</code></td>
+     * <td>月份中的天数</td>
+     * <td>Number</td>
+     * <td><code>10</code></td>
      * </tr>
      * <tr>
-     * <td><code>F</code> </td>
-     * <td>月份中的星期 </td>
-     * <td>Number </td>
-     * <td><code>2</code> </td>
+     * <td><code>F</code></td>
+     * <td>月份中的星期</td>
+     * <td>Number</td>
+     * <td><code>2</code></td>
      * </tr>
      * <tr>
-     * <td><code>E</code> </td>
-     * <td>星期中的天数 </td>
-     * <td>Text </td>
-     * <td><code>Tuesday</code>; <code>Tue</code> </td>
+     * <td><code>E</code></td>
+     * <td>星期中的天数</td>
+     * <td>Text</td>
+     * <td><code>Tuesday</code>; <code>Tue</code></td>
      * </tr>
      * <tr>
-     * <td><code>a</code> </td>
-     * <td>Am/pm 标记 </td>
-     * <td>Text </td>
-     * <td><code>PM</code> </td>
+     * <td><code>a</code></td>
+     * <td>Am/pm 标记</td>
+     * <td>Text</td>
+     * <td><code>PM</code></td>
      * </tr>
      * <tr>
-     * <td><code>H</code> </td>
-     * <td>一天中的小时数（0-23） </td>
-     * <td>Number </td>
-     * <td><code>0</code> </td>
+     * <td><code>H</code></td>
+     * <td>一天中的小时数（0-23）</td>
+     * <td>Number</td>
+     * <td><code>0</code></td>
      * </tr>
      * <tr>
-     * <td><code>k</code> </td>
-     * <td>一天中的小时数（1-24） </td>
-     * <td>Number </td>
-     * <td><code>24</code> </td>
+     * <td><code>k</code></td>
+     * <td>一天中的小时数（1-24）</td>
+     * <td>Number</td>
+     * <td><code>24</code></td>
      * </tr>
      * <tr>
-     * <td><code>K</code> </td>
-     * <td>am/pm 中的小时数（0-11） </td>
-     * <td>Number </td>
-     * <td><code>0</code> </td>
+     * <td><code>K</code></td>
+     * <td>am/pm 中的小时数（0-11）</td>
+     * <td>Number</td>
+     * <td><code>0</code></td>
      * </tr>
      * <tr>
-     * <td><code>h</code> </td>
-     * <td>am/pm 中的小时数（1-12） </td>
-     * <td>Number </td>
-     * <td><code>12</code> </td>
+     * <td><code>h</code></td>
+     * <td>am/pm 中的小时数（1-12）</td>
+     * <td>Number</td>
+     * <td><code>12</code></td>
      * </tr>
      * <tr>
-     * <td><code>m</code> </td>
-     * <td>小时中的分钟数 </td>
-     * <td>Number </td>
-     * <td><code>30</code> </td>
+     * <td><code>m</code></td>
+     * <td>小时中的分钟数</td>
+     * <td>Number</td>
+     * <td><code>30</code></td>
      * </tr>
      * <tr>
-     * <td><code>s</code> </td>
-     * <td>分钟中的秒数 </td>
-     * <td>Number </td>
-     * <td><code>55</code> </td>
+     * <td><code>s</code></td>
+     * <td>分钟中的秒数</td>
+     * <td>Number</td>
+     * <td><code>55</code></td>
      * </tr>
      * <tr>
-     * <td><code>S</code> </td>
-     * <td>毫秒数 </td>
-     * <td>Number </td>
-     * <td><code>978</code> </td>
+     * <td><code>S</code></td>
+     * <td>毫秒数</td>
+     * <td>Number</td>
+     * <td><code>978</code></td>
      * </tr>
      * <tr>
-     * <td><code>z</code> </td>
-     * <td>时区 </td>
-     * <td>General time zone </td>
-     * <td><code>Pacific Standard Time</code>; <code>PST</code>; <code>GMT-08:00</code> </td>
+     * <td><code>z</code></td>
+     * <td>时区</td>
+     * <td>General time zone</td>
+     * <td><code>Pacific Standard Time</code>; <code>PST</code>;
+     * <code>GMT-08:00</code></td>
      * </tr>
      * <tr>
-     * <td><code>Z</code> </td>
-     * <td>时区 </td>
-     * <td>RFC 822 time zone </td>
-     * <td><code>-0800</code> </td>
+     * <td><code>Z</code></td>
+     * <td>时区</td>
+     * <td>RFC 822 time zone</td>
+     * <td><code>-0800</code></td>
      * </tr>
      * </table>
+     * 
      * <pre>
      *                          HH:mm    15:44
      *                         h:mm a    3:44 下午
@@ -179,10 +184,11 @@ public class TimeUtils {
      */
     public static final SimpleDateFormat DEFAULT_SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 
-
     /**
      * 将时间戳转为时间字符串
-     * <p>格式为yyyy-MM-dd HH:mm:ss</p>
+     * <p>
+     * 格式为yyyy-MM-dd HH:mm:ss
+     * </p>
      *
      * @param milliseconds 毫秒时间戳
      * @return 时间字符串
@@ -193,7 +199,9 @@ public class TimeUtils {
 
     /**
      * 将时间戳转为时间字符串
-     * <p>格式为用户自定义</p>
+     * <p>
+     * 格式为用户自定义
+     * </p>
      *
      * @param milliseconds 毫秒时间戳
      * @param format       时间格式
@@ -205,7 +213,9 @@ public class TimeUtils {
 
     /**
      * 将时间字符串转为时间戳
-     * <p>格式为yyyy-MM-dd HH:mm:ss</p>
+     * <p>
+     * 格式为yyyy-MM-dd HH:mm:ss
+     * </p>
      *
      * @param time 时间字符串
      * @return 毫秒时间戳
@@ -216,7 +226,9 @@ public class TimeUtils {
 
     /**
      * 将时间字符串转为时间戳
-     * <p>格式为用户自定义</p>
+     * <p>
+     * 格式为用户自定义
+     * </p>
      *
      * @param time   时间字符串
      * @param format 时间格式
@@ -233,7 +245,9 @@ public class TimeUtils {
 
     /**
      * 将时间字符串转为Date类型
-     * <p>格式为yyyy-MM-dd HH:mm:ss</p>
+     * <p>
+     * 格式为yyyy-MM-dd HH:mm:ss
+     * </p>
      *
      * @param time 时间字符串
      * @return Date类型
@@ -244,7 +258,9 @@ public class TimeUtils {
 
     /**
      * 将时间字符串转为Date类型
-     * <p>格式为用户自定义</p>
+     * <p>
+     * 格式为用户自定义
+     * </p>
      *
      * @param time   时间字符串
      * @param format 时间格式
@@ -256,7 +272,9 @@ public class TimeUtils {
 
     /**
      * 将Date类型转为时间字符串
-     * <p>格式为yyyy-MM-dd HH:mm:ss</p>
+     * <p>
+     * 格式为yyyy-MM-dd HH:mm:ss
+     * </p>
      *
      * @param time Date类型时间
      * @return 时间字符串
@@ -267,7 +285,9 @@ public class TimeUtils {
 
     /**
      * 将Date类型转为时间字符串
-     * <p>格式为用户自定义</p>
+     * <p>
+     * 格式为用户自定义
+     * </p>
      *
      * @param time   Date类型时间
      * @param format 时间格式
@@ -301,7 +321,8 @@ public class TimeUtils {
      * 毫秒时间戳单位转换（单位：unit）
      *
      * @param milliseconds 毫秒时间戳
-     * @param unit         <ul>
+     * @param unit
+     *                     <ul>
      *                     <li>{@link TimeUnit#MSEC}: 毫秒</li>
      *                     <li>{@link TimeUnit#SEC }: 秒</li>
      *                     <li>{@link TimeUnit#MIN }: 分</li>
@@ -328,11 +349,14 @@ public class TimeUtils {
 
     /**
      * 获取两个时间差（单位：unit）
-     * <p>time1和time2格式都为yyyy-MM-dd HH:mm:ss</p>
+     * <p>
+     * time1和time2格式都为yyyy-MM-dd HH:mm:ss
+     * </p>
      *
      * @param time0 时间字符串1
      * @param time1 时间字符串2
-     * @param unit  <ul>
+     * @param unit
+     *              <ul>
      *              <li>{@link TimeUnit#MSEC}: 毫秒</li>
      *              <li>{@link TimeUnit#SEC }: 秒</li>
      *              <li>{@link TimeUnit#MIN }: 分</li>
@@ -347,11 +371,14 @@ public class TimeUtils {
 
     /**
      * 获取两个时间差（单位：unit）
-     * <p>time1和time2格式都为format</p>
+     * <p>
+     * time1和time2格式都为format
+     * </p>
      *
      * @param time0  时间字符串1
      * @param time1  时间字符串2
-     * @param unit   <ul>
+     * @param unit
+     *               <ul>
      *               <li>{@link TimeUnit#MSEC}: 毫秒</li>
      *               <li>{@link TimeUnit#SEC }: 秒</li>
      *               <li>{@link TimeUnit#MIN }: 分</li>
@@ -368,11 +395,14 @@ public class TimeUtils {
 
     /**
      * 获取两个时间差（单位：unit）
-     * <p>time1和time2都为Date类型</p>
+     * <p>
+     * time1和time2都为Date类型
+     * </p>
      *
      * @param time0 Date类型时间1
      * @param time1 Date类型时间2
-     * @param unit  <ul>
+     * @param unit
+     *              <ul>
      *              <li>{@link TimeUnit#MSEC}: 毫秒</li>
      *              <li>{@link TimeUnit#SEC }: 秒</li>
      *              <li>{@link TimeUnit#MIN }: 分</li>
@@ -397,7 +427,9 @@ public class TimeUtils {
 
     /**
      * 获取当前时间
-     * <p>格式为yyyy-MM-dd HH:mm:ss</p>
+     * <p>
+     * 格式为yyyy-MM-dd HH:mm:ss
+     * </p>
      *
      * @return 时间字符串
      */
@@ -407,7 +439,9 @@ public class TimeUtils {
 
     /**
      * 获取当前时间
-     * <p>格式为用户自定义</p>
+     * <p>
+     * 格式为用户自定义
+     * </p>
      *
      * @param format 时间格式
      * @return 时间字符串
@@ -418,7 +452,9 @@ public class TimeUtils {
 
     /**
      * 获取当前时间
-     * <p>Date类型</p>
+     * <p>
+     * Date类型
+     * </p>
      *
      * @return Date类型时间
      */
@@ -428,10 +464,13 @@ public class TimeUtils {
 
     /**
      * 获取与当前时间的差（单位：unit）
-     * <p>time格式为yyyy-MM-dd HH:mm:ss</p>
+     * <p>
+     * time格式为yyyy-MM-dd HH:mm:ss
+     * </p>
      *
      * @param time 时间字符串
-     * @param unit <ul>
+     * @param unit
+     *             <ul>
      *             <li>{@link TimeUnit#MSEC}:毫秒</li>
      *             <li>{@link TimeUnit#SEC }:秒</li>
      *             <li>{@link TimeUnit#MIN }:分</li>
@@ -446,10 +485,13 @@ public class TimeUtils {
 
     /**
      * 获取与当前时间的差（单位：unit）
-     * <p>time格式为format</p>
+     * <p>
+     * time格式为format
+     * </p>
      *
      * @param time   时间字符串
-     * @param unit   <ul>
+     * @param unit
+     *               <ul>
      *               <li>{@link TimeUnit#MSEC}: 毫秒</li>
      *               <li>{@link TimeUnit#SEC }: 秒</li>
      *               <li>{@link TimeUnit#MIN }: 分</li>
@@ -465,10 +507,13 @@ public class TimeUtils {
 
     /**
      * 获取与当前时间的差（单位：unit）
-     * <p>time为Date类型</p>
+     * <p>
+     * time为Date类型
+     * </p>
      *
      * @param time Date类型时间
-     * @param unit <ul>
+     * @param unit
+     *             <ul>
      *             <li>{@link TimeUnit#MSEC}: 毫秒</li>
      *             <li>{@link TimeUnit#SEC }: 秒</li>
      *             <li>{@link TimeUnit#MIN }: 分</li>
@@ -485,19 +530,19 @@ public class TimeUtils {
      * 判断闰年
      *
      * @param year 年份
-     * @return {@code true}: 闰年<br>{@code false}: 平年
+     * @return {@code true}: 闰年<br>
+     *         {@code false}: 平年
      */
     public static boolean isLeapYear(int year) {
 
         return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
 
-
-    public static String getCurTimeMillsLimit10(){
+    public static String getCurTimeMillsLimit10() {
 
         long curTimeMills = getCurTimeMills();
-        String time=String.valueOf(curTimeMills);
-        time=time.substring(0,10);
+        String time = String.valueOf(curTimeMills);
+        time = time.substring(0, 10);
         return time;
 
     }

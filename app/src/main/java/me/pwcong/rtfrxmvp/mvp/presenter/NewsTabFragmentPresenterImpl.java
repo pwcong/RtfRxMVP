@@ -11,22 +11,22 @@ import me.pwcong.rtfrxmvp.utils.ListUtils;
 /**
  * Created by pwcong on 2016/8/20.
  */
-public class NewsTabFragmentPresenterImpl extends BasePresenter<BaseView.NewsTabFragmentView> implements BasePresenter.NewsTabFragmentPresenter{
+public class NewsTabFragmentPresenterImpl extends BasePresenter<BaseView.NewsTabFragmentView>
+        implements BasePresenter.NewsTabFragmentPresenter {
 
     BaseModel.NewsFragmentTabModel model;
 
     public NewsTabFragmentPresenterImpl(BaseView.NewsTabFragmentView view) {
         super(view);
-        model=new NewsTabFragmentModelImpl();
+        model = new NewsTabFragmentModelImpl();
     }
 
     @Override
     public void initNewsFragmentTab() {
         List<NewsTab> newsTabList = model.getData();
-        if(!ListUtils.isNullOrEmpty(newsTabList)){
+        if (!ListUtils.isNullOrEmpty(newsTabList)) {
             view.setData(newsTabList);
-        }
-        else {
+        } else {
             view.showError();
         }
     }

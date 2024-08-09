@@ -50,7 +50,7 @@ public class WeatherBean {
         this.error_code = error_code;
     }
 
-    public class Result{
+    public class Result {
 
         Data data;
 
@@ -74,7 +74,7 @@ public class WeatherBean {
         }
     }
 
-    public class Data{
+    public class Data {
 
         Realtime realtime;
         Life life;
@@ -130,6 +130,5 @@ public class WeatherBean {
             this.pm25 = pm25;
         }
     }
-
 
 }

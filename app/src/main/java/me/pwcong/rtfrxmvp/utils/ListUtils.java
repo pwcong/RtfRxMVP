@@ -7,7 +7,8 @@ import java.util.List;
  */
 public class ListUtils {
 
-    private ListUtils(){}
+    private ListUtils() {
+    }
 
     public static boolean isNullOrEmpty(List list) {
 

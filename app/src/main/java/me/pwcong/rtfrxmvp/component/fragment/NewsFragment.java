@@ -28,7 +28,7 @@ import rx.functions.Action1;
  */
 public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentView {
 
-    private final String TAG=getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
 
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
@@ -39,12 +39,12 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
     String type;
     BasePresenter.NewsFragmentPresenter presenter;
 
-    public static NewsFragment newInstant(String type){
+    public static NewsFragment newInstant(String type) {
 
-        Bundle bundle=new Bundle();
-        bundle.putString(Constants.TYPE,type);
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.TYPE, type);
 
-        NewsFragment newsFragment=new NewsFragment();
+        NewsFragment newsFragment = new NewsFragment();
         newsFragment.setArguments(bundle);
 
         return newsFragment;
@@ -53,9 +53,9 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
     @Override
     protected void initVariable() {
 
-        presenter=new NewsFragmentPresenterImpl(this);
+        presenter = new NewsFragmentPresenterImpl(this);
 
-        type=getArguments().getString(Constants.TYPE);
+        type = getArguments().getString(Constants.TYPE);
 
         initRecyclerView();
         initRefreshLayout();
@@ -64,14 +64,13 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
 
     }
 
-    private void initRecyclerView(){
+    private void initRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.addItemDecoration(new RecyclerViewDivider(getContext(),RecyclerViewDivider.VERTICAL_LIST));
+        recyclerView.addItemDecoration(new RecyclerViewDivider(getContext(), RecyclerViewDivider.VERTICAL_LIST));
 
     }
 
-
-    private void initRefreshLayout(){
+    private void initRefreshLayout() {
 
         refreshLayout.setColorSchemeResources(R.color.colorAccent);
 
@@ -94,16 +93,15 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
         return R.layout.fragment_news;
     }
 
-
     @Override
     public void toDetailActivity(News news) {
 
-        Bundle bundle=new Bundle();
-        bundle.putString(Constants.TITLE,news.getTitle());
-        bundle.putString(Constants.URL_IMG,news.getThumbnail_pic_s());
-        bundle.putString(Constants.URL_CONTENT,news.getUrl());
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.TITLE, news.getTitle());
+        bundle.putString(Constants.URL_IMG, news.getThumbnail_pic_s());
+        bundle.putString(Constants.URL_CONTENT, news.getUrl());
 
-        Intent intent=new Intent(getActivity(),NewsDetailActivity.class);
+        Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
 
@@ -111,14 +109,13 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
 
     @Override
     public void showError(String errors) {
-        showSnackBar(view,errors);
+        showSnackBar(view, errors);
     }
 
     @Override
     public void showProgress() {
         refreshLayout.setRefreshing(true);
     }
-
 
     @Override
     public void hideProgress() {
@@ -128,7 +125,7 @@ public class NewsFragment extends BaseFragment implements BaseView.NewsFragmentV
     @Override
     public void setData(List<News> data) {
 
-        recyclerView.setAdapter(new NewsItemRecyclerAdapter(getContext(),data,this));
+        recyclerView.setAdapter(new NewsItemRecyclerAdapter(getContext(), data, this));
         Log.i(TAG, "setData: OK");
     }
 

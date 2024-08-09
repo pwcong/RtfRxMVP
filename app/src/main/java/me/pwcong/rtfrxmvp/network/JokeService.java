@@ -14,10 +14,11 @@ import rx.schedulers.Schedulers;
 public class JokeService {
 
     private static Retrofit instance = null;
-    public static synchronized Retrofit getInstance(){
 
-        if(null==instance){
-            instance=new Retrofit.Builder()
+    public static synchronized Retrofit getInstance() {
+
+        if (null == instance) {
+            instance = new Retrofit.Builder()
                     .baseUrl(Api.URL_JOKE)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -27,10 +28,10 @@ public class JokeService {
 
     }
 
-    public void getJoke(String sort, int page, int pagesize, String time, String key,Subscriber<JokeBean> subscriber){
+    public void getJoke(String sort, int page, int pagesize, String time, String key, Subscriber<JokeBean> subscriber) {
 
         getInstance().create(JokeApi.class)
-                .getJoke(sort,page,pagesize,time,key)
+                .getJoke(sort, page, pagesize, time, key)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);

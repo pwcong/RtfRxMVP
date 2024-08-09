@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,19 +51,19 @@ public class HotCityGridAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         HotCityViewHolder holder;
-        if (view == null){
+        if (view == null) {
             view = LayoutInflater.from(mContext).inflate(R.layout.item_hot_city_gridview, parent, false);
             holder = new HotCityViewHolder();
             holder.name = (TextView) view.findViewById(R.id.tv_hot_city_name);
             view.setTag(holder);
-        }else{
+        } else {
             holder = (HotCityViewHolder) view.getTag();
         }
         holder.name.setText(mCities.get(position));
         return view;
     }
 
-    public static class HotCityViewHolder{
+    public static class HotCityViewHolder {
         TextView name;
     }
 }

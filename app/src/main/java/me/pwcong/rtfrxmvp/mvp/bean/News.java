@@ -7,18 +7,19 @@ import java.util.Date;
  */
 public class News {
 
-    String title;               /*标题*/
-    String date;                  /*时间*/
-    String author_name;         /*作者*/
-    String thumbnail_pic_s;     /*图片1*/
-    String thumbnail_pic_s02;   /*图片2*/
-    String thumbnail_pic_s03;   /*图片3*/
-    String url;                 /*新闻链接*/
-    String uniquekey;           /*唯一标识*/
-    String type;                /*类型一*/
-    String realtype;            /*类型二*/
+    String title; /* 标题 */
+    String date; /* 时间 */
+    String author_name; /* 作者 */
+    String thumbnail_pic_s; /* 图片1 */
+    String thumbnail_pic_s02; /* 图片2 */
+    String thumbnail_pic_s03; /* 图片3 */
+    String url; /* 新闻链接 */
+    String uniquekey; /* 唯一标识 */
+    String type; /* 类型一 */
+    String realtype; /* 类型二 */
 
-    public News(String title, String date, String author_name, String thumbnail_pic_s, String thumbnail_pic_s02, String thumbnail_pic_s03, String url, String uniquekey, String type, String realtype) {
+    public News(String title, String date, String author_name, String thumbnail_pic_s, String thumbnail_pic_s02,
+            String thumbnail_pic_s03, String url, String uniquekey, String type, String realtype) {
         this.title = title;
         this.date = date;
         this.author_name = author_name;

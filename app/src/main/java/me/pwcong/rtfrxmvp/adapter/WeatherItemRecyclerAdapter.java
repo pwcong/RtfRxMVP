@@ -19,8 +19,7 @@ import me.pwcong.rtfrxmvp.mvp.bean.Weather;
 /**
  * Created by pwcong on 2016/8/30.
  */
-public class WeatherItemRecyclerAdapter extends RecyclerView.Adapter<WeatherItemRecyclerAdapter.ViewHolder>{
-
+public class WeatherItemRecyclerAdapter extends RecyclerView.Adapter<WeatherItemRecyclerAdapter.ViewHolder> {
 
     Context context;
     List<Weather> weatherList;
@@ -40,16 +39,15 @@ public class WeatherItemRecyclerAdapter extends RecyclerView.Adapter<WeatherItem
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.weather=weatherList.get(position);
+        holder.weather = weatherList.get(position);
 
-        int weatherIconId=Integer.valueOf(holder.weather.getInfo().getDay()[0]);
+        int weatherIconId = Integer.valueOf(holder.weather.getInfo().getDay()[0]);
 
-        if( weatherIconId > -1 && weatherIconId < 32 ){
+        if (weatherIconId > -1 && weatherIconId < 32) {
             Glide.with(context)
                     .load(Constants.WEATHER_ICONS[weatherIconId])
                     .into(holder.iv_weather);
-        }
-        else {
+        } else {
             Glide.with(context)
                     .load(Constants.WEATHER_ICONS[32])
                     .into(holder.iv_weather);
@@ -63,7 +61,6 @@ public class WeatherItemRecyclerAdapter extends RecyclerView.Adapter<WeatherItem
         holder.tv_wind_power.setText(holder.weather.getInfo().getDay()[4]);
         holder.tv_temperature.setText(holder.weather.getInfo().getDay()[2]);
 
-
     }
 
     @Override
@@ -71,8 +68,7 @@ public class WeatherItemRecyclerAdapter extends RecyclerView.Adapter<WeatherItem
         return weatherList.size();
     }
 
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public Weather weather;
 
@@ -86,19 +82,18 @@ public class WeatherItemRecyclerAdapter extends RecyclerView.Adapter<WeatherItem
         public final TextView tv_wind_power;
         public final TextView tv_temperature;
 
-
         public ViewHolder(View itemView) {
             super(itemView);
 
-            view=itemView;
-            iv_weather= (ImageView) itemView.findViewById(R.id.iv_weather);
-            tv_date= (TextView) itemView.findViewById(R.id.tv_date);
-            tv_week= (TextView) itemView.findViewById(R.id.tv_week);
-            tv_nongli= (TextView) itemView.findViewById(R.id.tv_nongli);
-            tv_weather_info= (TextView) itemView.findViewById(R.id.tv_weather_info);
-            tv_wind_direct= (TextView) itemView.findViewById(R.id.tv_wind_direct);
-            tv_wind_power= (TextView) itemView.findViewById(R.id.tv_wind_power);
-            tv_temperature= (TextView) itemView.findViewById(R.id.tv_temperature);
+            view = itemView;
+            iv_weather = (ImageView) itemView.findViewById(R.id.iv_weather);
+            tv_date = (TextView) itemView.findViewById(R.id.tv_date);
+            tv_week = (TextView) itemView.findViewById(R.id.tv_week);
+            tv_nongli = (TextView) itemView.findViewById(R.id.tv_nongli);
+            tv_weather_info = (TextView) itemView.findViewById(R.id.tv_weather_info);
+            tv_wind_direct = (TextView) itemView.findViewById(R.id.tv_wind_direct);
+            tv_wind_power = (TextView) itemView.findViewById(R.id.tv_wind_power);
+            tv_temperature = (TextView) itemView.findViewById(R.id.tv_temperature);
 
         }
     }

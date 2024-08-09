@@ -28,7 +28,7 @@ import rx.functions.Action1;
  */
 public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDetailActivityView {
 
-    private final String TAG=getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -53,7 +53,7 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
     @Override
     protected void initVariable() {
 
-        presenter=new NewsDetailActivityPresenterImpl(this);
+        presenter = new NewsDetailActivityPresenterImpl(this);
 
         initBundleValue();
         initToolbar();
@@ -64,8 +64,7 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
 
     }
 
-
-    private void initRefreshLayout(){
+    private void initRefreshLayout() {
 
         refreshLayout.setColorSchemeResources(R.color.colorAccent);
 
@@ -77,8 +76,7 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
         });
     }
 
-
-    private void initToolbar(){
+    private void initToolbar() {
 
         toolbar.setTitle(title);
         setSupportActionBar(toolbar);
@@ -100,8 +98,8 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
 
     }
 
-    private void initWebView(){
-        webView.setWebViewClient(new WebViewClient(){
+    private void initWebView() {
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 hideProgress();
@@ -116,11 +114,11 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
         });
     }
 
-    private void initBundleValue(){
+    private void initBundleValue() {
         Bundle bundle = getIntent().getExtras();
-        title=bundle.getString(Constants.TITLE);
-        url_content=bundle.getString(Constants.URL_CONTENT);
-        url_img=bundle.getString(Constants.URL_IMG);
+        title = bundle.getString(Constants.TITLE);
+        url_content = bundle.getString(Constants.URL_CONTENT);
+        url_img = bundle.getString(Constants.URL_IMG);
     }
 
     @Override
@@ -131,13 +129,12 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
-        getMenuInflater().inflate(R.menu.menu_share,menu);
+
+        getMenuInflater().inflate(R.menu.menu_share, menu);
         Log.i(TAG, "onCreateOptionsMenu: OK");
-        
+
         return super.onCreateOptionsMenu(menu);
     }
-
 
     @Override
     public void loadData() {
@@ -154,12 +151,12 @@ public class NewsDetailActivity extends BaseActivity implements BaseView.NewsDet
     @Override
     public void shareData() {
         ActivityUtils.share(url_content);
-        Log.i(TAG, "shareDetail: "+url_content);
+        Log.i(TAG, "shareDetail: " + url_content);
     }
 
     @Override
     public void showError() {
-        showSnackBar(refreshLayout,"获取失败！");
+        showSnackBar(refreshLayout, "获取失败！");
     }
 
     @Override

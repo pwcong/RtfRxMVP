@@ -70,7 +70,7 @@ public class PM25 {
         this.cityName = cityName;
     }
 
-    public class pm25{
+    public class pm25 {
         String curPm;
         String pm25;
         String pm10;

@@ -9,14 +9,15 @@ import rx.Subscriber;
 /**
  * Created by pwcong on 2016/8/21.
  */
-public class NewsFragmentPresenterImpl extends BasePresenter<BaseView.NewsFragmentView> implements BasePresenter.NewsFragmentPresenter{
+public class NewsFragmentPresenterImpl extends BasePresenter<BaseView.NewsFragmentView>
+        implements BasePresenter.NewsFragmentPresenter {
 
     BaseModel.NewsFragmentModel model;
 
     public NewsFragmentPresenterImpl(BaseView.NewsFragmentView view) {
         super(view);
 
-        model=new NewsFragmentModelImpl();
+        model = new NewsFragmentModelImpl();
 
     }
 
@@ -40,9 +41,9 @@ public class NewsFragmentPresenterImpl extends BasePresenter<BaseView.NewsFragme
             @Override
             public void onNext(NewsBean newsBean) {
 
-                if(newsBean.getError_code()==0){
+                if (newsBean.getError_code() == 0) {
                     view.setData(newsBean.getResult().getData());
-                }else {
+                } else {
                     view.showError("获取失败！");
                 }
 

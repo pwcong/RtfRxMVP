@@ -9,13 +9,14 @@ import rx.Subscriber;
 /**
  * Created by pwcong on 2016/8/30.
  */
-public class JokeFragmentPresenterImpl extends BasePresenter<BaseView.JokeFragmentView> implements BasePresenter.JokeFragmentPresenter {
+public class JokeFragmentPresenterImpl extends BasePresenter<BaseView.JokeFragmentView>
+        implements BasePresenter.JokeFragmentPresenter {
 
     BaseModel.JokeFragmentModel model;
 
     public JokeFragmentPresenterImpl(BaseView.JokeFragmentView view) {
         super(view);
-        model=new JokeFragmentModelImpl();
+        model = new JokeFragmentModelImpl();
     }
 
     @Override
@@ -37,16 +38,14 @@ public class JokeFragmentPresenterImpl extends BasePresenter<BaseView.JokeFragme
 
             @Override
             public void onNext(JokeBean jokeBean) {
-                if(jokeBean.getError_code()==0){
+                if (jokeBean.getError_code() == 0) {
                     view.setData(jokeBean.getResult().getData());
-                }
-                else {
+                } else {
                     view.showError();
                 }
 
             }
         });
-
 
     }
 
@@ -67,10 +66,9 @@ public class JokeFragmentPresenterImpl extends BasePresenter<BaseView.JokeFragme
 
             @Override
             public void onNext(JokeBean jokeBean) {
-                if(jokeBean.getError_code()==0){
+                if (jokeBean.getError_code() == 0) {
                     view.loadMore(jokeBean.getResult().getData());
-                }
-                else {
+                } else {
                     view.showError();
                 }
 

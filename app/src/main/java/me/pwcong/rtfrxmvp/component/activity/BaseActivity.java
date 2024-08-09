@@ -12,8 +12,7 @@ import me.pwcong.rtfrxmvp.manager.ActivityManager;
 /**
  * Created by pwcong on 2016/8/19.
  */
-public abstract class BaseActivity extends AppCompatActivity{
-
+public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,8 +45,8 @@ public abstract class BaseActivity extends AppCompatActivity{
 
     protected abstract void doAction();
 
-    public void showSnackBar(View view,String message){
-        Snackbar.make(view,message,Snackbar.LENGTH_SHORT).show();
+    public void showSnackBar(View view, String message) {
+        Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override

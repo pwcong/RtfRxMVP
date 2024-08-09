@@ -14,10 +14,11 @@ import rx.schedulers.Schedulers;
 public class WeatherService {
 
     private static Retrofit instance = null;
-    public static synchronized Retrofit getInstance(){
 
-        if(null==instance){
-            instance=new Retrofit.Builder()
+    public static synchronized Retrofit getInstance() {
+
+        if (null == instance) {
+            instance = new Retrofit.Builder()
                     .baseUrl(Api.URL_WEATHER)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -27,15 +28,14 @@ public class WeatherService {
 
     }
 
-    public void getWeather(String cityname, String key, Subscriber<WeatherBean> subscriber){
+    public void getWeather(String cityname, String key, Subscriber<WeatherBean> subscriber) {
 
         getInstance().create(WeatherApi.class)
-                .getWeather(cityname,key,Api.TYPE_JSON)
+                .getWeather(cityname, key, Api.TYPE_JSON)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
 
     }
-
 
 }

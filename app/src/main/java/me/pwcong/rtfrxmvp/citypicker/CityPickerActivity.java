@@ -85,7 +85,7 @@ public class CityPickerActivity extends AppCompatActivity implements View.OnClic
                         String location = StringUtils.extractLocation(city, district);
                         mCityAdapter.updateLocateState(LocateState.SUCCESS, location);
                     } else {
-                        //定位失败
+                        // 定位失败
                         mCityAdapter.updateLocateState(LocateState.FAILED, null);
                     }
                 }
@@ -134,10 +134,12 @@ public class CityPickerActivity extends AppCompatActivity implements View.OnClic
         searchBox = (EditText) findViewById(R.id.et_search);
         searchBox.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -177,7 +179,7 @@ public class CityPickerActivity extends AppCompatActivity implements View.OnClic
         backBtn.setOnClickListener(this);
     }
 
-    private void back(String city){
+    private void back(String city) {
 
         Intent data = new Intent();
         data.putExtra(Constants.CITY_NAME, city);
@@ -188,7 +190,7 @@ public class CityPickerActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.iv_search_clear:
                 searchBox.setText("");
                 clearBtn.setVisibility(View.GONE);

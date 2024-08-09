@@ -15,7 +15,8 @@ import me.pwcong.rtfrxmvp.R;
  * author zaaach on 2016/1/26.
  */
 public class SideLetterBar extends View {
-    private static final String[] b = {"定位", "热门", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+    private static final String[] b = { "定位", "热门", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+            "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
     private int choose = -1;
     private Paint paint = new Paint();
     private boolean showBg = false;
@@ -36,9 +37,10 @@ public class SideLetterBar extends View {
 
     /**
      * 设置悬浮的textview
+     * 
      * @param overlay
      */
-    public void setOverlay(TextView overlay){
+    public void setOverlay(TextView overlay) {
         this.overlay = overlay;
     }
 
@@ -59,7 +61,7 @@ public class SideLetterBar extends View {
             paint.setAntiAlias(true);
             if (i == choose) {
                 paint.setColor(getResources().getColor(R.color.gray_deep));
-//                paint.setFakeBoldText(true);  //加粗
+                // paint.setFakeBoldText(true); //加粗
             }
             float xPos = width / 2 - paint.measureText(b[i]) / 2;
             float yPos = singleHeight * i + singleHeight;
@@ -85,7 +87,7 @@ public class SideLetterBar extends View {
                         listener.onLetterChanged(b[c]);
                         choose = c;
                         invalidate();
-                        if (overlay != null){
+                        if (overlay != null) {
                             overlay.setVisibility(VISIBLE);
                             overlay.setText(b[c]);
                         }
@@ -99,7 +101,7 @@ public class SideLetterBar extends View {
                         listener.onLetterChanged(b[c]);
                         choose = c;
                         invalidate();
-                        if (overlay != null){
+                        if (overlay != null) {
                             overlay.setVisibility(VISIBLE);
                             overlay.setText(b[c]);
                         }
@@ -110,7 +112,7 @@ public class SideLetterBar extends View {
                 showBg = false;
                 choose = -1;
                 invalidate();
-                if (overlay != null){
+                if (overlay != null) {
                     overlay.setVisibility(GONE);
                 }
                 break;

@@ -8,17 +8,17 @@ import me.pwcong.rtfrxmvp.R;
  */
 public class ResourceUtils {
 
-    private ResourceUtils(){}
+    private ResourceUtils() {
+    }
 
-    public static String fromStringResId(int id){
+    public static String fromStringResId(int id) {
         return App.getInstance().getResources().getString(id);
     }
 
-    public static float fromDimenResId(int id){
+    public static float fromDimenResId(int id) {
 
         return App.getInstance().getResources().getDimension(id);
 
     }
-
 
 }

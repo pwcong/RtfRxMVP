@@ -37,6 +37,4 @@ public class MainActivityEvent {
         this.massage = massage;
     }
 
-
-
 }

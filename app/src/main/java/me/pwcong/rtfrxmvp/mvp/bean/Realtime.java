@@ -14,7 +14,8 @@ public class Realtime {
     Weather weather;
     Wind wind;
 
-    public Realtime(String city_code, String city_name, String date, String time, int week, String moon, long dataUptime, Weather weather, Wind wind) {
+    public Realtime(String city_code, String city_name, String date, String time, int week, String moon,
+            long dataUptime, Weather weather, Wind wind) {
         this.city_code = city_code;
         this.city_name = city_name;
         this.date = date;
@@ -113,7 +114,7 @@ public class Realtime {
         this.wind = wind;
     }
 
-    public class Wind{
+    public class Wind {
         String direct;
         String power;
         String offset;
@@ -169,11 +170,7 @@ public class Realtime {
         }
     }
 
-
-
-
-
-    public class Weather{
+    public class Weather {
 
         String temperature;
         String humidity;

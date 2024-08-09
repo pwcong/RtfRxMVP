@@ -19,11 +19,12 @@ public abstract class BaseFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
 
         view = inflater.inflate(getViewId(), container, false);
 
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
 
         return view;
 
@@ -45,8 +46,8 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract int getViewId();
 
-    public void showSnackBar(View view,String message){
-        Snackbar.make(view,message,Snackbar.LENGTH_SHORT).show();
+    public void showSnackBar(View view, String message) {
+        Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show();
     }
 
 }

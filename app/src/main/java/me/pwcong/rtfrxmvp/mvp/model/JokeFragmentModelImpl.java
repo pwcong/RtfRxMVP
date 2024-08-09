@@ -16,13 +16,14 @@ public class JokeFragmentModelImpl implements BaseModel.JokeFragmentModel {
 
     public JokeFragmentModelImpl() {
         super();
-        service=new JokeService();
+        service = new JokeService();
     }
 
     @Override
     public void getData(int page, Subscriber<JokeBean> subscriber) {
 
-        service.getJoke(Constants.DESC,page,Constants.PAGESIZE, TimeUtils.getCurTimeMillsLimit10(), Api.KEY_JOKE,subscriber);
+        service.getJoke(Constants.DESC, page, Constants.PAGESIZE, TimeUtils.getCurTimeMillsLimit10(), Api.KEY_JOKE,
+                subscriber);
 
     }
 }

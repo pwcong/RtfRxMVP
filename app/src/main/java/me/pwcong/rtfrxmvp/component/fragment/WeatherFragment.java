@@ -22,9 +22,9 @@ import rx.functions.Action1;
 /**
  * Created by pwcong on 2016/8/21.
  */
-public class WeatherFragment extends BaseFragment implements BaseView.WeatherFragmentView{
+public class WeatherFragment extends BaseFragment implements BaseView.WeatherFragmentView {
 
-    private final String TAG=getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
 
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
@@ -34,25 +34,23 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
     BasePresenter.WeatherFragmentPresenter presenter;
     String cityname;
 
-    public static WeatherFragment getInstance(String cityname){
+    public static WeatherFragment getInstance(String cityname) {
 
+        Bundle bundle = new Bundle();
+        bundle.putString(Constants.CITY_NAME, cityname);
 
-        Bundle bundle=new Bundle();
-        bundle.putString(Constants.CITY_NAME,cityname);
-
-        WeatherFragment weatherFragment=new WeatherFragment();
+        WeatherFragment weatherFragment = new WeatherFragment();
         weatherFragment.setArguments(bundle);
 
         return weatherFragment;
     }
 
-
     @Override
     protected void initVariable() {
 
-        presenter=new WeatherFragmentPresenterImpl(this);
+        presenter = new WeatherFragmentPresenterImpl(this);
 
-        cityname=getArguments().getString(Constants.CITY_NAME);
+        cityname = getArguments().getString(Constants.CITY_NAME);
 
         initRefreshLayout();
         initRecyclerView();
@@ -61,17 +59,16 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
 
     }
 
-    private void initRecyclerView(){
+    private void initRecyclerView() {
 
-        LinearLayoutManager verticalLayoutManager=new LinearLayoutManager(getContext());
+        LinearLayoutManager verticalLayoutManager = new LinearLayoutManager(getContext());
         verticalLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(verticalLayoutManager);
-        recyclerView.addItemDecoration(new RecyclerViewDivider(getContext(),RecyclerViewDivider.VERTICAL_LIST));
-
+        recyclerView.addItemDecoration(new RecyclerViewDivider(getContext(), RecyclerViewDivider.VERTICAL_LIST));
 
     }
 
-    private void initRefreshLayout(){
+    private void initRefreshLayout() {
 
         refreshLayout.setColorSchemeResources(R.color.colorAccent);
 
@@ -83,7 +80,6 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
         });
 
     }
-
 
     @Override
     protected void doAction() {
@@ -109,8 +105,7 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
     @Override
     public void setData(WeatherBean.Data data) {
 
-
-        recyclerView.setAdapter(new WeatherFragmentRecyclerAdapter(getContext(),data));
+        recyclerView.setAdapter(new WeatherFragmentRecyclerAdapter(getContext(), data));
         recyclerView.refreshDrawableState();
 
         Log.i(TAG, "setData: OK");
@@ -119,6 +114,6 @@ public class WeatherFragment extends BaseFragment implements BaseView.WeatherFra
 
     @Override
     public void showError(String error) {
-        showSnackBar(view,error);
+        showSnackBar(view, error);
     }
 }

@@ -30,10 +30,9 @@ import rx.functions.Action1;
 /**
  * Created by pwcong on 2016/8/30.
  */
-public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentView{
+public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentView {
 
-    private final String TAG=getClass().getSimpleName();
-
+    private final String TAG = getClass().getSimpleName();
 
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout refreshLayout;
@@ -41,18 +40,18 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
     RecyclerView recyclerView;
     View progress_view;
 
-    int page=1;
+    int page = 1;
 
     BasePresenter.JokeFragmentPresenter presenter;
 
     JokeItemAdapter adapter;
 
-
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
 
-        progress_view= LayoutInflater.from(getContext()).inflate(R.layout.view_progress, container,false);
+        progress_view = LayoutInflater.from(getContext()).inflate(R.layout.view_progress, container, false);
 
         return super.onCreateView(inflater, container, savedInstanceState);
 
@@ -61,7 +60,7 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
     @Override
     protected void initVariable() {
 
-        presenter=new JokeFragmentPresenterImpl(this);
+        presenter = new JokeFragmentPresenterImpl(this);
 
         initRycyclerView();
         initRefreshLayout();
@@ -69,23 +68,23 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
         Log.i(TAG, "initVariable: OK");
     }
 
-    private void initRycyclerView(){
+    private void initRycyclerView() {
 
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         recyclerView.setLayoutManager(linearLayoutManager);
 
     }
 
-    private void initRefreshLayout(){
+    private void initRefreshLayout() {
 
         refreshLayout.setColorSchemeResources(R.color.colorAccent);
 
         RxSwipeRefreshLayout.refreshes(refreshLayout).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
-                page=1;
+                page = 1;
                 presenter.initData(page);
             }
         });
@@ -106,7 +105,7 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
     @Override
     public void setData(List<Joke> data) {
 
-        adapter=new JokeItemAdapter(data);
+        adapter = new JokeItemAdapter(data);
         adapter.setLoadingView(progress_view);
         adapter.openLoadMore(Constants.PAGESIZE);
 
@@ -122,7 +121,7 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
             @Override
             public void SimpleOnItemLongClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
 
-                ActivityUtils.share(((Joke)(baseQuickAdapter.getData().get(i))).getContent());
+                ActivityUtils.share(((Joke) (baseQuickAdapter.getData().get(i))).getContent());
 
             }
         });
@@ -131,7 +130,7 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
         recyclerView.refreshDrawableState();
 
         Log.i(TAG, "setData: OK");
-        
+
     }
 
     @Override
@@ -144,7 +143,6 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
         refreshLayout.setRefreshing(false);
     }
 
-
     @Override
     public void loadMore(List<Joke> more) {
 
@@ -155,6 +153,6 @@ public class JokeFragment extends BaseFragment implements BaseView.JokeFragmentV
 
     @Override
     public void showError() {
-        showSnackBar(view,"获取失败！");
+        showSnackBar(view, "获取失败！");
     }
 }

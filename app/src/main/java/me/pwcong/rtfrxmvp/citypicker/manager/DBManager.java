@@ -31,16 +31,16 @@ public class DBManager {
     private String DB_PATH;
     private Context mContext;
 
-//    public static DBManager init(){
-//        if (mInstance == null){
-//            synchronized (DBManager.class){
-//                if (mInstance != null){
-//                    mInstance = new DBManager();
-//                }
-//            }
-//        }
-//        return mInstance;
-//    }
+    // public static DBManager init(){
+    // if (mInstance == null){
+    // synchronized (DBManager.class){
+    // if (mInstance != null){
+    // mInstance = new DBManager();
+    // }
+    // }
+    // }
+    // return mInstance;
+    // }
 
     public DBManager(Context context) {
         this.mContext = context;
@@ -50,13 +50,13 @@ public class DBManager {
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    public void copyDBFile(){
+    public void copyDBFile() {
         File dir = new File(DB_PATH);
-        if (!dir.exists()){
+        if (!dir.exists()) {
             dir.mkdirs();
         }
         File dbFile = new File(DB_PATH + DB_NAME);
-        if (!dbFile.exists()){
+        if (!dbFile.exists()) {
             InputStream is;
             OutputStream os;
             try {
@@ -64,7 +64,7 @@ public class DBManager {
                 os = new FileOutputStream(dbFile);
                 byte[] buffer = new byte[BUFFER_SIZE];
                 int length;
-                while ((length = is.read(buffer, 0, buffer.length)) > 0){
+                while ((length = is.read(buffer, 0, buffer.length)) > 0) {
                     os.write(buffer, 0, length);
                 }
                 os.flush();
@@ -78,14 +78,15 @@ public class DBManager {
 
     /**
      * 读取所有城市
+     * 
      * @return List<City>
      */
-    public List<City> getAllCities(){
+    public List<City> getAllCities() {
         SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(DB_PATH + DB_NAME, null);
         Cursor cursor = db.rawQuery("select * from " + TABLE_NAME, null);
         List<City> result = new ArrayList<>();
         City city;
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             String name = cursor.getString(cursor.getColumnIndex(NAME));
             String pinyin = cursor.getString(cursor.getColumnIndex(PINYIN));
             city = new City(name, pinyin);
@@ -99,16 +100,17 @@ public class DBManager {
 
     /**
      * 通过名字或者拼音搜索
+     * 
      * @param keyword String
      * @return List<City>
      */
-    public List<City> searchCity(final String keyword){
+    public List<City> searchCity(final String keyword) {
         SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(DB_PATH + DB_NAME, null);
-        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME +" where name like \"%" + keyword
+        Cursor cursor = db.rawQuery("select * from " + TABLE_NAME + " where name like \"%" + keyword
                 + "%\" or pinyin like \"%" + keyword + "%\"", null);
         List<City> result = new ArrayList<>();
         City city;
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             String name = cursor.getString(cursor.getColumnIndex(NAME));
             String pinyin = cursor.getString(cursor.getColumnIndex(PINYIN));
             city = new City(name, pinyin);
@@ -131,6 +133,5 @@ public class DBManager {
             return a.compareTo(b);
         }
     }
-
 
 }

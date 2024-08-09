@@ -19,7 +19,7 @@ import me.pwcong.rtfrxmvp.mvp.view.BaseView;
  */
 public class NewsTabFragment extends BaseFragment implements BaseView.NewsTabFragmentView {
 
-    private final String TAG=getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
 
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
@@ -33,7 +33,7 @@ public class NewsTabFragment extends BaseFragment implements BaseView.NewsTabFra
 
         tabLayout.setupWithViewPager(viewPager);
 
-        presenter=new NewsTabFragmentPresenterImpl(this);
+        presenter = new NewsTabFragmentPresenterImpl(this);
         Log.i(TAG, "initVariable: OK");
 
     }
@@ -51,7 +51,6 @@ public class NewsTabFragment extends BaseFragment implements BaseView.NewsTabFra
         return R.layout.fragment_newstab;
     }
 
-
     @Override
     public void showError() {
 
@@ -60,7 +59,7 @@ public class NewsTabFragment extends BaseFragment implements BaseView.NewsTabFra
     @Override
     public void setData(List<NewsTab> data) {
 
-        viewPager.setAdapter(new NewTabFragmentPagerAdapter(getChildFragmentManager(),data));
+        viewPager.setAdapter(new NewTabFragmentPagerAdapter(getChildFragmentManager(), data));
         Log.i(TAG, "setData: OK");
 
     }

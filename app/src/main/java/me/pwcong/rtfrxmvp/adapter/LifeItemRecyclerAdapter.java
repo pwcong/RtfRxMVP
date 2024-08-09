@@ -18,7 +18,7 @@ import me.pwcong.rtfrxmvp.conf.Constants;
 /**
  * Created by pwcong on 2016/8/29.
  */
-public class LifeItemRecyclerAdapter extends RecyclerView.Adapter<LifeItemRecyclerAdapter.ViewHolder>{
+public class LifeItemRecyclerAdapter extends RecyclerView.Adapter<LifeItemRecyclerAdapter.ViewHolder> {
 
     Context context;
     List<String[]> stringsList;
@@ -39,7 +39,7 @@ public class LifeItemRecyclerAdapter extends RecyclerView.Adapter<LifeItemRecycl
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.lifeInfo=stringsList.get(position);
+        holder.lifeInfo = stringsList.get(position);
 
         Glide.with(context).load(Constants.LIFEINFO_ICONS[position])
                 .into(holder.iv_life);
@@ -55,7 +55,7 @@ public class LifeItemRecyclerAdapter extends RecyclerView.Adapter<LifeItemRecycl
         return stringsList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public String[] lifeInfo;
         public final View view;
@@ -64,14 +64,13 @@ public class LifeItemRecyclerAdapter extends RecyclerView.Adapter<LifeItemRecycl
         public final TextView tv_level;
         public final TextView tv_detail;
 
-
         public ViewHolder(View itemView) {
             super(itemView);
-            view=itemView;
-            iv_life= (ImageView) itemView.findViewById(R.id.iv_life);
-            tv_type= (TextView) itemView.findViewById(R.id.tv_type);
-            tv_level= (TextView) itemView.findViewById(R.id.tv_level);
-            tv_detail= (TextView) itemView.findViewById(R.id.tv_detail);
+            view = itemView;
+            iv_life = (ImageView) itemView.findViewById(R.id.iv_life);
+            tv_type = (TextView) itemView.findViewById(R.id.tv_type);
+            tv_level = (TextView) itemView.findViewById(R.id.tv_level);
+            tv_detail = (TextView) itemView.findViewById(R.id.tv_detail);
 
         }
     }

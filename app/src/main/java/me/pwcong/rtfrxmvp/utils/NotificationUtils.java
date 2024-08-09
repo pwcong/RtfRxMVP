@@ -9,19 +9,19 @@ import me.pwcong.rtfrxmvp.manager.NotificationManager;
  */
 public class NotificationUtils {
 
-    private NotificationUtils(){}
+    private NotificationUtils() {
+    }
 
-    public static void notify(String tag,int id,Notification notification){
+    public static void notify(String tag, int id, Notification notification) {
 
-        NotificationManager.getInstance().notify(tag,id,notification);
+        NotificationManager.getInstance().notify(tag, id, notification);
 
     }
 
-    public static void notify(int id,Notification notification){
+    public static void notify(int id, Notification notification) {
 
-        NotificationManager.getInstance().notify(id,notification);
+        NotificationManager.getInstance().notify(id, notification);
 
     }
-
 
 }

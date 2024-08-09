@@ -61,7 +61,7 @@ public class Weather {
         this.nongli = nongli;
     }
 
-    public class WeatherInfo{
+    public class WeatherInfo {
 
         String[] dawn;
         String[] day;
@@ -106,6 +106,5 @@ public class Weather {
             this.night = night;
         }
     }
-
 
 }

@@ -10,55 +10,55 @@ import java.util.Vector;
  */
 public class ActivityManager {
 
-    private final String TAG=getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
 
     private static ActivityManager manager;
 
-    private ActivityManager(){
+    private ActivityManager() {
     }
 
     private static Activity currentActivity;
 
-    private static Vector<Activity> activities=new Vector<>();
+    private static Vector<Activity> activities = new Vector<>();
 
-    public static synchronized ActivityManager getInstance(){
+    public static synchronized ActivityManager getInstance() {
 
-        if(null==manager){
-            manager=new ActivityManager();
+        if (null == manager) {
+            manager = new ActivityManager();
         }
         return manager;
     }
 
-    public void register(Activity activity){
+    public void register(Activity activity) {
         activities.add(activity);
-        currentActivity=activity;
-        Log.i(TAG, "register: "+activity);
-        Log.i(TAG, "register: ALL "+activities.toString());
+        currentActivity = activity;
+        Log.i(TAG, "register: " + activity);
+        Log.i(TAG, "register: ALL " + activities.toString());
 
     }
 
-    public void unregister(Activity activity){
-        if(activities.contains(activity)){
+    public void unregister(Activity activity) {
+        if (activities.contains(activity)) {
             activities.remove(activity);
         }
-        Log.i(TAG, "unregister: "+activity);
-        Log.i(TAG, "unregister: ALL"+activities.toString());
+        Log.i(TAG, "unregister: " + activity);
+        Log.i(TAG, "unregister: ALL" + activities.toString());
     }
 
-    public void removeAll(){
+    public void removeAll() {
 
-        currentActivity=null;
+        currentActivity = null;
 
-        for (Activity t:activities){
+        for (Activity t : activities) {
             t.finish();
         }
         activities.clear();
 
         Log.i(TAG, "removeAll: OK");
-        Log.i(TAG, "removeAll: ALL"+activities.toString());
+        Log.i(TAG, "removeAll: ALL" + activities.toString());
     }
 
-    public Activity getCurrentActivity(){
+    public Activity getCurrentActivity() {
         return currentActivity;
     }
 

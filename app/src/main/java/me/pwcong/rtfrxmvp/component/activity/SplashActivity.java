@@ -33,22 +33,21 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void initVariable() {
 
+        boolean mShowEnterAgree = SharedPreferencesManager.getInstance().getBoolean(Constants.SHOW_ENTER_AGREE, true);
 
-        boolean mShowEnterAgree= SharedPreferencesManager.getInstance().getBoolean(Constants.SHOW_ENTER_AGREE,true);
-
-        if(mShowEnterAgree){
+        if (mShowEnterAgree) {
 
             iv_bg.setAnimation(getScaleAnimation());
             iv_appname.setAnimation(getAlphaAnimation());
 
-            Observable.timer(2000,TimeUnit.MILLISECONDS).subscribe(new Action1<Long>() {
+            Observable.timer(2000, TimeUnit.MILLISECONDS).subscribe(new Action1<Long>() {
                 @Override
                 public void call(Long aLong) {
                     redirectToMainActivity();
                 }
             });
 
-        }else {
+        } else {
 
             redirectToMainActivity();
 
@@ -61,26 +60,27 @@ public class SplashActivity extends BaseActivity {
 
     }
 
-    private ScaleAnimation getScaleAnimation(){
+    private ScaleAnimation getScaleAnimation() {
 
-        ScaleAnimation animation=new ScaleAnimation(1.0f,1.0f,1.01f,1.01f,Animation.RELATIVE_TO_SELF,Animation.RELATIVE_TO_SELF);
+        ScaleAnimation animation = new ScaleAnimation(1.0f, 1.0f, 1.01f, 1.01f, Animation.RELATIVE_TO_SELF,
+                Animation.RELATIVE_TO_SELF);
         animation.setDuration(1500);
         animation.setFillAfter(true);
         return animation;
     }
 
-    private AlphaAnimation getAlphaAnimation(){
+    private AlphaAnimation getAlphaAnimation() {
 
-        AlphaAnimation animation=new AlphaAnimation(0,1);
+        AlphaAnimation animation = new AlphaAnimation(0, 1);
         animation.setDuration(1000);
         animation.setFillAfter(true);
-        return  animation;
+        return animation;
 
     }
 
-    private void redirectToMainActivity(){
+    private void redirectToMainActivity() {
 
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
         finish();
 
     }

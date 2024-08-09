@@ -39,11 +39,11 @@ import rx.functions.Action1;
 /**
  * Created by pwcong on 2016/8/19.
  */
-public class MainActivity extends BaseActivity implements BaseView.MainActivityView{
+public class MainActivity extends BaseActivity implements BaseView.MainActivityView {
 
-    private  final String TAG=getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
 
-    public static final int REQUEST_CODE=100;
+    public static final int REQUEST_CODE = 100;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -66,9 +66,9 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     @Override
     protected void initVariable() {
 
-        presenter=new MainActivityPresenterImpl(this);
+        presenter = new MainActivityPresenterImpl(this);
 
-        mPushMsgServiceIntent=new Intent(this,PushMsgService.class);
+        mPushMsgServiceIntent = new Intent(this, PushMsgService.class);
 
         initRxBus();
 
@@ -82,7 +82,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
     }
 
-    private void initRxBus(){
+    private void initRxBus() {
 
         RxBus.getDefault().toObserverable(MainActivityEvent.class).subscribe(new Action1<MainActivityEvent>() {
             @Override
@@ -93,9 +93,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
     }
 
-
-
-    private void initToolbar(){
+    private void initToolbar() {
 
         toolbar.setTitle(R.string.navigation_item_newspaper);
         setSupportActionBar(toolbar);
@@ -107,24 +105,24 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
         });
     }
 
+    private void initDrawerLayout() {
 
-    private void initDrawerLayout(){
-
-        ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_open, R.string.navigation_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_open,
+                R.string.navigation_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
     }
 
-    private void initNavigationView(){
+    private void initNavigationView() {
 
         View headerView = navigationView.getHeaderView(0);
-        ImageView iv_nav_header= (ImageView) headerView.findViewById(R.id.iv_nav_header);
+        ImageView iv_nav_header = (ImageView) headerView.findViewById(R.id.iv_nav_header);
 
         int hours = TimeUtils.getCurTimeDate().getHours();
 
-        if(hours>6&&hours<18){
+        if (hours > 6 && hours < 18) {
             Glide.with(this).load(R.drawable.header_day).into(iv_nav_header);
-        }else {
+        } else {
             Glide.with(this).load(R.drawable.header_night).into(iv_nav_header);
         }
 
@@ -132,13 +130,12 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
         RxNavigationView.itemSelections(navigationView).subscribe(new Action1<MenuItem>() {
             @Override
             public void call(MenuItem menuItem) {
-                currentNavigationItemSelectedId=menuItem.getItemId();
+                currentNavigationItemSelectedId = menuItem.getItemId();
                 presenter.onNavigationItemInteraction(menuItem.getItemId());
             }
         });
 
     }
-
 
     @Override
     protected void doAction() {
@@ -151,7 +148,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         Log.i(TAG, "onCreateOptionsMenu: OK");
 
         return super.onCreateOptionsMenu(menu);
@@ -159,7 +156,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
     @Override
     public void startCityPickerActivityForResult() {
-        startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),REQUEST_CODE);
+        startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class), REQUEST_CODE);
         Log.i(TAG, "startCityPickerActivityForResult: OK");
     }
 
@@ -167,7 +164,7 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     public void switchNews() {
 
         toolbar.setTitle(R.string.navigation_item_newspaper);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content,new NewsTabFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content, new NewsTabFragment()).commit();
         drawerLayout.closeDrawer(GravityCompat.START);
 
         Log.i(TAG, "switchNews: OK");
@@ -176,11 +173,11 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
     @Override
     public void switchWeather(String cityname) {
 
-
         toolbar.setTitle(R.string.navigation_item_weather);
         drawerLayout.closeDrawer(GravityCompat.START);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.content, WeatherFragment.getInstance(cityname)).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content, WeatherFragment.getInstance(cityname))
+                .commit();
 
         Log.i(TAG, "switchWeather: OK");
 
@@ -191,19 +188,19 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
         toolbar.setTitle(R.string.joke);
         drawerLayout.closeDrawer(GravityCompat.START);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content,new JokeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content, new JokeFragment()).commit();
         Log.i(TAG, "switchJoke: OK");
 
     }
 
     @Override
     public void switchAbout() {
-        startActivity(new Intent(this,AboutActivity.class));
+        startActivity(new Intent(this, AboutActivity.class));
     }
 
     @Override
     public void switchSetting() {
-        startActivity(new Intent(this,SettingActivity.class));
+        startActivity(new Intent(this, SettingActivity.class));
 
     }
 
@@ -225,17 +222,17 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode==RESULT_OK&&requestCode==REQUEST_CODE){
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
 
             String cityname = data.getExtras().getString(Constants.CITY_NAME);
 
-            SharedPreferencesManager.getInstance().edit().putString(Constants.CITY_NAME,cityname).commit();
+            SharedPreferencesManager.getInstance().edit().putString(Constants.CITY_NAME, cityname).commit();
 
-            if(SharedPreferencesManager.getInstance().getBoolean(Constants.PUSH_MSG_AGREE,true)){
-                RxBus.getDefault().post(new MainActivityEvent(BaseEvent.TYPE_SET_SERVICE,true));
+            if (SharedPreferencesManager.getInstance().getBoolean(Constants.PUSH_MSG_AGREE, true)) {
+                RxBus.getDefault().post(new MainActivityEvent(BaseEvent.TYPE_SET_SERVICE, true));
             }
 
-            if(currentNavigationItemSelectedId==R.id.item_weather){
+            if (currentNavigationItemSelectedId == R.id.item_weather) {
                 switchWeather(cityname);
             }
         }
@@ -249,13 +246,13 @@ public class MainActivity extends BaseActivity implements BaseView.MainActivityV
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-            if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START);
-            }else {
+            } else {
 
                 if ((System.currentTimeMillis() - mExitTime) > 2000) {
 
-                    showSnackBar(toolbar,"再按一次退出程序");
+                    showSnackBar(toolbar, "再按一次退出程序");
 
                     mExitTime = System.currentTimeMillis();
 

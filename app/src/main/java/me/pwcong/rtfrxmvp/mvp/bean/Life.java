@@ -39,7 +39,7 @@ public class Life {
         this.info = info;
     }
 
-    public class LifeInfo{
+    public class LifeInfo {
 
         String[] chuanyi;
         String[] ganmao;
@@ -49,7 +49,8 @@ public class Life {
         String[] yundong;
         String[] ziwaixian;
 
-        public LifeInfo(String[] chuanyi, String[] ganmao, String[] kongtiao, String[] wuran, String[] xiche, String[] yundong, String[] ziwaixian) {
+        public LifeInfo(String[] chuanyi, String[] ganmao, String[] kongtiao, String[] wuran, String[] xiche,
+                String[] yundong, String[] ziwaixian) {
             this.chuanyi = chuanyi;
             this.ganmao = ganmao;
             this.kongtiao = kongtiao;
@@ -128,6 +129,5 @@ public class Life {
             this.ziwaixian = ziwaixian;
         }
     }
-
 
 }

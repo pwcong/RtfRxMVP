@@ -18,7 +18,7 @@ import rx.functions.Action1;
  */
 public class AboutActivity extends BaseActivity {
 
-    private final String TAG=getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
 
     @BindView(R.id.link_source)
     LinearLayout mLinkSource;
@@ -27,7 +27,6 @@ public class AboutActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-
 
     @Override
     protected int getContentView() {
@@ -41,11 +40,10 @@ public class AboutActivity extends BaseActivity {
         initLinkView();
 
         Log.i(TAG, "initVariable: OK");
-        
+
     }
 
-
-    private void initToolbar(){
+    private void initToolbar() {
 
         mToolbar.setTitle(R.string.app_name);
         setSupportActionBar(mToolbar);
@@ -57,10 +55,10 @@ public class AboutActivity extends BaseActivity {
                 finish();
             }
         });
-        
+
     }
 
-    private void initLinkView(){
+    private void initLinkView() {
 
         RxView.clicks(mLinkSource).subscribe(new Action1<Void>() {
             @Override
@@ -78,8 +76,8 @@ public class AboutActivity extends BaseActivity {
 
     }
 
-
     @Override
-    protected void doAction() {}
+    protected void doAction() {
+    }
 
 }

@@ -11,7 +11,6 @@ public class NewsBean {
     Result result;
     int error_code;
 
-
     public NewsBean(String reason, Result result, int error_code) {
         this.reason = reason;
         this.result = result;
@@ -51,8 +50,7 @@ public class NewsBean {
         this.error_code = error_code;
     }
 
-    public class Result{
-
+    public class Result {
 
         int stat;
         List<News> data;
@@ -86,7 +84,5 @@ public class NewsBean {
             this.data = data;
         }
     }
-
-
 
 }

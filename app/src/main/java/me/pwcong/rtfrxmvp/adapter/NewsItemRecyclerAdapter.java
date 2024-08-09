@@ -22,7 +22,7 @@ import rx.functions.Action1;
 /**
  * Created by pwcong on 2016/8/22.
  */
-public class NewsItemRecyclerAdapter extends RecyclerView.Adapter<NewsItemRecyclerAdapter.ViewHolder>{
+public class NewsItemRecyclerAdapter extends RecyclerView.Adapter<NewsItemRecyclerAdapter.ViewHolder> {
 
     Context context;
     List<News> newsList;
@@ -45,18 +45,19 @@ public class NewsItemRecyclerAdapter extends RecyclerView.Adapter<NewsItemRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
-        News news=newsList.get(position);
+        News news = newsList.get(position);
 
-        holder.news=news;
+        holder.news = news;
         holder.tv_title.setText(news.getTitle());
         holder.tv_author_name.setText(news.getAuthor_name());
         holder.tv_date.setText(news.getDate());
         Glide.with(context)
                 .load(news.getThumbnail_pic_s())
-                .override((int)ResourceUtils.fromDimenResId(R.dimen.size_item_news_img),(int)ResourceUtils.fromDimenResId(R.dimen.size_item_news_img))
+                .override((int) ResourceUtils.fromDimenResId(R.dimen.size_item_news_img),
+                        (int) ResourceUtils.fromDimenResId(R.dimen.size_item_news_img))
                 .into(holder.iv_img);
 
-        if(newsFragmentView!=null){
+        if (newsFragmentView != null) {
             RxView.clicks(holder.view).subscribe(new Action1<Void>() {
                 @Override
                 public void call(Void aVoid) {
@@ -72,8 +73,7 @@ public class NewsItemRecyclerAdapter extends RecyclerView.Adapter<NewsItemRecycl
         return newsList.size();
     }
 
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public final View view;
         public final TextView tv_title;
@@ -85,11 +85,11 @@ public class NewsItemRecyclerAdapter extends RecyclerView.Adapter<NewsItemRecycl
 
         public ViewHolder(View itemView) {
             super(itemView);
-            view=itemView;
-            tv_title= (TextView) itemView.findViewById(R.id.tv_title);
-            tv_date= (TextView) itemView.findViewById(R.id.tv_date);
-            tv_author_name= (TextView) itemView.findViewById(R.id.tv_author_name);
-            iv_img= (ImageView) itemView.findViewById(R.id.iv_img);
+            view = itemView;
+            tv_title = (TextView) itemView.findViewById(R.id.tv_title);
+            tv_date = (TextView) itemView.findViewById(R.id.tv_date);
+            tv_author_name = (TextView) itemView.findViewById(R.id.tv_author_name);
+            iv_img = (ImageView) itemView.findViewById(R.id.iv_img);
 
         }
     }

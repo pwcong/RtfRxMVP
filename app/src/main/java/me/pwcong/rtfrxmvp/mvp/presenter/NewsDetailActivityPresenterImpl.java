@@ -6,8 +6,8 @@ import me.pwcong.rtfrxmvp.mvp.view.BaseView;
 /**
  * Created by pwcong on 2016/8/23.
  */
-public class NewsDetailActivityPresenterImpl extends BasePresenter<BaseView.NewsDetailActivityView> implements BasePresenter.NewsDetailActivityPresenter {
-
+public class NewsDetailActivityPresenterImpl extends BasePresenter<BaseView.NewsDetailActivityView>
+        implements BasePresenter.NewsDetailActivityPresenter {
 
     public NewsDetailActivityPresenterImpl(BaseView.NewsDetailActivityView view) {
         super(view);
@@ -21,11 +21,12 @@ public class NewsDetailActivityPresenterImpl extends BasePresenter<BaseView.News
 
     @Override
     public void onMenuItemInteraction(int id) {
-        switch (id){
+        switch (id) {
             case R.id.item_share:
                 view.shareData();
                 break;
-            default:break;
+            default:
+                break;
         }
     }
 

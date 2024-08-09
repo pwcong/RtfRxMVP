@@ -11,13 +11,14 @@ import me.pwcong.rtfrxmvp.conf.Constants;
  */
 public class SharedPreferencesManager {
 
-    private SharedPreferencesManager(){}
+    private SharedPreferencesManager() {
+    }
 
     private static SharedPreferences instance;
 
-    public static synchronized SharedPreferences getInstance(){
+    public static synchronized SharedPreferences getInstance() {
 
-        if(null==instance){
+        if (null == instance) {
             instance = App.getInstance().getSharedPreferences(Constants.PRE_NAME, Context.MODE_PRIVATE);
         }
         return instance;

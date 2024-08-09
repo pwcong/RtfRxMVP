@@ -50,7 +50,7 @@ public class JokeBean {
         this.result = result;
     }
 
-    public class Result{
+    public class Result {
 
         List<Joke> data;
 

@@ -9,16 +9,15 @@ import rx.Subscriber;
 /**
  * Created by pwcong on 2016/8/28.
  */
-public class WeatherFragmentPresenterImpl extends BasePresenter<BaseView.WeatherFragmentView> implements BasePresenter.WeatherFragmentPresenter {
-
+public class WeatherFragmentPresenterImpl extends BasePresenter<BaseView.WeatherFragmentView>
+        implements BasePresenter.WeatherFragmentPresenter {
 
     BaseModel.WeatherFragmentModel model;
 
     public WeatherFragmentPresenterImpl(BaseView.WeatherFragmentView view) {
         super(view);
-        model=new WeatherFragmentModelImpl();
+        model = new WeatherFragmentModelImpl();
     }
-
 
     @Override
     public void initData(String cityname) {
@@ -39,10 +38,9 @@ public class WeatherFragmentPresenterImpl extends BasePresenter<BaseView.Weather
 
             @Override
             public void onNext(WeatherBean weatherBean) {
-                if(weatherBean.getError_code()==0){
+                if (weatherBean.getError_code() == 0) {
                     view.setData(weatherBean.getResult().getData());
-                }
-                else {
+                } else {
                     view.showError("获取失败！");
                 }
 

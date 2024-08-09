@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatDelegate;
  */
 public class App extends Application {
 
-    public static App instance =null;
+    public static App instance = null;
 
     static {
 
@@ -19,10 +19,10 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        instance=this;
+        instance = this;
     }
 
-    public static App getInstance(){
+    public static App getInstance() {
         return instance;
     }
 

@@ -25,7 +25,7 @@ import me.pwcong.rtfrxmvp.rxbus.event.MainActivityEvent;
  */
 public class SettingFragment extends PreferenceFragment {
 
-    private final String TAG=getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
 
     CheckBoxPreference mPushMsgAgreePre;
     Preference mPushMsgTimerPre;
@@ -47,21 +47,19 @@ public class SettingFragment extends PreferenceFragment {
 
     }
 
-    private void initView(){
+    private void initView() {
         addPreferencesFromResource(R.xml.preference_setting);
     }
 
+    private void initVariable() {
 
-    private void initVariable(){
-
-        mPushMsgAgree= SharedPreferencesManager.getInstance().getBoolean(Constants.PUSH_MSG_AGREE,true);
-        mPushMsgTimer=SharedPreferencesManager.getInstance().getInt(Constants.PUSH_MSG_TIMER,1);
-        mShowEnterAgree=SharedPreferencesManager.getInstance().getBoolean(Constants.SHOW_ENTER_AGREE,true);
+        mPushMsgAgree = SharedPreferencesManager.getInstance().getBoolean(Constants.PUSH_MSG_AGREE, true);
+        mPushMsgTimer = SharedPreferencesManager.getInstance().getInt(Constants.PUSH_MSG_TIMER, 1);
+        mShowEnterAgree = SharedPreferencesManager.getInstance().getBoolean(Constants.SHOW_ENTER_AGREE, true);
 
     }
 
-
-    private void initPreference(){
+    private void initPreference() {
 
         mPushMsgAgreePre = (CheckBoxPreference) getPreferenceManager().findPreference(Constants.PUSH_MSG_AGREE);
         mPushMsgAgreePre.setChecked(mPushMsgAgree);
@@ -70,26 +68,27 @@ public class SettingFragment extends PreferenceFragment {
             @Override
             public boolean onPreferenceChange(Preference preference, Object o) {
 
-                if((boolean)o){
+                if ((boolean) o) {
 
                     mPushMsgTimerPre.setEnabled(true);
-                    SharedPreferencesManager.getInstance().edit().putBoolean(Constants.PUSH_MSG_AGREE,(boolean)o).apply();
+                    SharedPreferencesManager.getInstance().edit().putBoolean(Constants.PUSH_MSG_AGREE, (boolean) o)
+                            .apply();
 
-                }else {
+                } else {
 
                     mPushMsgTimerPre.setEnabled(false);
-                    SharedPreferencesManager.getInstance().edit().putBoolean(Constants.PUSH_MSG_AGREE,(boolean)o).apply();
+                    SharedPreferencesManager.getInstance().edit().putBoolean(Constants.PUSH_MSG_AGREE, (boolean) o)
+                            .apply();
                 }
 
-                RxBus.getDefault().post(new MainActivityEvent(BaseEvent.TYPE_SET_SERVICE,o));
+                RxBus.getDefault().post(new MainActivityEvent(BaseEvent.TYPE_SET_SERVICE, o));
 
                 return true;
             }
         });
 
-
         mPushMsgTimerPre = getPreferenceManager().findPreference(Constants.PUSH_MSG_TIMER);
-        mPushMsgTimerPre.setEnabled(SharedPreferencesManager.getInstance().getBoolean(Constants.PUSH_MSG_AGREE,true));
+        mPushMsgTimerPre.setEnabled(SharedPreferencesManager.getInstance().getBoolean(Constants.PUSH_MSG_AGREE, true));
         mPushMsgTimerPre.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -100,15 +99,14 @@ public class SettingFragment extends PreferenceFragment {
             }
         });
 
-
-
         mShowEnterAgreePre = (CheckBoxPreference) getPreferenceManager().findPreference(Constants.SHOW_ENTER_AGREE);
         mShowEnterAgreePre.setChecked(mShowEnterAgree);
         mShowEnterAgreePre.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object o) {
 
-                SharedPreferencesManager.getInstance().edit().putBoolean(Constants.SHOW_ENTER_AGREE,(boolean)o).apply();
+                SharedPreferencesManager.getInstance().edit().putBoolean(Constants.SHOW_ENTER_AGREE, (boolean) o)
+                        .apply();
 
                 return true;
             }
@@ -116,7 +114,7 @@ public class SettingFragment extends PreferenceFragment {
 
     }
 
-    private void showTimerSelectDialog(){
+    private void showTimerSelectDialog() {
 
         View view_update = LayoutInflater.from(getActivity())
                 .inflate(R.layout.dialog_update, (ViewGroup) getActivity().findViewById(R.id.dialog_root));
@@ -127,33 +125,36 @@ public class SettingFragment extends PreferenceFragment {
         final AlertDialog dialog = builder.create();
 
         final TextView tv_hour = (TextView) view_update.findViewById(R.id.tv_hour);
-        String hourString=SharedPreferencesManager.getInstance().getInt(Constants.PUSH_MSG_TIMER,1)+"小时";
+        String hourString = SharedPreferencesManager.getInstance().getInt(Constants.PUSH_MSG_TIMER, 1) + "小时";
         tv_hour.setText(hourString);
 
         final SeekBar seekbar = (SeekBar) view_update.findViewById(R.id.seekbar);
         seekbar.setMax(23);
-        seekbar.setProgress(SharedPreferencesManager.getInstance().getInt(Constants.PUSH_MSG_TIMER,0)-1);
+        seekbar.setProgress(SharedPreferencesManager.getInstance().getInt(Constants.PUSH_MSG_TIMER, 0) - 1);
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                String t= String.valueOf(i+1) + "小时";
+                String t = String.valueOf(i + 1) + "小时";
                 tv_hour.setText(t);
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
         });
 
         dialog.setButton(AlertDialog.BUTTON_POSITIVE, "确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
-                SharedPreferencesManager.getInstance().edit().putInt(Constants.PUSH_MSG_TIMER,seekbar.getProgress()+1).apply();
-                RxBus.getDefault().post(new MainActivityEvent(BaseEvent.TYPE_SET_SERVICE,true));
+                SharedPreferencesManager.getInstance().edit()
+                        .putInt(Constants.PUSH_MSG_TIMER, seekbar.getProgress() + 1).apply();
+                RxBus.getDefault().post(new MainActivityEvent(BaseEvent.TYPE_SET_SERVICE, true));
 
                 dialog.dismiss();
             }

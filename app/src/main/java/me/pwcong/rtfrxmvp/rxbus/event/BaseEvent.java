@@ -5,7 +5,6 @@ package me.pwcong.rtfrxmvp.rxbus.event;
  */
 public abstract class BaseEvent {
 
-    public static final int TYPE_SET_SERVICE =666;
-
+    public static final int TYPE_SET_SERVICE = 666;
 
 }
